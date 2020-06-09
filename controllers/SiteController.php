@@ -4,8 +4,10 @@ namespace app\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\Inflector;
 use yii\httpclient\Client;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
@@ -62,28 +64,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
-    }
+        $movies = Yii::$app->db->createCommand('SELECT * FROM movie ORDER BY id DESC LIMIT 6')
+            ->queryAll();
 
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
-    public function actionFilms($id)
-    {
-        print_r(1);
-        //https://videocdn.tv/api/short?api_token=YXecpkQUsqpLy8Pk2ezRUFrzpXUc4u4p&id=33596
-        $client = new Client();
-        $response = $client->createRequest()
-            ->setMethod('GET')
-            ->setUrl('https://videocdn.tv/api/short')
-            ->setData(['api_token' => 'YXecpkQUsqpLy8Pk2ezRUFrzpXUc4u4p', 'id' => $id])
-            ->send();
-        if ($response->isOk) {
-            var_dump($response->getContent());
-        }
-//        var_dump($response);
+        $peoples = Yii::$app->db->createCommand('SELECT * FROM people ORDER BY popularity DESC LIMIT 6')
+            ->queryAll();
+
+
+        return $this->render('index', ['movies' => $movies, 'peoples' => $peoples]);
     }
 
     /**
@@ -121,24 +109,6 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
      * Displays about page.
      *
      * @return string
@@ -147,4 +117,5 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
 }
