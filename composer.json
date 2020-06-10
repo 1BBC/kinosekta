@@ -22,7 +22,7 @@
         "ext-json": "*",
         "dejurin/php-google-translate-for-free": "^1.0",
         "ext-simplexml": "*",
-        "ext-dom": "*",
+        "ext-dom": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
