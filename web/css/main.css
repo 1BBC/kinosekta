@@ -1,0 +1,164 @@
+body {
+    background-color: #F4F4F4 !important;
+}
+
+a:hover {
+    color: #FC8638; /* Цвет ссылки при наведении на нее курсора мыши */
+    text-decoration: underline; /* Добавляем подчеркивание */
+}
+
+.bg-dark {
+    /*color: black; */
+    background-color: #1F1F1F !important;
+}
+
+@media (max-width: 576px) {
+    .action-btn {
+        padding: 0px 15px 0px 0px;
+    }
+}
+
+.parent {
+    position: relative;
+    padding: 0;
+    border: 1px double white;
+}
+
+.parent:hover {
+    border: 1px double orange;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.parent img {
+    width: 100%;
+    display: block;
+    max-width: 250px;
+}
+
+.parent div {
+    font-size: 0.8em;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    color: #fff;
+    padding: 0;
+    background: rgba(17, 17, 17, 0.9);
+    border-radius: 0px 0px 5px 5px;
+    text-align: center
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: #FC8638;
+}
+
+.img-figure-block {
+    position: relative;
+}
+
+.image-figure {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 255.78px;
+}
+
+.img-figure-overlay {
+    border: 2px double #FC8638;
+    border-radius: 4px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.img-figure-block:hover .img-figure-overlay {
+    opacity: 1;
+}
+
+.img-figure-text {
+    color: white;
+    font-size: 7em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.img-figure-overlay-s {
+    /*border: 2px double #FC8638;*/
+    /*border-radius: 4px;*/
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.img-figure-block-s .img-figure-overlay-s {
+    opacity: 1;
+}
+
+.img-figure-text-s {
+    color: white;
+    font-size: 6rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.card-film {
+    border: 1px double white;
+}
+
+.card-film > img {
+    /*margin: 0px;*/
+}
+
+.figure {
+    /*margin: 0px;*/
+    padding: 0px 7.5px;
+}
+
+.row-figure {
+    padding: 0px 7.5px;
+}
+
+.figure-caption > a{
+    color: #FC8638;
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #FC8638; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+h1  {
+    font-size: 2rem;
+}
