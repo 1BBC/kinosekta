@@ -170,7 +170,7 @@ class FilmyController extends Controller
         $countries = self::getCountryList();
 
         if (!array_key_exists(mb_strtoupper($iso), $countries)) {
-            throw new NotFoundHttpException('Movies 1not found',404);
+            throw new NotFoundHttpException('Movies not found',404);
         }
 
         $country = $countries[mb_strtoupper($iso)];
@@ -346,6 +346,7 @@ class FilmyController extends Controller
         $movie = $cache->get('movie' . $id);
 //        $movie = false;
         if ($movie === false) {
+
             $movie = $this->calculateMovie($id);
 
             if (!$movie) {
@@ -362,7 +363,7 @@ class FilmyController extends Controller
         }
 
         $similar_movies = $cache->getOrSet('similar_movies', function () {
-            return Yii::$app->db->createCommand('SELECT id, title FROM (SELECT id, title, popularity FROM movie ORDER BY id DESC LIMIT 100) AS s ORDER BY s.popularity DESC LIMIT 20;')
+            return Yii::$app->db->createCommand('SELECT id, title FROM (SELECT id, title, popularity FROM movie WHERE images>1 ORDER BY id DESC LIMIT 100) AS s ORDER BY s.popularity DESC LIMIT 20;')
                 ->queryAll();
         },60*60*24);
 
@@ -566,7 +567,10 @@ class FilmyController extends Controller
             'CK' => 'острова Кука',
             'CL' => 'Чили',
             'CM' => 'Камерун',
-            'CN' => 'Китай',
+            'CN' => [
+                'name' => 'Китай',
+                'url'  => 'kitajskie',
+            ],
             'CO' => 'Колумбия',
             'CR' => 'Коста-Рика',
             'CS' => 'Сербия и Черногория',
@@ -574,7 +578,10 @@ class FilmyController extends Controller
             'CV' => 'Кабо-Верде',
             'CX' => 'остров Рождества',
             'CY' => 'Кипр',
-            'CZ' => 'Чехия',
+            'CZ' => [
+                'name' => 'Чехия',
+                'url'  => 'сheshskie',
+            ],
             'DE' => [
                 'name' => 'Германия',
                 'url'  => 'nemeczkie',
@@ -589,14 +596,20 @@ class FilmyController extends Controller
             'EG' => 'Египет',
             'EH' => 'Западная Сахара',
             'ER' => 'Эритрея',
-            'ES' => 'Испания',
+            'ES' => [
+                'name' => 'Испания',
+                'url'  => 'ispanskie',
+            ],
             'ET' => 'Эфиопия',
             'FI' => 'Финляндия',
             'FJ' => 'Фиджи',
             'FK' => 'Фолклендские острова',
             'FM' => 'Микронезия',
             'FO' => 'Фарерские острова',
-            'FR' => 'Франция',
+            'FR' => [
+                'name' => 'Франция',
+                'url'  => 'franczuzskie',
+            ],
             'GA' => 'Габон',
             'GB' => 'Великобритания',
             'GD' => 'Гренада',
@@ -626,7 +639,10 @@ class FilmyController extends Controller
             'IE' => 'Ирландия',
             'IL' => 'Израиль',
             'IM' => 'остров Мэн',
-            'IN' => 'Индия',
+            'IN' => [
+                'name' => 'Индия',
+                'url'  => 'indijskie',
+            ],
             'IO' => 'Британская территория в Индийском океане',
             'IQ' => 'Ирак',
             'IR' => 'Иран',
@@ -635,7 +651,10 @@ class FilmyController extends Controller
             'JE' => 'остров Джерси',
             'JM' => 'Ямайка',
             'JO' => 'Иордания',
-            'JP' => 'Япония',
+            'JP' => [
+                'name' => 'Япония',
+                'url'  => 'yaponskie',
+            ],
             'KE' => 'Кения',
             'KG' => 'Кыргызстан',
             'KH' => 'Камбоджа',
@@ -643,7 +662,10 @@ class FilmyController extends Controller
             'KM' => 'Коморские острова',
             'KN' => 'Сент-Китс и Невис',
             'KP' => 'Северная Корея',
-            'KR' => 'Южная Корея',
+            'KR' => [
+                'name' => 'Южная Корея',
+                'url'  => 'korejskie',
+            ],
             'KW' => 'Кувейт',
             'KY' => 'Каймановы острова',
             'KZ' => 'Казахстан',
@@ -731,7 +753,10 @@ class FilmyController extends Controller
             'SO' => 'Сомали',
             'SR' => 'Суринам',
             'ST' => 'Сан-Томе и Принсипи',
-            'SU' => 'СССР',
+            'SU' => [
+                'name' => 'СССР',
+                'url'  => 'sovetskie',
+            ],
             'SV' => 'Сальвадор',
             'SY' => 'Сирия',
             'SZ' => 'Свазиленд',
@@ -752,9 +777,15 @@ class FilmyController extends Controller
             'TV' => 'Тувалу',
             'TW' => 'Тайвань',
             'TZ' => 'Танзания',
-            'UA' => 'Украина',
+            'UA' => [
+                'name' => 'Украина',
+                'url'  => 'ukrainskie',
+            ],
             'UG' => 'Уганда',
-            'UK' => 'Великобритания',
+            'UK' => [
+                'name' => 'Великобритания',
+                'url'  => 'britanskie',
+            ],
             'UM' => '',
             'US' => [
                 'name' => 'США',

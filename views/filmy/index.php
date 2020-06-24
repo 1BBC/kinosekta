@@ -1,7 +1,6 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
 /* @var $movies object */
 /* @var $genreList array */
 /* @var $countryList array */
@@ -12,7 +11,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Inflector;
 
-$this->title = 'Онлайн фильмы на лубой вкус, смотрите бесплатно онлайн в хорошем качестве';
+$this->title = 'Фильмы онлайн на любой вкус, смотрите бесплатно онлайн в хорошем качестве';
 
 \Yii::$app->view->registerMetaTag([
     'name' => 'description',
@@ -97,7 +96,7 @@ $this->registerJsFile(
             <div class="col-xs-12">
                 <div class="form-group btn-group">
                     <button type="button" id="del-filter" class="btn btn-outline-danger">Сбросить</button>
-                    <button type="button" id="set-filter" class="btn btn-outline-success">Сортировать</button>
+                    <button type="button" id="set-filter" class="btn btn-outline-success">Отсортировать</button>
                 </div>
             </div>
         </div>
@@ -118,7 +117,7 @@ $this->registerJsFile(
                 <div class="img-figure-block">
                     <a href="<?= '/filmy/' . $movie['id'] . '-' . Inflector::slug($movie['title']) ?>">
                         <?php $poster = "/i/f/p/" . (int) ($movie['id'] / 1000) . "/" . $movie['id'] . ".jpg"; ?>
-                        <img src="<?= $poster ?>" style="width: 100%; box-shadow: 0 0 8px rgba(0,0,0,0.5);" class="image-figure figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                        <img src="<?= $poster ?>" style="width: 100%; box-shadow: 0 0 8px rgba(0,0,0,0.5);" class="image-figure figure-img img-fluid rounded" alt="<?=$movie['title']?>">
                         <div class="img-figure-overlay">
                             <div class="img-figure-text"><i class="far fa-play-circle"></i></div>
                         </div>

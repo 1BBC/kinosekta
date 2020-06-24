@@ -19,7 +19,6 @@
             <a href="/filmy/muzykalnye/">Мюзиклы</a><br>
             <a href="/filmy/multfilmy/">Мультфильмы</a><br>
             <a href="/filmy/peredachi/">Передачи</a><br>
-            <a href="/filmy/prikljuchenija/">Приключения</a><br>
             <a href="/filmy/semejnye/">Семейные</a><br>
             <a href="/filmy/trillery/">Триллеры</a><br>
             <a href="/filmy/uzhasy/">Ужасы</a><br>
@@ -43,11 +42,11 @@
         <span class="badge badge-dark">ПО СТРАНАМ</span>
         <hr>
 
-        <a href="/filmy/c-amerikanskie/">Американские</a><br>
-        <a href="/filmy/c-anglijskie/">Британские</a><br>
-        <a href="/filmy/c-russkie/">Российские</a><br>
-        <a href="/filmy/c-indijskie/">Индийские</a><br>
-        <a href="/filmy/c-nemeckie/">Немецкие</a><br>
-        <a href="/filmy/c-francuzskie/">Французские</a>
+        <a href="/filmy/us-amerikanskie/">Американские</a><br>
+        <a href="/filmy/uk-britanskie/">Британские</a><br>
+        <a href="/filmy/ru-rossijskie/">Российские</a><br>
+        <a href="/filmy/fr-franczuzskie/">Французские</a><br>
+        <a href="/filmy/de-nemeczkie/">Немецкие</a><br>
+        <a href="/filmy/su-sovetskie/">Советские</a>
     </div>
 </div>

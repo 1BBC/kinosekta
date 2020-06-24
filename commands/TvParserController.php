@@ -189,7 +189,12 @@ class TvParserController extends Controller
         }
 
         $tmdExternalIds = $tmdData->external_ids;
-        $tmdSimilar = $tmdData->similar->results;
+//        $tmdSimilar = $tmdData->similar->results;
+        $poster = self::notEmpty([$tmdDataRu->poster_path, $tmdData->poster_path]);
+        if (empty($poster)) {
+            throw new Exception('TMDb dont find poster for movie, id[' . $tmdId .']: ' . $id);
+        }
+
 
         $images = self::imagesStrByMDD($tmdData->images->backdrops);
         $video = self::video($tmdData->videos->results);
@@ -244,11 +249,124 @@ class TvParserController extends Controller
 
         $this->stdout("Tv time : " . (microtime(true) - $start) . "\n", Console::FG_BLUE);
 
+        $start = microtime(true);
+        self::savePoster($tv->id, $poster);
+        $this->stdout("Poster time : " . (microtime(true) - $start) . "\n", Console::FG_BLUE);
+
+        $start = microtime(true);
+        $imgCount = self::saveImages($tv->id, $tmdData->images->backdrops);
+        $tv->images = $imgCount;
+        if (!$tv->save()) {
+            throw new Exception('Save movie images error' . print_r($tv->errors));
+        }
+        $this->stdout("Images count : " . $imgCount . "\n", Console::FG_GREY);
+        $this->stdout("Images time : " . (microtime(true) - $start) . "\n", Console::FG_BLUE);
+
 //        $start = microtime(true);
 //        self::countriesByArr($movie->id, $productionCountriesArr);
 //        $this->stdout("Country time : " . (microtime(true) - $start) . "\n", Console::FG_BLUE);
         self::addCredits($tv->id, $creditsArr);
         self::addNetworks($tv->id, $networksArr);
+    }
+
+    private function saveImages($id, $tmdImages)
+    {
+        $count = 0;
+
+        foreach ($tmdImages as $image){
+            if ($count > 2){
+                break;
+            }
+
+            preg_match('/.(\w*)$/', $image->file_path, $matches);
+            if (!isset($matches[0]))
+            {
+                $this->stdout("Warning(parsing img): Image#" . ($count+1) . "not load: " . $image->file_path . "\n", Console::FG_YELLOW);
+                continue;
+            }
+
+            if ($count == 0) {
+                $imgSize = 500;
+            } else {
+                $imgSize = 300;
+            }
+
+            $folder = (int) ($id / 1000);
+            $path = Yii::$app->basePath . '/web/i/s/s/' . $folder . '/';
+            $url = 'https://image.tmdb.org/t/p/w' . $imgSize . $image->file_path;
+            $status = file_put_contents($path . $id . '-' . ($count+1) . $matches[0], file_get_contents($url));
+
+            if (empty($status)) {
+                $this->stdout("Warning(save img): Image#" . ($count+1) . "not load: " . $image->file_path . "\n", Console::FG_YELLOW);
+                continue;
+            }
+
+            $count++;
+        }
+
+        return $count;
+    }
+
+    private function saveActorPoster($id, $url)
+    {
+        preg_match('/.(\w*)$/', $url, $matches);
+        if (!isset($matches[0]))
+        {
+            $this->stdout("Warning: Actor poster not load: " . $url . "\n", Console::FG_YELLOW);
+            return;
+        }
+
+        $folder = (int) ($id / 1000);
+        $path = Yii::$app->basePath . '/web/i/a/' . $folder . '/';
+//        print_r(Yii::$app->basePath . '/web/media');die();
+        $url = 'https://image.tmdb.org/t/p/w200' . $url;
+        $status = file_put_contents($path . $id . $matches[0], file_get_contents($url));
+
+        if (empty($status)) {
+            $this->stdout("Warning:  Actor poster not load: " . $url . "\n", Console::FG_YELLOW);
+            return;
+        }
+    }
+
+    private function saveNetworkPoster($id, $url)
+    {
+        preg_match('/.(\w*)$/', $url, $matches);
+        if (!isset($matches[0]))
+        {
+            $this->stdout("Warning: Actor network not load: " . $url . "\n", Console::FG_YELLOW);
+            return;
+        }
+
+        $path = Yii::$app->basePath . '/web/i/n/';
+//        print_r(Yii::$app->basePath . '/web/media');die();
+        $url = 'https://image.tmdb.org/t/p/w300' . $url;
+        $status = file_put_contents($path . $id . $matches[0], file_get_contents($url));
+
+        if (empty($status)) {
+            $this->stdout("Warning: network poster not load: " . $url . "\n", Console::FG_YELLOW);
+            return;
+        }
+    }
+    
+    private function savePoster($id, $url)
+    {
+        preg_match('/.(\w*)$/', $url, $matches);
+        if (!isset($matches[0]))
+        {
+            $this->stdout("Warning: Poster not load: " . $url . "\n", Console::FG_YELLOW);
+            return;
+        }
+
+        $folder = (int) ($id / 1000);
+        $path = Yii::$app->basePath . '/web/i/s/p/' . $folder . '/';
+//        print_r(Yii::$app->basePath . '/web/media');die();
+        $url = 'https://image.tmdb.org/t/p/w300' . $url;
+        $status = file_put_contents($path . $id . $matches[0], file_get_contents($url));
+
+        if (empty($status)) {
+            $this->stdout("Warning: Poster not load: " . $url . "\n", Console::FG_YELLOW);
+            return;
+        }
     }
 
     private function addCredits(int $tv_id, array $creditsArr)
@@ -280,8 +398,6 @@ class TvParserController extends Controller
                     'popularity'      => sprintf("%01.2f", $tmdPeople->popularity) * 100,
                     'biography'       => self::originalOrTranslate($tmdPeopleRU->biography, $tmdPeople->biography) ?? 'будет',
                     'gender'          => $tmdPeople->gender,
-                    'profile_path'    => substr($tmdPeople->profile_path, 1, 27),
-
                 ];
 
                 $people = new People();
@@ -293,6 +409,8 @@ class TvParserController extends Controller
                     //throw new Exception('Save people #' . $credit['id'] .  ' error: ' . print_r($people->errors));
                     continue;
                 }
+
+                self::saveActorPoster($people->id, $tmdPeople->profile_path);
 
                 $people_id = $people->id;
             } else {
@@ -336,7 +454,7 @@ class TvParserController extends Controller
                 $value = [
                     'tmd_id'          => $network->id,
                     'name'            => $network->name,
-                    'logo_path'       => substr($network->logo_path, 1, 27),
+//                    'logo_path'       => substr($network->logo_path, 1, 27),
                 ];
 
                 $obj_network = new Network();
@@ -348,6 +466,8 @@ class TvParserController extends Controller
                     //throw new Exception('Save people #' . $credit['id'] .  ' error: ' . print_r($people->errors));
                     continue;
                 }
+
+                self::saveNetworkPoster($obj_network->id, $network->logo_path);
 
                 $network_id = $obj_network->id;
             } else {

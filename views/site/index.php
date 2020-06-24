@@ -3,12 +3,13 @@
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $movies object */
+/* @var $tvs object */
 /* @var $peoples object */
 
 use yii\helpers\Html;
 use yii\helpers\Inflector;
 
-$this->title = 'Онлайн фильмы, сериалы, мультфильмы, смотрите бесплатно онлайн в хорошем качестве';
+$this->title = 'Фильмы, сериалы, мультфильмы смотрите онлайн бесплатно онлайн в хорошем качестве';
 
 \Yii::$app->view->registerMetaTag([
     'name' => 'description',
@@ -37,7 +38,7 @@ $this->title = 'Онлайн фильмы, сериалы, мультфильм�
         </ol>
     </nav>
     <div class="title">
-        <h1 class="font-weight-bold">Смотреть бесплатно онлайн фильмы</h1>
+        <h1 class="font-weight-bold">Смотреть онлайн фильмы и сериалы бесплатно</h1>
     </div>
 
     <hr>
@@ -54,7 +55,7 @@ $this->title = 'Онлайн фильмы, сериалы, мультфильм�
                 <div class="img-figure-block">
                     <a href="<?= '/filmy/' . $movie['id'] . '-' . Inflector::slug($movie['title']) ?>">
                         <?php $poster = "/i/f/p/" . (int) ($movie['id'] / 1000) . "/" . $movie['id'] . ".jpg"; ?>
-                        <img src="<?= $poster ?>" style="width: 100%; box-shadow: 0 0 8px rgba(0,0,0,0.5);" class="image-figure figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                        <img src="<?= $poster ?>" style="width: 100%; box-shadow: 0 0 8px rgba(0,0,0,0.5);" class="image-figure figure-img img-fluid rounded" alt="<?=$movie['title']?>">
                         <div class="img-figure-overlay">
                             <div class="img-figure-text"><i class="far fa-play-circle"></i></div>
                         </div>
@@ -83,6 +84,47 @@ $this->title = 'Онлайн фильмы, сериалы, мультфильм�
 
     <hr>
 
+    <h2>Сериалы</h2>
+
+
+    <div class="row row-figure">
+
+        <?php foreach ($tvs as $tv):?>
+
+            <div class="card-film figure col-lg-2 col-md-3 col-sm-4 col-6 my-2">
+
+                <div class="img-figure-block">
+                    <a href="<?= '/serialy/' . $tv['id'] . '-' . Inflector::slug($tv['title']) ?>">
+                        <?php $poster = "/i/s/p/" . (int) ($tv['id'] / 1000) . "/" . $tv['id'] . ".jpg"; ?>
+                        <img src="<?= $poster ?>" style="width: 100%; box-shadow: 0 0 8px rgba(0,0,0,0.5);" class="image-figure figure-img img-fluid rounded" alt="<?=$tv['title']?>">
+                        <div class="img-figure-overlay">
+                            <div class="img-figure-text"><i class="far fa-play-circle"></i></div>
+                        </div>
+                    </a>
+
+
+                </div>
+
+                <?php
+                $rating =  ($tv['r_kp']) ? ($tv['r_kp'] / 10) : ($tv['r_imdb']) ?  ($tv['r_kp'] / 10) : null;
+                $rating = (!empty($rating)) ? ', ★ ' . $rating : null;
+                ?>
+
+                <div class="figure-caption">
+                    <?= Html::a($tv['title'], ['serialy/view', 'id' => $tv['id'], 'title' => Inflector::slug($tv['title'])], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?>
+                    <!--                    <a href="movie.html" style="margin-bottom: 0px; font-size: 1.3em" class="font-weight-bold">--><?//= $movie['title']?><!--</a>-->
+                    <p class="font-weight-light" style="margin-bottom: 0px; font-size: 0.9em"><a style="color: #6C757D;" href="/serialy/<?= date_format(date_create($tv['first_air_date']), 'Y')?>-goda/"><?= date_format(date_create($tv['first_air_date']), 'Y')?></a><?= $rating ?></p>
+                </div>
+
+            </div>
+
+        <?php endforeach;?>
+
+    </div>
+    <a role="button" href="/serialy/" class="btn btn-sm btn-block btn-outline-dark">смотреть все сериалы</a>
+
+    <hr>
+
     <h2>Актеры</h2>
 
     <div class="row row-figure">
@@ -94,7 +136,7 @@ $this->title = 'Онлайн фильмы, сериалы, мультфильм�
                 <div class="img-figure-block">
                     <a href="<?= '/aktery/' . $people['id'] . '-' . Inflector::slug($people['name']) ?>">
                         <?php $poster = "/i/a/" . (int) ($people['id'] / 1000) . "/" . $people['id'] . ".jpg"; ?>
-                        <img src="<?= $poster ?>" style="width: 100%; box-shadow: 0 0 8px rgba(0,0,0,0.5);" class="image-figure figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                        <img src="<?= $poster ?>" style="width: 100%; box-shadow: 0 0 8px rgba(0,0,0,0.5);" class="image-figure figure-img img-fluid rounded" alt="<?=$people['name']?>">
                         <div class="img-figure-overlay">
                             <div class="img-figure-text"><i class="far fa-play-circle"></i></div>
                         </div>
@@ -126,91 +168,6 @@ $this->title = 'Онлайн фильмы, сериалы, мультфильм�
 
     <?= $this->render('/layouts/footer');?>
 </div>
-
-
-
-<style>
-    .img-figure-block {
-        position: relative;
-    }
-
-    .image-figure {
-        display: block;
-        width: 100%;
-        height: auto;
-        min-height: 255.78px;
-    }
-
-    .img-figure-overlay {
-        border: 2px double #FC8638;
-        border-radius: 4px;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 100%;
-        width: 100%;
-        opacity: 0;
-        transition: .5s ease;
-        background-color: rgba(0,0,0,0.4);
-    }
-
-    .img-figure-block:hover .img-figure-overlay {
-        opacity: 1;
-    }
-
-    .img-figure-text {
-        color: white;
-        font-size: 7em;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        text-align: center;
-    }
-</style>
-<!---->
-<!--<style type="text/css">-->
-<!--    .card-film {-->
-<!--        border: 1px double white;-->
-<!--    }-->
-<!---->
-<!--    .card-film > img {-->
-<!--        /*margin: 0px;*/-->
-<!--    }-->
-<!---->
-<!--    .figure {-->
-<!--        /*margin: 0px;*/-->
-<!--        padding: 0px 7.5px;-->
-<!--    }-->
-<!---->
-<!--    .row-figure {-->
-<!--        padding: 0px 7.5px;-->
-<!--    }-->
-<!---->
-<!--    .figure-caption > a{-->
-<!--        color: #FC8638;-->
-<!--    }-->
-<!--</style>-->
-<!---->
-<!--<style>-->
-<!--    .loader {-->
-<!--        border: 16px solid #f3f3f3; /* Light grey */-->
-<!--        border-top: 16px solid #FC8638; /* Blue */-->
-<!--        border-radius: 50%;-->
-<!--        width: 60px;-->
-<!--        height: 60px;-->
-<!--        animation: spin 2s linear infinite;-->
-<!--    }-->
-<!---->
-<!--    @keyframes spin {-->
-<!--        0% { transform: rotate(0deg); }-->
-<!--        100% { transform: rotate(360deg); }-->
-<!--    }-->
-<!--</style>-->
 
 
 

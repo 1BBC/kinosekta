@@ -64,14 +64,17 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $movies = Yii::$app->db->createCommand('SELECT * FROM movie ORDER BY id DESC LIMIT 6')
+        $movies = Yii::$app->db->createCommand('SELECT id, title, r_kp, r_imdb, release_date FROM movie ORDER BY id DESC LIMIT 6')
             ->queryAll();
 
-        $peoples = Yii::$app->db->createCommand('SELECT * FROM people ORDER BY popularity DESC LIMIT 6')
+        $tvs = Yii::$app->db->createCommand('SELECT id, title, r_kp, r_imdb, first_air_date FROM tv ORDER BY id DESC LIMIT 6')
+            ->queryAll();
+
+        $peoples = Yii::$app->db->createCommand('SELECT id, name, orig_name FROM people ORDER BY popularity DESC LIMIT 6')
             ->queryAll();
 
 
-        return $this->render('index', ['movies' => $movies, 'peoples' => $peoples]);
+        return $this->render('index', ['movies' => $movies, 'tvs' => $tvs, 'peoples' => $peoples]);
     }
 
     /**

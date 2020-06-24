@@ -111,4 +111,22 @@ class SitemapController extends \yii\web\Controller
 
         return $this->render('robots');
     }
+
+    public function actionLeet()
+    {
+        $ip = '172.16.254.1';
+
+        if (self::ipv4($ip)) {
+            print_r('IPv4');
+        } elseif (self::ipv4($ip)) {
+            print_r('IPv6');
+        } else {
+            print_r('neither');
+        }
+    }
+
+    public function ipv4($ip)
+    {
+        return true;
+    }
 }

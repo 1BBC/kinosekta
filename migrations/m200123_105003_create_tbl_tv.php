@@ -29,7 +29,7 @@ class m200123_105003_create_tbl_tv extends Migration
             'episode_run_time'      => $this->tinyInteger()->unsigned()->defaultValue(null),
             'poster'                => $this->char(27)->notNull(),
             'popularity'            => $this->integer()->unsigned()->defaultValue(0),
-            'images'                => $this->string(),
+            'images'                => $this->integer()->defaultValue(null),
             'video'                 => $this->char(11),
 
 

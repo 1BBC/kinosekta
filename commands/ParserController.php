@@ -363,7 +363,7 @@ class ParserController extends Controller
         $count = 0;
 
         foreach ($tmdImages as $image){
-            if ($count > 5){
+            if ($count > 2){
                 break;
             }
 
@@ -374,9 +374,15 @@ class ParserController extends Controller
                 continue;
             }
 
+            if ($count == 0) {
+                $imgSize = 500;
+            } else {
+                $imgSize = 300;
+            }
+
             $folder = (int) ($id / 1000);
             $path = Yii::$app->basePath . '/web/i/f/s/' . $folder . '/';
-            $url = 'https://image.tmdb.org/t/p/w300' . $image->file_path;
+            $url = 'https://image.tmdb.org/t/p/w' . $imgSize . $image->file_path;
             $status = file_put_contents($path . $id . '-' . ($count+1) . $matches[0], file_get_contents($url));
 
             if (empty($status)) {

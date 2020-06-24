@@ -10,16 +10,16 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Inflector;
 
-$this->title = 'Онлайн фильмы на c вашеми любимыми актерами, смотрите бесплатно онлайн в хорошем качестве';
+$this->title = 'Актеры. Онлайн фильмы c вашими любимыми актерами.';
 
 \Yii::$app->view->registerMetaTag([
     'name' => 'description',
-    'content' => 'Возникают проблемы с поиском фильмов вашего любимого актера, режиссера, оператора, сценариста? Воспользуйтесь нашей большой и удобной онлайн кинотекой. Смотрите бесллатно кино в хорошем качестве без регистрации',
+    'content' => 'Возникают проблемы с поиском фильмов и сериалов вашего любимого актера, режиссера, оператора, сценариста? Воспользуйтесь нашей большой и удобной онлайн кинотекой. Смотрите бесллатно кино в хорошем качестве без регистрации',
 ]);
 
 \Yii::$app->view->registerMetaTag([
     'name' => 'og:description',
-    'content' => 'Возникают проблемы с поиском фильмов вашего любимого актера, режиссера, оператора, сценариста? Воспользуйтесь нашей большой и удобной онлайн кинотекой. Смотрите бесллатно кино в хорошем качестве без регистрации',
+    'content' => 'Возникают проблемы с поиском фильмов и сериалов вашего любимого актера, режиссера, оператора, сценариста? Воспользуйтесь нашей большой и удобной онлайн кинотекой. Смотрите бесллатно кино в хорошем качестве без регистрации',
 ]);
 
 \Yii::$app->view->registerMetaTag([
@@ -79,7 +79,7 @@ $this->registerJsFile(
             <div class="col-xs-12">
                 <div class="form-group btn-group">
                     <button type="button" id="del-filter" class="btn btn-outline-danger">Сбросить</button>
-                    <button type="button" id="set-filter" class="btn btn-outline-success">Сортировать</button>
+                    <button type="button" id="set-filter" class="btn btn-outline-success">Отсортировать</button>
                 </div>
             </div>
         </div>
@@ -100,7 +100,7 @@ $this->registerJsFile(
                 <div class="img-figure-block">
                     <a href="<?= '/aktery/' . $people['id'] . '-' . Inflector::slug($people['name']) ?>">
                         <?php $poster = "/i/a/" . (int) ($people['id'] / 1000) . "/" . $people['id'] . ".jpg"; ?>
-                        <img src="<?= $poster ?>" style="width: 100%; box-shadow: 0 0 8px rgba(0,0,0,0.5);" class="image-figure figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                        <img src="<?= $poster ?>" style="width: 100%; box-shadow: 0 0 8px rgba(0,0,0,0.5);" class="image-figure figure-img img-fluid rounded" alt="<?=$people['name']?>">
                         <div class="img-figure-overlay">
                             <div class="img-figure-text"><i class="far fa-play-circle"></i></div>
                         </div>

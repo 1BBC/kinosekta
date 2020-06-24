@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Movie;
 use app\models\People;
+use app\models\Tv;
 use yii\web\Controller;
 
 class NajtiController extends Controller
@@ -46,6 +47,25 @@ class NajtiController extends Controller
         }
 
         return $this->render('filmy', ['movies' => $movies, 'q' => $q]);
+    }
+
+    public function actionSerialy($q=null)
+    {
+        $query = Tv::find();
+
+        if( preg_match("/[А-Яа-я]/", $q) ) {
+            $query->filterWhere(['like', 'title', $q]);
+        } else {
+            $query->filterWhere(['like', 'orig_title', $q]);
+        }
+
+        if ($q) {
+            $tvs = $query->limit(60)->asArray()->all();
+        } else {
+            $tvs = [];
+        }
+
+        return $this->render('serialy', ['tvs' => $tvs, 'q' => $q]);
     }
 
     /**

@@ -43,7 +43,7 @@ function loadNewPage() {
         block = false;
 
         $.ajax({
-            url: '/filmy/page-genre',
+            url: '/filmy/page-year',
             type: 'post',
             data: {
                 page: currentObj.s_page,

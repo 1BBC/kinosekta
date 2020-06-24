@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </nav>
 
             <div class="title">
-                <h2 class="font-weight-bold"><?= $people['orig_name']?></h2>
+                <h1 class="font-weight-bold"><?= $people['orig_name']?></h1>
             </div>
 
             <div itemscope itemtype="http://schema.org/Person" class="row mt-3">
@@ -68,8 +68,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             </a>
                         </div>
                         <div class="col-sm-12 col-5 mb-2 action-btn">
-                            <button type="button" class="btn btn-outline-success btn-sm btn-block" style="overflow: hidden;"><i class="fas fa-play"></i>  Фильмы</button>
-                            <button type="button" class="btn btn-outline-dark btn-sm btn-block" style="overflow: hidden;"><i class="fas fa-play"></i>  Сериалы</button>
+                            <a type="button" href="#movie" class="btn btn-outline-success btn-sm btn-block" style="overflow: hidden;"><i class="fas fa-play"></i>  Фильмы</a>
+                            <a type="button" href="#tv" class="btn btn-outline-dark btn-sm btn-block" style="overflow: hidden;"><i class="fas fa-play"></i>  Сериалы</a>
                             <p class="text-muted mt-2" style="margin: 0">Ссылки:</p>
                             <?php
                             $eiSId = array();
@@ -141,7 +141,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <tr>
                             <td class="text-muted"><small>Фильмы/Сериалы с участием:</small></td>
                             <td>
-                                <?= count($people['movies']) ?><code> (на сайте)</code>
+                                <?= count($people['movies']) . '/' . count($people['tvs']) ?><code> (на сайте)</code>
                             </td>
                         </tr>
                         </tbody>
@@ -149,7 +149,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?php if (!empty($people['biography'])):?>
                         <div class="mt-2">
-                            <h3>Биография</h3>
+                            <h2>Биография</h2>
                             <article itemprop="description"><?= $people['biography'] ?? '' ?></article>
                         </div>
                     <?php endif;?>
@@ -157,8 +157,8 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
 
             <hr>
-            <div class="mt-4">
-                <h3 class="font-weight-bold my-3">Фильмы</h3>
+            <div id="movie" class="mt-4">
+                <code>(фильмов всего: <?= count($people['movies'])?>)</code><h2 class="font-weight-bold my-3">Фильмы</h2>
                 <div class="row row-figure">
                     <?php foreach ($people['movies'] as $mId => $mVal):?>
 
@@ -167,7 +167,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="img-figure-block">
                                 <a href="<?= '/filmy/' . $mId . '-' . Inflector::slug($mVal['title']) ?>">
                                     <?php $poster = "/i/f/p/" . (int) ($mId / 1000) . "/" . $mId . ".jpg"; ?>
-                                    <img src="<?= $poster ?>" style="width: 100%; box-shadow: 0 0 8px rgba(0,0,0,0.5);" class="image-figure figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                                    <img src="<?= $poster ?>" style="width: 100%; box-shadow: 0 0 8px rgba(0,0,0,0.5);" class="image-figure figure-img img-fluid rounded" alt=<?=$mVal['title']?>">
                                     <div class="img-figure-overlay">
                                         <div class="img-figure-text"><i class="far fa-play-circle"></i></div>
                                     </div>
@@ -178,6 +178,38 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             <figcaption class="figure-caption">
                                 <?= Html::a($mVal['title'], ['filmy/view', 'id' => $mId, 'title' => Inflector::slug($mVal['title'])], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?>
+                                <p class="font-weight-light" style="margin-bottom: 0px; font-size: 0.9em"><?= implode(', ', $mVal['description']) ?></p>
+                            </figcaption>
+
+                        </figure>
+
+                    <?php endforeach;?>
+                </div>
+
+            </div>
+
+            <hr>
+            <div id="tv" class="mt-4">
+                <code>(сериалов всего: <?= count($people['tvs'])?>)</code><h2 class="font-weight-bold my-3">Сериалы</h2>
+                <div class="row row-figure">
+                    <?php foreach ($people['tvs'] as $mId => $mVal):?>
+
+                        <figure class="card-film figure col-lg-3 col-md-4 col-sm-6 col-6">
+
+                            <div class="img-figure-block">
+                                <a href="<?= '/serialy/' . $mId . '-' . Inflector::slug($mVal['title']) ?>">
+                                    <?php $poster = "/i/s/p/" . (int) ($mId / 1000) . "/" . $mId . ".jpg"; ?>
+                                    <img src="<?= $poster ?>" style="width: 100%; box-shadow: 0 0 8px rgba(0,0,0,0.5);" class="image-figure figure-img img-fluid rounded" alt="<?= $mVal['title'] ?>">
+                                    <div class="img-figure-overlay">
+                                        <div class="img-figure-text"><i class="far fa-play-circle"></i></div>
+                                    </div>
+                                </a>
+
+
+                            </div>
+
+                            <figcaption class="figure-caption">
+                                <?= Html::a($mVal['title'], ['serialy/view', 'id' => $mId, 'title' => Inflector::slug($mVal['title'])], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?>
                                 <p class="font-weight-light" style="margin-bottom: 0px; font-size: 0.9em"><?= implode(', ', $mVal['description']) ?></p>
                             </figcaption>
 

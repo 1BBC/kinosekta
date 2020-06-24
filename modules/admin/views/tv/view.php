@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Inflector;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -29,7 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            [
+                'attribute' => 'id',
+                'format'=>'raw',
+                'value' => function($data) {
+                    return Html::a($data->id, ['/serialy/view', 'id' => $data->id, 'title' => Inflector::slug($data->title)]);
+                }
+            ],
             't_created:date',
             't_updated:date',
             [
@@ -98,12 +105,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'images',
                 'format'=>'raw',
                 'value' => function($data) {
-                    $imgs = explode(',', $data->images);
-                    $return = null;
-                    foreach ($imgs as $img) {
-                        $return .= Html::img('https://image.tmdb.org/t/p/w500/' . $img . '.jpg', ['width' => 150]);
+                    $folder = (int) ($data->id / 1000);
+                    $str = '';
+
+                    for ($i=1; $i<=$data->images; $i++) {
+                        $str .= Html::img("/i/s/s/" . $folder . '/' . $data->id . '-' . $i .".jpg", ['width' => 150]);
                     }
-                    return $return;
+
+                    return $str;
                 }
             ],
             [

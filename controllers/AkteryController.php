@@ -39,7 +39,7 @@ class AkteryController extends Controller
      */
     public function actionIndex()
     {
-        $peoples = Yii::$app->db->createCommand('SELECT * FROM people ORDER BY popularity DESC LIMIT 30')
+        $peoples = Yii::$app->db->createCommand('SELECT id, name, orig_name FROM people ORDER BY popularity DESC LIMIT 30')
             ->queryAll();
 
         $count = Yii::$app->db->createCommand('SELECT count(*) FROM people')
@@ -173,6 +173,16 @@ class AkteryController extends Controller
             ->bindValue(':id', $id)
             ->queryOne();
 
+        if (!$people) {
+            throw new NotFoundHttpException('People not found',404);
+        }
+
+        $people['transliterate'] = Inflector::slug($people['name']);
+
+        if ($title != $people['transliterate']) {
+            Yii::$app->getResponse()->redirect(['people/view', 'id' => $id, 'title' => $people['transliterate']], 301);
+        }
+
         if (empty($people)) {
             throw new NotFoundHttpException('ID=' . $id . ' T= ' . $title);
         }
@@ -181,7 +191,13 @@ class AkteryController extends Controller
             ->bindValue(':id', $id)
             ->queryAll();
 
+        $tvs = Yii::$app->db->createCommand('SELECT m.id, m.title, mp.role FROM tv m LEFT JOIN tv_people mp ON m.id=mp.tv_id LEFT JOIN people p ON p.id=mp.people_id WHERE p.id=:id ORDER BY id DESC')
+            ->bindValue(':id', $id)
+            ->queryAll();
+
         $dl = self::getDepartmentList();
+
+        $people['movies'] = $people['tvs'] = array();
 
         foreach ($movies as $movie) {
             $people['movies'][$movie['id']]['title'] = $movie['title'];
@@ -191,6 +207,15 @@ class AkteryController extends Controller
                 $people['movies'][$movie['id']]['description'][] = $movie['role'];
             }
 
+        }
+
+        foreach ($tvs as $tv) {
+            $people['tvs'][$tv['id']]['title'] = $tv['title'];
+            if ($tv['role'] == 1) {
+                $people['tvs'][$tv['id']]['description'][] = $dl[4];
+            } else {
+                $people['tvs'][$tv['id']]['description'][] = $tv['role'];
+            }
         }
 
         $transliterate = Inflector::slug($people['name']);

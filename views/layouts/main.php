@@ -43,33 +43,18 @@ SiteAsset::register($this);
                 <li class="nav-item <?= (Yii::$app->controller->id == 'filmy') ? 'active' : '' ?>">
                     <a class="nav-link" href="/filmy/">Фильмы</a>
                 </li>
-    <!--                <li class="nav-item --><?//= (Yii::$app->controller->id == 'serialy') ? 'active' : '' ?><!--">-->
-    <!--                    <a class="nav-link" href="/serialy/">Сериалы</a>-->
-    <!--                </li>-->
+                <li class="nav-item <?= (Yii::$app->controller->id == 'serialy') ? 'active' : '' ?>">
+                    <a class="nav-link" href="/serialy/">Сериалы</a>
+                </li>
 
                 <li class="nav-item <?= (Yii::$app->controller->id == 'aktery') ? 'active' : '' ?>">
                     <a class="nav-link" href="/aktery/">Актеры</a>
                 </li>
-<!--                <li class="nav-item dropdown">-->
-<!--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                        Dropdown-->
-<!--                    </a>-->
-<!--                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--                        <div class="row">-->
-<!--                            <div class="col-6">-->
-<!--                                <a class="dropdown-item" href="#">Фильмы</a>-->
-<!--                                <a class="dropdown-item" href="#">Сериалы</a>-->
-<!--                            </div>-->
-<!--                            <div class="col-6">-->
-<!--                                <a class="dropdown-item" href="#">Action</a>-->
-<!--                                <a class="dropdown-item" href="#">Another action</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!---->
-<!--                        <div class="dropdown-divider"></div>-->
-<!--                        <a class="dropdown-item" href="#">Something else here</a>-->
-<!--                    </div>-->
-<!--                </li>-->
+
+                <li class="nav-item <?= (Yii::$app->controller->id == 'network') ? 'active' : '' ?>">
+                    <a class="nav-link" href="/network/">Каналы</a>
+                </li>
+
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" id="inputSearch" type="search" placeholder="Название" aria-label="Search">
@@ -81,7 +66,7 @@ SiteAsset::register($this);
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                             <a class="dropdown-item" id="findFilmy" href="#">по фильмам</a>
-<!--                            <a class="dropdown-item" id="findSerialy" href="#">по сериалам</a>-->
+                            <a class="dropdown-item" id="findSerialy" href="#">по сериалам</a>
                             <a class="dropdown-item" id="findAktery" href="#">по актерам</a>
                         </div>
                     </div>
@@ -93,7 +78,7 @@ SiteAsset::register($this);
 
 <script>
     findFilmy.addEventListener("click", handler1);
-    // findSerialy.addEventListener("click", handler2);
+    findSerialy.addEventListener("click", handler2);
     findAktery.addEventListener("click", handler3);
 
     function handler1() {

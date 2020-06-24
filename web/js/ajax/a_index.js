@@ -9,7 +9,7 @@ var currentObj = {
     s_country : 0,
     s_page : 1
 };
-
+stopLoading();
 // window.history.pushState(currentObj, "Title");
 
 if (history.state != null) {

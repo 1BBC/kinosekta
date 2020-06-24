@@ -139,7 +139,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
-                            <a type="button" href="#screen" class="btn btn-outline-dark btn-sm btn-block" style="overflow: hidden;"><i class="fa fa-user-check"></i>  Актеры</a>
+                            <a type="button" href="#actors" class="btn btn-outline-dark btn-sm btn-block" style="overflow: hidden;"><i class="fa fa-user-check"></i>  Актеры</a>
 
                             <?php if(!empty($movie['r_kp']) || !empty($movie['r_imdb'])):?>
                                 <div class="card my-2">
@@ -528,7 +528,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                             </a>
                                         <?endif;?>
 
-                                        <?php if (3 <= $movie['images']):?>
+                                        <?php if (3 == $movie['images']):?>
+                                            <a data-fancybox="gallery" href="<?= $imgPath . 3 . '.jpg' ?>">
+                                                <div>
+                                                    <img width="100%" height="50%" style="padding: 0px 0px 7px 7px;"
+                                                         src="<?= $imgPath . 3 . '.jpg' ?>">
+                                                </div>
+                                            </a>
+                                        <?elseif (3 < $movie['images']):?>
                                             <a data-fancybox="gallery" href="<?= $imgPath . 3 . '.jpg' ?>">
                                                 <div class="img-figure-block-s" width="100%" style="padding: 0px 0px 0px 7px;">
                                                     <img width="100%" height="100%" class="image-figure-s" src="<?= $imgPath . 3 . '.jpg' ?>">
@@ -556,7 +563,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php endif;?>
 
                     <?php if (!empty($movie['actors'])):?>
-                        <div class="mt-4">
+                        <div id="actors" class="mt-4">
                             <h2 class="font-weight-bold">Актерский состав</h2>
 
                             <div class="actors-block">
@@ -568,11 +575,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                             $folderA = (int) ($people['id'] / 1000);
                                         ?>
                                         <div itemprop="actor" itemscope itemtype="http://schema.org/Person" class="parent">
-                                            <?= Html::a('<img itemprop="image" src="/i/a/' . $folderA . '/' . $people['id'] . '.jpg" class="" alt="" height="244px;">', ['aktery/view', 'id' => $people['id'], 'name' => $people['url_name']], ['itemprop' => 'url', 'style' => 'color: #FC8638;'])?>
+                                            <?= Html::a('<img itemprop="image" src="/i/a/' . $folderA . '/' . $people['id'] . '.jpg" class="" alt="" height="244px;">', ['aktery/view', 'id' => $people['id'], 'title' => $people['url_name']], ['itemprop' => 'url', 'style' => 'color: #FC8638;'])?>
 <!--                                            <a href=""><img src="/i/a/$folderA/$people['id'].jpg" class="" alt="" height="244px;"></a>-->
                                             <div class="font-weight-bold">
                                                 <small><?= $people['role'] ?></small><br>
-                                                <?= Html::a('<span itemprop="name">' . $people['orig_name'] . '</span>', ['aktery/view', 'id' => $people['id'], 'name' => $people['url_name']], ['style' => 'color: #FC8638;'])?>
+                                                <?= Html::a('<span itemprop="name">' . $people['orig_name'] . '</span>', ['aktery/view', 'id' => $people['id'], 'title' => $people['url_name']], ['style' => 'color: #FC8638;'])?>
                                             </div>
                                         </div>
                                     <?php endforeach;?>

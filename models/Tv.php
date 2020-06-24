@@ -100,10 +100,10 @@ class Tv extends \yii\db\ActiveRecord
     {
         return [
             [['t_created', 't_updated', 'tmd_id', 'kp_id', 'imdb_id', 'episode_run_time', 'popularity', 'is_action_adventure', 'is_animation', 'is_comedy', 'is_crime', 'is_documentary', 'is_drama', 'is_family', 'is_kids', 'is_mystery', 'is_reality', 'is_science_fiction_fantasy', 'is_soap', 'is_talk', 'is_war_politics', 'is_western', 'r_kp', 'r_imdb'], 'integer'],
-            [['first_air_date'], 'safe'],
+            [['first_air_date', 'images'], 'safe'],
             [['title', 'poster'], 'required'],
             [['overview'], 'string'],
-            [['title', 'orig_title', 'external_ids', 'images'], 'string', 'max' => 255],
+            [['title', 'orig_title', 'external_ids'], 'string', 'max' => 255],
             [['poster'], 'string', 'max' => 27],
             [['video'], 'string', 'max' => 11],
             [['tmd_id'], 'unique'],
@@ -207,5 +207,36 @@ class Tv extends \yii\db\ActiveRecord
         }
 
         return implode(',', $arr);
+    }
+
+    public function beforeDelete()
+    {
+        $folder = (int) ($this->id / 1000);
+
+        $poster = Yii::getAlias('@webroot') . '/i/s/p/' . $folder . '/' . $this->id . '.jpg';
+        if (file_exists($poster)) {
+            unlink($poster);
+        }
+
+        $baseImgPath = Yii::getAlias('@webroot') . '/i/s/s/' . $folder . '/' . $this->id . '-';
+
+        for ($i = 1; $i <= $this->images; $i++) {
+            $fullImgPath = $baseImgPath . $i . '.jpg';
+
+            if (file_exists($fullImgPath)) {
+                unlink($fullImgPath);
+            }
+        }
+
+        Yii::$app->cache->delete('tv' . $this->id);
+
+        return parent::beforeDelete();
+    }
+
+    public function beforeSave($insert)
+    {
+        Yii::$app->cache->delete('tv' . $this->id);
+
+        return parent::beforeSave($insert);
     }
 }

@@ -29,7 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'tmd_id',
             'name',
-//            'logo_path',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

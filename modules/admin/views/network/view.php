@@ -33,10 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'tmd_id',
             'name',
             [
-                'attribute' => 'logo_path',
+                'label' => 'Poster',
                 'format'=>'raw',
                 'value' => function($data) {
-                    return Html::img('https://image.tmdb.org/t/p/w200/' . $data->logo_path . '.svg', ['width' => 100]);
+                    return Html::img($poster="/i/n/" . $data->id . ".png", ['width' => 100]);
                 }
             ],
         ],

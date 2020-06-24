@@ -18,7 +18,7 @@ class NetworkSearch extends Network
     {
         return [
             [['id', 'tmd_id'], 'integer'],
-            [['name', 'logo_path'], 'safe'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -62,8 +62,7 @@ class NetworkSearch extends Network
             'tmd_id' => $this->tmd_id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'logo_path', $this->logo_path]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

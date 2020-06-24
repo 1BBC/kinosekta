@@ -66,12 +66,19 @@ $config = [
                 'serialy/<id:\d+>-<title:[\w,-]+>' => 'serialy/view/',
                 'serialy/<id:\d+>' => 'serialy/view/',
 
+                'network<suffix:/>' => 'network/index/',
+                'network/<id:\d+>-<name:[\w,-]+>' => 'network/view/',
+                'network/<id:\d+>' => 'network/view/',
+
                 'aktery<suffix:/>' => 'aktery/index/',
                 'aktery/<id:\d+>-<title:[\w,-]+>' => 'aktery/view/',
                 'aktery/<id:\d+>' => 'aktery/view/',
 
                 'filmy/<genre:\w+><suffix:/>' => 'filmy/genre/',
                 'filmy/<year:\d+>-goda<suffix:/>' => 'filmy/year/',
+
+                'serialy/<genre:\w+><suffix:/>' => 'serialy/genre/',
+                'serialy/<year:\d+>-goda<suffix:/>' => 'serialy/year/',
 
                 'filmy/<iso:\w+>-<title:[\w,-]+><suffix:/>' => 'filmy/country/',
                 'filmy/<iso:\w+><suffix:/>' => 'filmy/country/',
@@ -99,23 +106,23 @@ $config = [
     'params' => $params,
 ];
 
-if (YII_ENV_DEV) {
-    // configuration adjustments for 'dev' environment
-    $config['bootstrap'][] = 'debug';
-    $config['modules']['debug'] = [
-        'class' => 'yii\debug\Module',
-        // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
-        'allowedIPs' => ['*'],
-    ];
-
-    $config['bootstrap'][] = 'gii';
-    $config['modules']['gii'] = [
-        'class' => 'yii\gii\Module',
-        // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
-        'allowedIPs' => ['*'],
-    ];
-}
+//if (YII_ENV_DEV) {
+//    // configuration adjustments for 'dev' environment
+//    $config['bootstrap'][] = 'debug';
+//    $config['modules']['debug'] = [
+//        'class' => 'yii\debug\Module',
+//        // uncomment the following to add your IP if you are not connecting from localhost.
+//        //'allowedIPs' => ['127.0.0.1', '::1'],
+//        'allowedIPs' => ['*'],
+//    ];
+//
+//    $config['bootstrap'][] = 'gii';
+//    $config['modules']['gii'] = [
+//        'class' => 'yii\gii\Module',
+//        // uncomment the following to add your IP if you are not connecting from localhost.
+//        //'allowedIPs' => ['127.0.0.1', '::1'],
+//        'allowedIPs' => ['*'],
+//    ];
+//}
 
 return $config;

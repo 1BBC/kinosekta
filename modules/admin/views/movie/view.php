@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Inflector;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -30,7 +31,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            [
+                'attribute' => 'id',
+                'format'=>'raw',
+                'value' => function($data) {
+                    return Html::a($data->id, ['/filmy/view', 'id' => $data->id, 'title' => Inflector::slug($data->title)]);
+                }
+            ],
             't_created:datetime',
             't_updated:datetime',
             [
