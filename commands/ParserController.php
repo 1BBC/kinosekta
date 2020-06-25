@@ -546,7 +546,7 @@ class ParserController extends Controller
         return implode(",", array_column($arr, $column));
     }
 
-    private static function arrPeoplesByMethodMovieCredits(object $tmdCredits = null, array $cast = null, array $crew = null): array
+    private static function arrPeoplesByMethodMovieCredits($tmdCredits = null, array $cast = null, array $crew = null): array
     {
         $people = array();
 
