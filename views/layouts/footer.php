@@ -11,7 +11,7 @@
             <div class="col-md-6 mt-md-0 mt-3">
 
                 <!-- Content -->
-                <p class="text-uppercase">© 2020 kinosekta. Интернет-сайт любителей кино.</p>
+                <p class="text-uppercase">© 2020 kinosekta.online Интернет-сайт любителей кино.</p>
                 <p>Луший онлайн-кинотеатр по мнению Дани Козловского, так-то.</p>
 
             </div>

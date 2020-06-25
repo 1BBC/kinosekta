@@ -91,7 +91,7 @@ class ParserController extends Controller
         $p = (int) (6 / 1000);
         print_r($p);
     }
-
+    //php yii parser/index `php yii parser/get` -kp=1
     public function actionGet()
     {
         $arr = array();

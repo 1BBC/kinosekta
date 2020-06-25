@@ -144,6 +144,18 @@ class MovieController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
+    public function actionDelCache($id)
+    {
+        Yii::$app->cache->delete('movie' . $id);
+
+        return $this->redirect(['movie/view', 'id' => $id]);
+    }
+
+    /**
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
     public function actionSetPeoples($id)
     {
         $movie = $this->findModel($id);

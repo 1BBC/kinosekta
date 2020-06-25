@@ -8,7 +8,7 @@ var currentObj = {
     s_year : 0,
     s_page : 1
 };
-
+stopLoading();
 
 if (history.state != null) {
     currentObj = history.state;
