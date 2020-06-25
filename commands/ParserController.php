@@ -95,7 +95,7 @@ class ParserController extends Controller
     public function actionGet()
     {
         $arr = array();
-        for ($i = 1050; $i < 1150; $i++) {
+        for ($i = 1150; $i < 2000; $i++) {
             array_push($arr, $i);
         }
 

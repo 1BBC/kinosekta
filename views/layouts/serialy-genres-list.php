@@ -39,8 +39,9 @@
         <span class="badge badge-dark">ПО СТУДИЯМ</span>
         <hr>
 
-        <a href="/network/2-netflix">Netflix</a><br>
-        <a href="/network/2-netflix">HBO</a><br>
-        <a href="/network/2-netflix">Showtime</a><br>
+        <a href="/network/5-netflix">Netflix</a><br>
+        <a href="/network/6-hbo">HBO</a><br>
+        <a href="/network/2-fox">FOX</a><br>
+        <a href="/network/1-comedy-central">Comedy Central</a><br>
     </div>
 </div>
