@@ -576,7 +576,7 @@ class ParserController extends Controller
         return $people;
     }
 
-    private static function isPeopleImportantJob(object $people)
+    private static function isPeopleImportantJob($people)
     {
         if (!isset($people->department) || !isset($people->job)) {
             return false;
