@@ -32,7 +32,9 @@ SiteAsset::register($this);
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img src="http://porno365.blog/settings/l8.png" width="90%" alt="">
+<!--            <img src="http://porno365.blog/settings/l8.png" width="90%" alt="">-->
+<!--            <img src="/img/logo.png" alt="logo">-->
+            <b>KinoGaz.online</b>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
