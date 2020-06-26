@@ -87,7 +87,9 @@ $config = [
                 '/uploads/sitemap1.xml' => 'sitemap/sitemap1',
                 '/uploads/sitemap2.xml' => 'sitemap/sitemap2',
                 '/uploads/sitemap3.xml' => 'sitemap/sitemap3',
-                '/uploads/robots.txt' => 'sitemap/robots',
+                '/uploads/sitemap4.xml' => 'sitemap/sitemap4',
+                '/uploads/sitemap5.xml' => 'sitemap/sitemap5',
+                '/robots.txt' => 'sitemap/robots',
 
 
                 '<action>' => 'site/<action>',

@@ -1,8 +1,10 @@
 User-agent: *
 Disallow: /site/
-Disallow: /admin/
 Disallow: /najti/
 Disallow: /filmy/nayti
+Disallow  /aktery/najti
+Disallow  /aktery/najti
+Disallow  /serialy/najti
 Disallow: /about
 
 Host: <?= $_SERVER['HTTP_HOST'] ?>

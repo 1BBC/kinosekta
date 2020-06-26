@@ -3,7 +3,9 @@
 namespace app\controllers;
 
 use app\models\Movie;
+use app\models\Network;
 use app\models\People;
+use app\models\Tv;
 use Yii;
 use yii\helpers\Inflector;
 use yii\helpers\Url;
@@ -67,21 +69,19 @@ class SitemapController extends \yii\web\Controller
         return $xml_sitemap;
     }
 
-    //robots.txt
+
     public function actionSitemap3()
     {
-        $urls = array();
-
         $cache = Yii::$app->cache;
 
         $urls = $cache->get('sitemap3');
 
         if ($urls === false) {
-            $peoples = People::find()->all();
+            $tvs = Tv::find()->all();
 
-            foreach ($peoples as $people){
+            foreach ($tvs as $tv){
                 $urls[] = array(
-                    'loc' => Url::to(['aktery/view', 'id' => $people['id'], 'title' => Inflector::slug($people['name'])]),
+                    'loc' => Url::to(['serialy/view', 'id' => $tv['id'], 'title' => Inflector::slug($tv['title'])]),
                     'priority' => 0.6
                 );
             }
@@ -102,6 +102,71 @@ class SitemapController extends \yii\web\Controller
         return $xml_sitemap;
     }
 
+    public function actionSitemap4()
+    {
+        $cache = Yii::$app->cache;
+
+        $urls = $cache->get('sitemap4');
+
+        if ($urls === false) {
+            $peoples = People::find()->all();
+
+            foreach ($peoples as $people){
+                $urls[] = array(
+                    'loc' => Url::to(['aktery/view', 'id' => $people['id'], 'title' => Inflector::slug($people['name'])]),
+                    'priority' => 0.6
+                );
+            }
+
+            $cache->set('sitemap4', $urls,60*60*6);
+        }
+
+
+        $xml_sitemap = $this->renderPartial('index', array(
+            'host' => Yii::$app->request->hostInfo,
+            'urls' => $urls,
+        ));
+
+        Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
+        $headers = Yii::$app->response->headers;
+        $headers->add('Content-Type', 'text/xml');
+
+        return $xml_sitemap;
+    }
+
+    public function actionSitemap5()
+    {
+        $cache = Yii::$app->cache;
+
+        $urls = $cache->get('sitemap5');
+
+        if ($urls === false) {
+            $networks = Network::find()->all();
+
+            foreach ($networks as $network){
+                $urls[] = array(
+                    'loc' => Url::to(['network/view', 'id' => $network['id'], 'title' => Inflector::slug($network['name'])]),
+                    'priority' => 0.6
+                );
+            }
+
+            $cache->set('sitemap5', $urls,60*60*6);
+        }
+
+
+        $xml_sitemap = $this->renderPartial('index', array(
+            'host' => Yii::$app->request->hostInfo,
+            'urls' => $urls,
+        ));
+
+        Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
+        $headers = Yii::$app->response->headers;
+        $headers->add('Content-Type', 'text/xml');
+
+        return $xml_sitemap;
+    }
+
+
     public function actionRobots()
     {
         $this->layout = false;
@@ -110,23 +175,5 @@ class SitemapController extends \yii\web\Controller
         $headers->add('Content-Type', 'text/plain');
 
         return $this->render('robots');
-    }
-
-    public function actionLeet()
-    {
-        $ip = '172.16.254.1';
-
-        if (self::ipv4($ip)) {
-            print_r('IPv4');
-        } elseif (self::ipv4($ip)) {
-            print_r('IPv6');
-        } else {
-            print_r('neither');
-        }
-    }
-
-    public function ipv4($ip)
-    {
-        return true;
     }
 }

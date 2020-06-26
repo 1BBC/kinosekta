@@ -16,4 +16,12 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
         <loc>http://<?=$_SERVER['HTTP_HOST']?>/uploads/sitemap3.xml</loc>
         <lastmod><?=$date?></lastmod>
     </sitemap>
+    <sitemap>
+        <loc>http://<?=$_SERVER['HTTP_HOST']?>/uploads/sitemap4.xml</loc>
+        <lastmod><?=$date?></lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://<?=$_SERVER['HTTP_HOST']?>/uploads/sitemap5.xml</loc>
+        <lastmod><?=$date?></lastmod>
+    </sitemap>
 </sitemapindex>

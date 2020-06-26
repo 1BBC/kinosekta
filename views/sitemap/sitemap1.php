@@ -10,6 +10,16 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>http://<?=$_SERVER['HTTP_HOST']?>/serialy/</loc>
+        <lastmod><?=$date?></lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>http://<?=$_SERVER['HTTP_HOST']?>/network/</loc>
+        <lastmod><?=$date?></lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>http://<?=$_SERVER['HTTP_HOST']?>/aktery/</loc>
         <lastmod><?=$date?></lastmod>
         <priority>0.7</priority>
