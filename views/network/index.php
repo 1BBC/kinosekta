@@ -56,7 +56,7 @@ $this->title = 'Каналы. Смотрите сериалы на любой в
                 </div>
 
                 <div class="figure-caption">
-                    <?= Html::a($network['name'], ['network/view', 'id' => $network['id'], 'title' => Inflector::slug($network['name'])], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?>
+                    <?= Html::a($network['name'], ['network/view', 'id' => $network['id'], 'name' => Inflector::slug($network['name'])], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?>
                     <!--                    <a href="movie.html" style="margin-bottom: 0px; font-size: 1.3em" class="font-weight-bold">--><?//= $network['name']?><!--</a>-->
                 </div>
 

@@ -10,7 +10,7 @@
 use yii\helpers\Html;
 use yii\helpers\Inflector;
 
-$this->title = 'Сериалы онлайн на любой вкус, смотрите бесплатно онлайн в хорошем качестве';
+$this->title = 'Сериалы онлайн: смотрите бесплатно в хорошем качестве';
 
 \Yii::$app->view->registerMetaTag([
     'name' => 'description',
