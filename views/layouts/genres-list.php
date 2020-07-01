@@ -23,7 +23,7 @@
             <a href="/filmy/trillery/">Триллеры</a><br>
             <a href="/filmy/uzhasy/">Ужасы</a><br>
             <a href="/filmy/fantastika/">Фантастика</a><br>
-            <a href="/filmy/fjentjezi/">Фэнтези</a>
+            <a href="/filmy/fentezi/">Фэнтези</a>
         </div>
 
     </div>

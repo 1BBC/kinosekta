@@ -230,7 +230,7 @@ class FilmyController extends Controller
     public function actionGenre($genre)
     {
         if (!in_array($genre, ['boeviki','priklyucheniya','multfilmi','komedii','kriminal','dokumentalnye','dramy',
-            'semejnye','fentezi','istoricheskie','uzhasy','muzykalnye','misticheskie ','melodramy','fantastika',
+            'semejnye','fentezi','istoricheskie','uzhasy','muzykalnye','misticheskie','melodramy','fantastika',
             'peredachi','trillery','voennye','vesterny'])) {
             throw new NotFoundHttpException('Movie not found',404);
         }

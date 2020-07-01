@@ -43,7 +43,7 @@ $this->registerJsFile(
         </ol>
     </nav>
     <div class="title">
-        <h2 class="font-weight-bold">Актеры</h2>
+        <h1 class="font-weight-bold">Актеры</h1>
     </div>
     <form>
         <div class="form-row form-row center mt-4">

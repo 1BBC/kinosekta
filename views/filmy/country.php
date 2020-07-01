@@ -20,7 +20,7 @@ $this->title = $country['name'] . ' - лучшие фильмы.';
 ]);
 
 \Yii::$app->view->registerMetaTag([
-    'name' => 'description',
+    'name' => 'og:description',
     'content' => 'Лучшие фильмы производства ' . $country['name'] . '. Смотрите онлайн бесплатно в хорошем качестве.',
 ]);
 
