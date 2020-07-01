@@ -344,7 +344,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?php $peopleStr = ''; $lastPeople = end($tv['actors'])?>
                                     <?php foreach ($tv['actors'] as $people): ?>
                                         <?php
-                                        $peopleStr .= Html::a($people['orig_name'], ['aktery/view', 'id' => $people['id'], 'name' => $people['url_name']], ['title' => 'Фильмы с ' . $people['orig_name']]);
+                                        $peopleStr .= Html::a($people['orig_name'], ['aktery/view', 'id' => $people['id'], 'title' => $people['url_name']], ['title' => 'Фильмы с ' . $people['orig_name']]);
                                         if ($people != $lastPeople) {
                                             $peopleStr .= ', ';
                                         }
@@ -414,7 +414,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?php if (!empty($tv['images'])):?>
                         <div class="mt-4" id="screen">
-                            <h2 class="font-weight-bold">Кадры из фильма</h2>
+                            <h2 class="font-weight-bold">Кадры из сериала</h2>
                             <div class="row no-gutters">
                                 <?php $imgPath = '/i/s/s/' . $folder . '/' . $tv['id'] . '-'; ?>
 

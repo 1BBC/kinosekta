@@ -437,7 +437,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?php $peopleStr = ''; $lastPeople = end($movie['actors'])?>
                                     <?php foreach ($movie['actors'] as $people): ?>
                                         <?php
-                                        $peopleStr .= Html::a($people['orig_name'], ['aktery/view', 'id' => $people['id'], 'name' => $people['url_name']], ['title' => 'Фильмы с ' . $people['orig_name']]);
+                                        $peopleStr .= Html::a($people['orig_name'], ['aktery/view', 'id' => $people['id'], 'title' => $people['url_name']], ['title' => 'Фильмы с ' . $people['orig_name']]);
                                         if ($people != $lastPeople) {
                                             $peopleStr .= ', ';
                                         }
