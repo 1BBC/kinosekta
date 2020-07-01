@@ -353,7 +353,7 @@ class FilmyController extends Controller
                 throw new NotFoundHttpException('Movie not found',404);
             }
 
-            $cache->set('movie' . $id, $movie,60*60);
+            $cache->set('movie' . $id, $movie);
         }
 
         $movie['transliterate'] = Inflector::slug($movie['title']);

@@ -173,7 +173,7 @@ class SerialyController extends Controller
                 throw new NotFoundHttpException('Tv not found',404);
             }
 
-            $cache->set('tv' . $id, $tv,60*60);
+            $cache->set('tv' . $id, $tv);
         }
 
         $tv['transliterate'] = Inflector::slug($tv['title']);

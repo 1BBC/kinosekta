@@ -54,13 +54,20 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
 //            'suffix' => '.html',
-//            'enableStrictParsing' => true,
+            'enableStrictParsing' => true,
             'rules' => [
-
+                '<action:|about|login>' => 'site/<action>',
+                'admin/<controller>/<action>' => 'admin/<controller>/<action>',
+                '<action>/najti' => 'najti/<action>',
+                'filmy/<action:|page|page-count|country|page-country|genre|page-genre|year|page-year>' => 'filmy/<action>',
+                'serialy/<action:|page|page-count|genre|page-genre|year|page-year>' => 'serialy/<action>',
+                'aktery/<action:|page|page-count>' => 'aktery/<action>',
+                'network/<action:|page>' => 'network/<action>',
 
                 'filmy<suffix:/>' => 'filmy/index/',
                 'filmy/<id:\d+>-<title:[\w,-]+>' => 'filmy/view/',
                 'filmy/<id:\d+>' =>'filmy/view/',
+
 
                 'serialy<suffix:/>' => 'serialy/index/',
                 'serialy/<id:\d+>-<title:[\w,-]+>' => 'serialy/view/',
@@ -90,10 +97,6 @@ $config = [
                 '/uploads/sitemap4.xml' => 'sitemap/sitemap4',
                 '/uploads/sitemap5.xml' => 'sitemap/sitemap5',
                 '/robots.txt' => 'sitemap/robots',
-
-
-                '<action>' => 'site/<action>',
-                '<action>/najti' => 'najti/<action>',
             ],
         ],
     ],
