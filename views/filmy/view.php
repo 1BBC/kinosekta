@@ -10,7 +10,7 @@ use yii\helpers\Inflector;
 
 $movie['year'] = date_format(date_create($movie['release_date']), 'Y');
 $folder = (int) ($movie['id'] / 1000);
-$this->title = $movie['title'] . ' (' . $movie['year'] . ') - смотреть онлайн в хорошем качестве HD 720 HD 1080';
+$this->title = $movie['title'] . ' (' . $movie['year'] . '): смотреть онлайн';
 $description = 'Смотрите бесплатно онлайн фильм ' . $movie['title'] . ' (' . $movie['year'] . ') в кинотеатре ' . $_SERVER['SERVER_NAME'] . '. ' . stristr($movie['overview'], '.', true) . '.';
 $this->params['breadcrumbs'][] = $this->title;
 

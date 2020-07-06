@@ -38,7 +38,7 @@ use yii\helpers\Inflector;
 
     </form>
     <hr>
-    <hr>
+
     <nav>
         <ul class="pagination justify-content-center">
 

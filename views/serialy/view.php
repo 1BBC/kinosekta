@@ -9,7 +9,7 @@ use yii\helpers\Inflector;
 
 $tv['year'] = date_format(date_create($tv['first_air_date']), 'Y');
 $folder = (int) ($tv['id'] / 1000);
-$this->title = $tv['title'] . ' (' . $tv['year'] . ') - смотреть онлайн в хорошем качестве HD 720 HD 1080';
+$this->title = $tv['title'] . ' (' . $tv['year'] . '): смотреть онлайн';
 $description = 'Смотрите бесплатно онлайн сериал ' . $tv['title'] . ' (' . $tv['year'] . ') в кинотеатре ' . $_SERVER['SERVER_NAME'] . '. ' . stristr($tv['overview'], '.', true) . '.';
 $this->params['breadcrumbs'][] = $this->title;
 

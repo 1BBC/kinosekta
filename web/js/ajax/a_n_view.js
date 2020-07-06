@@ -5,7 +5,7 @@ var block = true;
 
 var currentObj = {
     s_page : 1,
-    s_network: pageNetwork,
+    s_network: pageNetwork
 };
 
 $('.loader').fadeOut();
@@ -48,7 +48,7 @@ function loadNewPage() {
             type: 'post',
             data: {
                 page: currentObj.s_page,
-                s_year: pageNetwork,
+                s_network: pageNetwork,
                 _csrf: csrfToken
             },
             success: function (data) {
