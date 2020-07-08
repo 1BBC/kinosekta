@@ -17,7 +17,7 @@
             <a href="/filmy/melodramy/">Мелодрамы</a><br>
             <a href="/filmy/misticheskie/">Мистические</a><br>
             <a href="/filmy/muzykalnye/">Мюзиклы</a><br>
-            <a href="/filmy/multfilmy/">Мультфильмы</a><br>
+            <a href="/filmy/multfilmi/">Мультфильмы</a><br>
             <a href="/filmy/peredachi/">Передачи</a><br>
             <a href="/filmy/semejnye/">Семейные</a><br>
             <a href="/filmy/trillery/">Триллеры</a><br>
