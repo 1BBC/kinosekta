@@ -2,6 +2,7 @@
 
 namespace app\common;
 
+use Exception;
 use yii\httpclient\Client;
 use Yii;
 use yii\base\BaseObject;
@@ -43,17 +44,19 @@ class Videocdn extends BaseObject
         return static::$instances[$cls];
     }
 
-    public function getMovies()
+    public function getMovies($params = [])
     {
+        $params['api_token'] = $this->api_token;
+
         $response = $this->client->createRequest()
             ->setMethod('GET')
             ->setUrl($this->method_movies)
-            ->setData(['api_token' => $this->api_token, 'limit' => 2])
+            ->setData($params)
             ->send();
         if ($response->isOk) {
-            return $response->getContent();
+            return json_decode($response->getContent());
         }
-        return null;
+        throw new Exception('VideoCDN (getMovies) dont find page by params:' .  $params);
     }
 
     public function getByKpId($kp_id)
@@ -69,7 +72,7 @@ class Videocdn extends BaseObject
                 return $obj_movies->data[0];
             }
         }
-        return null;
+        throw new Exception('VideoCDN (getByKpId) dont find video by kp_id [' . $kp_id .']');
     }
 
     public function getByImdbId($imdb_id)

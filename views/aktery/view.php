@@ -5,7 +5,6 @@
 /* @var $people array */
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
 use yii\helpers\Inflector;
 
 $folder = (int) ($people['id'] / 1000);
@@ -185,7 +184,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                 <figcaption class="figure-caption">
                                     <?= Html::a($mVal['title'], ['filmy/view', 'id' => $mId, 'title' => Inflector::slug($mVal['title'])], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?>
-                                    <p class="font-weight-light" style="margin-bottom: 0px; font-size: 0.9em"><?= implode(', ', $mVal['description']) ?></p>
+                                    <p class="font-weight-light" style="margin-bottom: 0; font-size: 0.9em"><?= implode(', ', $mVal['description']) ?></p>
                                 </figcaption>
 
                             </figure>
@@ -219,7 +218,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                 <figcaption class="figure-caption">
                                     <?= Html::a($mVal['title'], ['serialy/view', 'id' => $mId, 'title' => Inflector::slug($mVal['title'])], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?>
-                                    <p class="font-weight-light" style="margin-bottom: 0px; font-size: 0.9em"><?= implode(', ', $mVal['description']) ?></p>
+                                    <p class="font-weight-light" style="margin-bottom: 0; font-size: 0.9em"><?= implode(', ', $mVal['description']) ?></p>
                                 </figcaption>
 
                             </figure>

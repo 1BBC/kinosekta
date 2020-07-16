@@ -187,11 +187,11 @@ $this->registerJsFile(
 
     .figure {
         /*margin: 0px;*/
-        padding: 0px 7.5px;
+        padding: 0 7.5px;
     }
 
     .row-figure {
-        padding: 0px 7.5px;
+        padding: 0 7.5px;
     }
 
     .figure-caption > a{

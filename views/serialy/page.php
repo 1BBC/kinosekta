@@ -33,7 +33,7 @@ use yii\helpers\Inflector;
         <div class="figure-caption">
             <?= Html::a($tv['title'], ['serialy/view', 'id' => $tv['id'], 'title' => Inflector::slug($tv['title'])], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?>
             <!--                    <a href="movie.html" style="margin-bottom: 0px; font-size: 1.3em" class="font-weight-bold">--><?//= $tv['title']?><!--</a>-->
-            <p class="font-weight-light" style="margin-bottom: 0px; font-size: 0.9em"><a style="color: #6C757D;" href="/serialy/<?= date_format(date_create($tv['first_air_date']), 'Y')?>-goda/"><?= date_format(date_create($tv['first_air_date']), 'Y')?></a><?= $rating ?></p>
+            <p class="font-weight-light" style="margin-bottom: 0; font-size: 0.9em"><a style="color: #6C757D;" href="/serialy/<?= date_format(date_create($tv['first_air_date']), 'Y')?>-goda/"><?= date_format(date_create($tv['first_air_date']), 'Y')?></a><?= $rating ?></p>
         </div>
 
     </div>

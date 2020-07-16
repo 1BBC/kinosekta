@@ -611,7 +611,10 @@ class FilmyController extends Controller
                 'url'  => 'franczuzskie',
             ],
             'GA' => 'Габон',
-            'GB' => 'Великобритания',
+            'GB' => [
+                'name' => 'Великобритания',
+                'url'  => 'britanskie',
+            ],
             'GD' => 'Гренада',
             'GE' => 'Грузия',
             'GF' => 'Французская Гвиана',

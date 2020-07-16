@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $movies object */
+/* @var $movies array */
 /* @var $q string */
 
 use yii\helpers\Html;

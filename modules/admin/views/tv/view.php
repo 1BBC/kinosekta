@@ -95,10 +95,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'episode_run_time',
             [
-                'attribute' => 'poster',
+                'label' => 'Poster',
                 'format'=>'raw',
                 'value' => function($data) {
-                    return Html::img('https://image.tmdb.org/t/p/w200/' . $data->poster . '.jpg', ['width' => 100]);
+                    $folder = (int) ($data->id / 1000);
+                    return Html::img($poster="/i/s/p/" . $folder . "/" . $data->id . ".jpg", ['width' => 100]);
                 }
             ],
             'popularity',

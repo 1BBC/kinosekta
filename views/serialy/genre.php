@@ -6,8 +6,10 @@
 /* @var $genre array */
 /* @var $lastPage integer */
 
+use app\assets\SiteAsset;
 use yii\helpers\Html;
 use yii\helpers\Inflector;
+
 \Yii::$app->view->registerMetaTag([
     'name' => 'pageCount',
     'content' => $lastPage,
@@ -33,7 +35,7 @@ $description = 'Лучшие сериалы в жанре ' . $genre['title'] . 
 
 $this->registerJsFile(
     '@web/js/ajax/a_s_genre.js',
-    ['depends' => [\app\assets\SiteAsset::className()]]
+    ['depends' => [SiteAsset::className()]]
 );
 ?>
 
@@ -84,7 +86,7 @@ $this->registerJsFile(
                 <div class="figure-caption">
                     <?= Html::a($tv['title'], ['serialy/view', 'id' => $tv['id'], 'title' => Inflector::slug($tv['title'])], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?>
                     <!--                    <a href="movie.html" style="margin-bottom: 0px; font-size: 1.3em" class="font-weight-bold">--><?//= $tv['title']?><!--</a>-->
-                    <p class="font-weight-light" style="margin-bottom: 0px; font-size: 0.9em"><?= date_format(date_create($tv['first_air_date']), 'Y') . ', ' . $rating ?></p>
+                    <p class="font-weight-light" style="margin-bottom: 0; font-size: 0.9em"><?= date_format(date_create($tv['first_air_date']), 'Y') . ', ' . $rating ?></p>
                 </div>
 
             </div>

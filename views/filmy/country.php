@@ -9,7 +9,6 @@
 
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
 use yii\helpers\Inflector;
 
 $this->title = $country['name'] . ' - лучшие фильмы.';
@@ -23,7 +22,6 @@ $this->title = $country['name'] . ' - лучшие фильмы.';
     'name' => 'og:description',
     'content' => 'Лучшие фильмы производства ' . $country['name'] . '. Смотрите онлайн бесплатно в хорошем качестве.',
 ]);
-
 
 \Yii::$app->view->registerMetaTag([
     'name' => 'pageCount',
@@ -85,7 +83,7 @@ $this->registerJsFile(
                 <div class="figure-caption">
                     <?= Html::a($movie['title'], ['filmy/view', 'id' => $movie['id'], 'title' => Inflector::slug($movie['title'])], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?>
                     <!--                    <a href="movie.html" style="margin-bottom: 0px; font-size: 1.3em" class="font-weight-bold">--><?//= $movie['title']?><!--</a>-->
-                    <p class="font-weight-light" style="margin-bottom: 0px; font-size: 0.9em"><?= $rating ?></p>
+                    <p class="font-weight-light" style="margin-bottom: 0; font-size: 0.9em"><?= $rating ?></p>
                 </div>
 
             </div>

@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $tvs object */
+/* @var $tvs array */
 /* @var $q string */
 
 use yii\helpers\Html;

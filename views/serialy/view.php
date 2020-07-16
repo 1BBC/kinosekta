@@ -148,7 +148,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <?php if (!empty($tv['r_kp'])):?>
                                             <?php $roundRkp = round($tv['r_kp'] / 10);?>
                                             <ul class="list-inline" style="margin-bottom: 0">
-                                                <li class="list-inline-item"><img width="25px" style="vertical-align: bottom" src="/img/kp.ico"></li>
+                                                <li class="list-inline-item"><img alt="kp" width="25px" style="vertical-align: bottom" src="/img/kp.ico"></li>
                                                 <li class="list-inline-item"><h4 style="margin-bottom: 0"><span itemprop="ratingValue"><?= $tv['r_kp'] / 10?></span> <small>/ <span itemprop="bestRating">10</span></small></h4></li>
                                             </ul>
                                             <span itemprop="ratingCount" style="display: none">5000</span>
@@ -165,7 +165,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <?php if (!empty($tv['r_imdb'])):?>
                                             <?php $roundRimdb = round($tv['r_imdb'] / 10);?>
                                             <ul class="list-inline" style="margin-bottom: 0">
-                                                <li class="list-inline-item"><img width="25px" style="vertical-align: bottom" src="/img/imdb.ico"></li>
+                                                <li class="list-inline-item"><img alt="imdb" width="25px" style="vertical-align: bottom" src="/img/imdb.ico"></li>
                                                 <li class="list-inline-item"><h4 style="margin-bottom: 0"><?= $tv['r_imdb'] / 10?> <small>/ 10</small></h4></li>
                                             </ul>
 
@@ -239,7 +239,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <!--                            <td>--><?//= $tv['orig_title'] ?><!--</td>-->
                         <!--                        </tr>-->
                         <tr>
-                            <td class="text-muted"><small>Год:</td>
+                            <td class="text-muted"><small>Год:</small></td>
                             <?php
                             $y =  $tv['year'];
                             $yAgo = 2020 - $y;
@@ -325,7 +325,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?php $peopleStr = ''; $lastPeople = end($tv['story'])?>
                                     <?php foreach ($tv['story'] as $people): ?>
                                         <?php
-                                        $peopleStr .= Html::a($people['orig_name'], ['aktery/view', 'id' => $people['id'], 'name' => $people['url_name']], ['title' => 'Фильмы с ' . $people['orig_name']]);
+                                        $peopleStr .= Html::a($people['orig_name'], ['aktery/view', 'id' => $people['id'], 'title' => $people['url_name']], ['title' => 'Фильмы с ' . $people['orig_name']]);
                                         if ($people != $lastPeople) {
                                             $peopleStr .= ', ';
                                         }
@@ -371,7 +371,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="" style="">
                         <div class="row no-gutters">
                             <div class=" text-center text-white bg-dark" style="width: 100%; border-radius: 0;">
-                                <div class="card-body embed-responsive embed-responsive-16by9" style="padding: 0px 0px 0px 0px; font-size: 0px">
+                                <div class="card-body embed-responsive embed-responsive-16by9" style="padding: 0 0 0 0; font-size: 0">
 
                                     <?php
                                     if (!empty($tv['kp_id'])) {
@@ -382,15 +382,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                         $v = 'name_eng=' . $tv['orig_title'];
                                     }
 
-                                    if (!empty($tv['images'])){
+//                                    if (!empty($tv['images'])){
 //                                        $frame_poster = '&poster=https://image.tmdb.org/t/p/w500/' . explode(',', $tv['images'])[0] . '.jpg';
-                                    }
+//                                    }
 
                                     $url = 'https://9684.videocdn.pw/7kytC46MWIdE?' . $v . ($frame_poster ?? '');
 
                                     ?>
 
-                                    <iframe src="<?= $url ?>" width="640" height="480" frameborder="0" allowfullscreen></iframe>
+                                    <iframe src="<?= $url ?>" width="640" height="480" allowfullscreen></iframe>
 
                                 </div>
                                 <!--                                <div class="card-footer" style="padding: 0px 0px 0px 10px; background-color: #1F1F1F !important ;">-->
@@ -421,7 +421,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?php if (1 <= $tv['images']):?>
                                     <div class="col-8">
                                         <a data-fancybox="gallery" href="<?= $imgPath . 1 . '.jpg' ?>">
-                                            <img width="100%" height="100%" src="<?= $imgPath . 1 . '.jpg' ?>">
+                                            <img alt="<?=$tv['title']?>" width="100%" height="100%" src="<?= $imgPath . 1 . '.jpg' ?>">
                                         </a>
                                     </div>
 
@@ -429,7 +429,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <?php if (2 <= $tv['images']):?>
                                             <a data-fancybox="gallery" href="<?= $imgPath . 2 . '.jpg' ?>">
                                                 <div>
-                                                    <img width="100%" height="50%" style="padding: 0px 0px 7px 7px;"
+                                                    <img alt="<?=$tv['title']?>" width="100%" height="50%" style="padding: 0 0 7px 7px;"
                                                          src="<?= $imgPath . 2 . '.jpg' ?>">
                                                 </div>
                                             </a>
@@ -438,15 +438,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <?php if (3 == $tv['images']):?>
                                             <a data-fancybox="gallery" href="<?= $imgPath . 3 . '.jpg' ?>">
                                                 <div>
-                                                    <img width="100%" height="50%" style="padding: 0px 0px 7px 7px;"
+                                                    <img alt="<?=$tv['title']?>" width="100%" height="50%" style="padding: 0 0 7px 7px;"
                                                          src="<?= $imgPath . 3 . '.jpg' ?>">
                                                 </div>
                                             </a>
                                         <?elseif (3 < $tv['images']):?>
                                             <a data-fancybox="gallery" href="<?= $imgPath . 3 . '.jpg' ?>">
-                                                <div class="img-figure-block-s" width="100%" style="padding: 0px 0px 0px 7px;">
-                                                    <img width="100%" height="100%" class="image-figure-s" src="<?= $imgPath . 3 . '.jpg' ?>">
-                                                    <div class="img-figure-overlay-s"  style="margin: 0px 0px 0px 7px;">
+                                                <div class="img-figure-block-s" style="padding: 0 0 0 7px;">
+                                                    <img alt="<?=$tv['title']?>" width="100%" height="100%" class="image-figure-s" src="<?= $imgPath . 3 . '.jpg' ?>">
+                                                    <div class="img-figure-overlay-s"  style="margin: 0 0 0 7px;">
                                                         <div class="img-figure-text-s">+<?= ($tv['images']-3) ?></div>
                                                     </div>
                                                 </div>
@@ -482,7 +482,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         $folderA = (int) ($people['id'] / 1000);
                                         ?>
                                         <div itemprop="actor" itemscope itemtype="http://schema.org/Person" class="parent">
-                                            <?= Html::a('<img itemprop="image" src="/i/a/' . $folderA . '/' . $people['id'] . '.jpg" class="" alt="" height="244px;">', ['aktery/view', 'id' => $people['id'], 'title' => $people['url_name']], ['itemprop' => 'url', 'style' => 'color: #FC8638;'])?>
+                                            <?= Html::a('<img itemprop="image" src="/i/a/' . $folderA . '/' . $people['id'] . '.jpg" class="" alt="" height="244;">', ['aktery/view', 'id' => $people['id'], 'title' => $people['url_name']], ['itemprop' => 'url', 'style' => 'color: #FC8638;'])?>
                                             <!--                                            <a href=""><img src="/i/a/$folderA/$people['id'].jpg" class="" alt="" height="244px;"></a>-->
                                             <div class="font-weight-bold">
                                                 <small><?= $people['role'] ?></small><br>

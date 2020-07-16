@@ -14,7 +14,7 @@ a:hover {
 
 @media (max-width: 576px) {
     .action-btn {
-        padding: 0px 15px 0px 0px;
+        padding: 0 15px 0 0;
     }
 }
 
@@ -44,7 +44,7 @@ a:hover {
     color: #fff;
     padding: 0;
     background: rgba(17, 17, 17, 0.9);
-    border-radius: 0px 0px 5px 5px;
+    border-radius: 0 0 5px 5px;
     text-align: center
 }
 
@@ -134,11 +134,11 @@ a:hover {
 
 .figure {
     /*margin: 0px;*/
-    padding: 0px 7.5px;
+    padding: 0 7.5px;
 }
 
 .row-figure {
-    padding: 0px 7.5px;
+    padding: 0 7.5px;
 }
 
 .figure-caption > a{

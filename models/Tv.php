@@ -23,7 +23,6 @@ use yii\db\ActiveRecord;
  * @property string|null $overview
  * @property string|null $external_ids
  * @property int|null $episode_run_time
- * @property string $poster
  * @property int|null $popularity
  * @property string|null $images
  * @property string|null $video
@@ -101,10 +100,9 @@ class Tv extends \yii\db\ActiveRecord
         return [
             [['t_created', 't_updated', 'tmd_id', 'kp_id', 'imdb_id', 'episode_run_time', 'popularity', 'is_action_adventure', 'is_animation', 'is_comedy', 'is_crime', 'is_documentary', 'is_drama', 'is_family', 'is_kids', 'is_mystery', 'is_reality', 'is_science_fiction_fantasy', 'is_soap', 'is_talk', 'is_war_politics', 'is_western', 'r_kp', 'r_imdb'], 'integer'],
             [['first_air_date', 'images'], 'safe'],
-            [['title', 'poster'], 'required'],
+            [['title'], 'required'],
             [['overview'], 'string'],
             [['title', 'orig_title', 'external_ids'], 'string', 'max' => 255],
-            [['poster'], 'string', 'max' => 27],
             [['video'], 'string', 'max' => 11],
             [['tmd_id'], 'unique'],
             [['kp_id'], 'unique'],
@@ -132,7 +130,6 @@ class Tv extends \yii\db\ActiveRecord
             'overview' => 'Overview',
             'external_ids' => 'External Ids',
             'episode_run_time' => 'Episode Run Time',
-            'poster' => 'Poster',
             'popularity' => 'Popularity',
             'images' => 'Images',
             'video' => 'Video',

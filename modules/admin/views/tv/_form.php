@@ -38,8 +38,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'episode_run_time')->textInput() ?>
 
-    <?= $form->field($model, 'poster')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'popularity')->textInput() ?>
 
     <?= $form->field($model, 'images')->textInput(['maxlength' => true]) ?>

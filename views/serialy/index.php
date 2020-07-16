@@ -7,6 +7,7 @@
 /* @var $lastPage integer */
 
 
+use app\assets\SiteAsset;
 use yii\helpers\Html;
 use yii\helpers\Inflector;
 
@@ -29,7 +30,7 @@ $this->title = 'Сериалы онлайн: смотрите бесплатно
 
 $this->registerJsFile(
     '@web/js/ajax/a_s_index.js',
-    ['depends' => [\app\assets\SiteAsset::className()]]
+    ['depends' => [SiteAsset::className()]]
 );
 ?>
 
@@ -117,7 +118,7 @@ $this->registerJsFile(
                 <div class="figure-caption">
                     <?= Html::a($tv['title'], ['serialy/view', 'id' => $tv['id'], 'title' => Inflector::slug($tv['title'])], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?>
                     <!--                    <a href="movie.html" style="margin-bottom: 0px; font-size: 1.3em" class="font-weight-bold">--><?//= $tv['title']?><!--</a>-->
-                    <p class="font-weight-light" style="margin-bottom: 0px; font-size: 0.9em"><a style="color: #6C757D;" href="/filmy/<?= date_format(date_create($tv['first_air_date']), 'Y')?>-goda/"><?= date_format(date_create($tv['first_air_date']), 'Y')?></a><?= $rating ?></p>
+                    <p class="font-weight-light" style="margin-bottom: 0; font-size: 0.9em"><a style="color: #6C757D;" href="/filmy/<?= date_format(date_create($tv['first_air_date']), 'Y')?>-goda/"><?= date_format(date_create($tv['first_air_date']), 'Y')?></a><?= $rating ?></p>
                 </div>
 
             </div>

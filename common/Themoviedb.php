@@ -2,6 +2,7 @@
 
 namespace app\common;
 
+use Exception;
 use yii\httpclient\Client;
 use Yii;
 use yii\base\BaseObject;
@@ -80,7 +81,7 @@ class Themoviedb extends BaseObject
                 return $obj_movies;
             }
         }
-        return null;
+        throw new Exception('TMDb (methodMovieDetails) dont find tv by id [' . $movie_id .']');
     }
 
     public function methodTvDetails($tmd_id, array $params = null)
@@ -99,7 +100,7 @@ class Themoviedb extends BaseObject
                 return $obj_movies;
             }
         }
-        return null;
+        throw new Exception('TMDb (methodTvDetails) dont find tv by tmdb [' . $tmd_id .']');
     }
 
     public function getTvId($imdb_id)
@@ -224,6 +225,6 @@ class Themoviedb extends BaseObject
                     return $result->tv_results[0]->id;
             }
         }
-        return null;
+        throw new Exception('TMDb (getTmdIdBymethodFindTv) dont find tv by imdb [' . $imdb .']');
     }
 }

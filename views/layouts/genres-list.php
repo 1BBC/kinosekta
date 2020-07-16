@@ -43,7 +43,7 @@
         <hr>
 
         <a href="/filmy/us-amerikanskie/">Американские</a><br>
-        <a href="/filmy/uk-britanskie/">Британские</a><br>
+        <a href="/filmy/gb-britanskie/">Британские</a><br>
         <a href="/filmy/ru-rossijskie/">Российские</a><br>
         <a href="/filmy/fr-franczuzskie/">Французские</a><br>
         <a href="/filmy/de-nemeczkie/">Немецкие</a><br>

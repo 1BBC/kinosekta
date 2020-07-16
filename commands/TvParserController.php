@@ -405,8 +405,6 @@ class TvParserController extends Controller
 
                 if (!$people->save()) {
                     $this->stdout("Can`t Save people tmd: " .$tmdPeople->id . "\n", Console::FG_YELLOW);
-//                    echo 'Warning: Can`t Save people #' . $credit['id'] . ' : ' . print_r($people->errors);
-                    //throw new Exception('Save people #' . $credit['id'] .  ' error: ' . print_r($people->errors));
                     continue;
                 }
 

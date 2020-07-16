@@ -18,7 +18,7 @@ class TvSearch extends Tv
     {
         return [
             [['id', 't_created', 't_updated', 'tmd_id', 'kp_id', 'r_kp', 'r_imdb', 'imdb_id', 'episode_run_time', 'popularity', 'is_action_adventure', 'is_animation', 'is_comedy', 'is_crime', 'is_documentary', 'is_drama', 'is_family', 'is_kids', 'is_mystery', 'is_reality', 'is_science_fiction_fantasy', 'is_soap', 'is_talk', 'is_war_politics', 'is_western'], 'integer'],
-            [['first_air_date', 'title', 'orig_title', 'overview', 'external_ids', 'poster', 'images', 'video'], 'safe'],
+            [['first_air_date', 'title', 'orig_title', 'overview', 'external_ids', 'images', 'video'], 'safe'],
         ];
     }
 
@@ -46,6 +46,11 @@ class TvSearch extends Tv
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_DESC,
+                ]
+            ],
         ]);
 
         $this->load($params);
@@ -90,7 +95,6 @@ class TvSearch extends Tv
             ->andFilterWhere(['like', 'orig_title', $this->orig_title])
             ->andFilterWhere(['like', 'overview', $this->overview])
             ->andFilterWhere(['like', 'external_ids', $this->external_ids])
-            ->andFilterWhere(['like', 'poster', $this->poster])
             ->andFilterWhere(['like', 'images', $this->images])
             ->andFilterWhere(['like', 'video', $this->video]);
 
