@@ -1,4 +1,4 @@
-$('article').readmore({
+$('#article').readmore({
       maxHeight: 240,
       moreLink: '<a class="text-center" href="#"><ins>Подробнее &#8595</ins></a>',
       lessLink: '<a class="text-center" href="#"><ins>Скрыть &#8593</ins></a>'

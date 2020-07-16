@@ -82,7 +82,6 @@ SiteAsset::register($this);
 
 
 <?php $this->endBody() ?>
-</body>
 <script>
     findFilmy.addEventListener("click", handler1);
     findSerialy.addEventListener("click", handler2);
@@ -106,5 +105,6 @@ SiteAsset::register($this);
         }
     }
 </script>
+</body>
 </html>
 <?php $this->endPage() ?>

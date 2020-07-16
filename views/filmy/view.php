@@ -317,7 +317,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                         echo '<span itemprop="duration">' . sprintf('%02d:%02d', $hours, $minutes) . '</span>  <code>(' . $time . ' мин.)</code>';
                                     ?>
-<!--                                    --><?php //printf('%02d:%02d', $hours, $minutes) ?>
                                 </td>
                             </tr>
                         <?php endif;?>
@@ -451,7 +450,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <div class="mt-2">
                         <h2>Сюжет</h2>
-                        <article itemprop="description"><?= $movie['overview'] ?? '' ?></article>
+                        <div id="article" itemprop="description"><?= $movie['overview'] ?? '' ?></div>
                     </div>
 
                 </div>

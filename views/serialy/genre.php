@@ -52,9 +52,9 @@ $this->registerJsFile(
     <div class="title">
         <h1 class="font-weight-bold">Сериалы жанра <?= $genre['title'] ?></h1>
     </div>
-    <article>
+    <div id="article">
         <?= $genre['text'] ?? ''?>
-    </article>
+    </div>
     <hr>
     <nav>
         <ul class="pagination justify-content-center">

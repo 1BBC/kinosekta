@@ -155,7 +155,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php if (!empty($people['biography'])):?>
                         <div class="mt-2">
                             <h2>Биография</h2>
-                            <article itemprop="description"><?= $people['biography'] ?? '' ?></article>
+                            <div id="article" itemprop="description"><?= $people['biography'] ?? '' ?></div>
                         </div>
                     <?php endif;?>
                 </div>
