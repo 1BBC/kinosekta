@@ -18,14 +18,14 @@ SiteAsset::register($this);
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:wght@300&display=swap" rel="stylesheet">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <style>
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 15px;
+        }
+    </style>
     <?php $this->head() ?>
 </head>
-<style>
-    body {
-        font-family: 'IBM Plex Sans', sans-serif;
-        font-size: 15px;
-    }
-</style>
 <body>
 <?php $this->beginBody() ?>
 
