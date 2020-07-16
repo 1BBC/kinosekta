@@ -415,54 +415,84 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php if (!empty($tv['images'])):?>
                         <div class="mt-4" id="screen">
                             <h2 class="font-weight-bold">Кадры из сериала</h2>
-                            <div class="row no-gutters">
+
+
                                 <?php $imgPath = '/i/s/s/' . $folder . '/' . $tv['id'] . '-'; ?>
 
-                                <?php if (1 <= $tv['images']):?>
-                                    <div class="col-8">
-                                        <a data-fancybox="gallery" href="<?= $imgPath . 1 . '.jpg' ?>">
-                                            <img alt="<?=$tv['title']?>" width="100%" height="100%" src="<?= $imgPath . 1 . '.jpg' ?>">
-                                        </a>
-                                    </div>
-
-                                    <div class="col-4">
-                                        <?php if (2 <= $tv['images']):?>
+                                <?php if (1 < $tv['images']):?>
+                                    <div class="row no-gutters">
+                                    <?php if (2 == $tv['images']):?>
+                                        <div class="col-6">
+                                            <a data-fancybox="gallery" href="<?= $imgPath . 1 . '.jpg' ?>">
+                                                <div>
+                                                    <img alt="<?=$tv['title']?>" style="padding: 0 0 7px 7px; width: 100%; height: 100%"
+                                                         src="<?= $imgPath . 1 . '.jpg' ?>">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-6">
                                             <a data-fancybox="gallery" href="<?= $imgPath . 2 . '.jpg' ?>">
                                                 <div>
-                                                    <img alt="<?=$tv['title']?>" width="100%" height="50%" style="padding: 0 0 7px 7px;"
+                                                    <img alt="<?=$tv['title']?>" style="padding: 0 0 7px 7px; width: 100%; height: 100%"
                                                          src="<?= $imgPath . 2 . '.jpg' ?>">
                                                 </div>
                                             </a>
-                                        <?endif;?>
-
-                                        <?php if (3 == $tv['images']):?>
-                                            <a data-fancybox="gallery" href="<?= $imgPath . 3 . '.jpg' ?>">
-                                                <div>
-                                                    <img alt="<?=$tv['title']?>" width="100%" height="50%" style="padding: 0 0 7px 7px;"
-                                                         src="<?= $imgPath . 3 . '.jpg' ?>">
-                                                </div>
+                                        </div>
+                                    <?else:?>
+                                        <div class="col-8">
+                                            <a data-fancybox="gallery" href="<?= $imgPath . 1 . '.jpg' ?>">
+                                                <img alt="<?=$tv['title']?>" style="width: 100%; height: 100%" src="<?= $imgPath . 1 . '.jpg' ?>">
                                             </a>
-                                        <?elseif (3 < $tv['images']):?>
-                                            <a data-fancybox="gallery" href="<?= $imgPath . 3 . '.jpg' ?>">
-                                                <div class="img-figure-block-s" style="padding: 0 0 0 7px;">
-                                                    <img alt="<?=$tv['title']?>" width="100%" height="100%" class="image-figure-s" src="<?= $imgPath . 3 . '.jpg' ?>">
-                                                    <div class="img-figure-overlay-s"  style="margin: 0 0 0 7px;">
-                                                        <div class="img-figure-text-s">+<?= ($tv['images']-3) ?></div>
+                                        </div>
+
+                                        <div class="col-4">
+                                            <?php if (2 <= $tv['images']):?>
+                                                <a data-fancybox="gallery" href="<?= $imgPath . 2 . '.jpg' ?>">
+                                                    <div>
+                                                        <img alt="<?=$tv['title']?>" style="padding: 0 0 7px 7px; width: 100%; height: 100%"
+                                                             src="<?= $imgPath . 2 . '.jpg' ?>">
                                                     </div>
-                                                </div>
-                                            </a>
-                                        <?endif;?>
-                                        <?php if ($tv['images'] > 4):?>
-                                            <div style="display: none">
-                                                <?php for ($i = 4; $i <= $tv['images']; $i++): ?>
-                                                    <a data-fancybox="gallery" href="<?= $imgPath . $i . '.jpg' ?>"></a>
-                                                <?endfor;?>
-                                            </div>
-                                        <?php endif;?>
+                                                </a>
+                                            <?endif;?>
 
+                                            <?php if (3 == $tv['images']):?>
+                                                <a data-fancybox="gallery" href="<?= $imgPath . 3 . '.jpg' ?>">
+                                                    <div>
+                                                        <img alt="<?=$tv['title']?>" style="padding: 0 0 7px 7px;width: 100%; height: 100%"
+                                                             src="<?= $imgPath . 3 . '.jpg' ?>">
+                                                    </div>
+                                                </a>
+                                            <?elseif (3 < $tv['images']):?>
+                                                <a data-fancybox="gallery" href="<?= $imgPath . 3 . '.jpg' ?>">
+                                                    <div class="img-figure-block-s" style="padding: 0 0 0 7px;">
+                                                        <img alt="<?=$tv['title']?>" style="width: 100%; height: 100%" class="image-figure-s" src="<?= $imgPath . 3 . '.jpg' ?>">
+                                                        <div class="img-figure-overlay-s"  style="margin: 0 0 0 7px;">
+                                                            <div class="img-figure-text-s">+<?= ($tv['images']-3) ?></div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            <?endif;?>
+                                            <?php if ($tv['images'] > 4):?>
+                                                <div style="display: none">
+                                                    <?php for ($i = 4; $i <= $tv['images']; $i++): ?>
+                                                        <a data-fancybox="gallery" href="<?= $imgPath . $i . '.jpg' ?>"></a>
+                                                    <?endfor;?>
+                                                </div>
+                                            <?php endif;?>
+                                    </div>
+                                    <?endif;?>
+                                    </div>
+                                <?else:?>
+                                    <div class="row justify-content-center">
+                                        <a data-fancybox="gallery" href="<?= $imgPath . 1 . '.jpg' ?>">
+                                            <div>
+                                                <img class="center-block" alt="<?=$tv['title']?>"
+                                                     src="<?= $imgPath . 1 . '.jpg' ?>">
+                                            </div>
+                                        </a>
                                     </div>
                                 <?endif;?>
-                            </div>
+
 
                         </div>
                         <hr>

@@ -20,15 +20,15 @@ SiteAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
-<?php $this->beginBody() ?>
-
 <style>
     body {
         font-family: 'IBM Plex Sans', sans-serif;
         font-size: 15px;
     }
 </style>
+<body>
+<?php $this->beginBody() ?>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="/">
@@ -78,6 +78,11 @@ SiteAsset::register($this);
     </div>
 </nav>
 
+<?= $content ?>
+
+
+<?php $this->endBody() ?>
+</body>
 <script>
     findFilmy.addEventListener("click", handler1);
     findSerialy.addEventListener("click", handler2);
@@ -101,14 +106,5 @@ SiteAsset::register($this);
         }
     }
 </script>
-<!--   <div class="">
-    <img style="width: 100% !important; transform: none !important;" class="" src="cpa.jpg">
-  </div> -->
-
-<?= $content ?>
-
-
-<?php $this->endBody() ?>
-</body>
 </html>
 <?php $this->endPage() ?>

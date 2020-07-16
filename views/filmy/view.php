@@ -148,7 +148,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?php if (!empty($movie['r_kp'])):?>
                                         <?php $roundRkp = round($movie['r_kp'] / 10);?>
                                         <ul class="list-inline" style="margin-bottom: 0">
-                                            <li class="list-inline-item"><img alt="kp" width="25px" style="vertical-align: bottom" src="/img/kp.ico"></li>
+                                            <li class="list-inline-item"><img alt="kp" width="25" style="vertical-align: bottom" src="/img/kp.ico"></li>
                                             <li class="list-inline-item"><h4 style="margin-bottom: 0"><span itemprop="ratingValue"><?= $movie['r_kp'] / 10?></span> <small>/ <span itemprop="bestRating">10</span></small></h4></li>
                                         </ul>
                                         <span itemprop="ratingCount" style="display: none">5000</span>
@@ -165,7 +165,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?php if (!empty($movie['r_imdb'])):?>
                                         <?php $roundRimdb = round($movie['r_imdb'] / 10);?>
                                         <ul class="list-inline" style="margin-bottom: 0">
-                                            <li class="list-inline-item"><img alt="imdb" width="25px" style="vertical-align: bottom" src="/img/imdb.ico"></li>
+                                            <li class="list-inline-item"><img alt="imdb" width="25" style="vertical-align: bottom" src="/img/imdb.ico"></li>
                                             <li class="list-inline-item"><h4 style="margin-bottom: 0"><?= $movie['r_imdb'] / 10?> <small>/ 10</small></h4></li>
                                         </ul>
 
@@ -206,26 +206,26 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $ei = explode(',', $movie['external_ids']);
 
                                 if (!empty($ei[0])) {
-                                    $ei[0]= '<a title="Facebook" rel="nofollow" target="_blank" href="https://www.facebook.com/' . $ei[0] . '"><img src="/img/fb.ico" width="20px" alt=""></a>';
+                                    $ei[0]= '<a title="Facebook" rel="nofollow" target="_blank" href="https://www.facebook.com/' . $ei[0] . '"><img src="/img/fb.ico" width="20" alt=""></a>';
                                 }
 
                                 if (!empty($ei[1])) {
-                                    $ei[1]= '<a title="Instagram" rel="nofollow" target="_blank" href="https://www.instagram.com/' . $ei[1] . '"><img src="/img/inst.ico" width="20px" alt=""></a>';
+                                    $ei[1]= '<a title="Instagram" rel="nofollow" target="_blank" href="https://www.instagram.com/' . $ei[1] . '"><img src="/img/inst.ico" width="20" alt=""></a>';
                                 }
 
                                 if (!empty($ei[2])) {
-                                    $ei[2]= '<a title="Twitter" rel="nofollow" target="_blank" href="https://twitter.com/' . $ei[2] . '"><img src="/img/twitter.ico" width="20px" alt=""></a>';
+                                    $ei[2]= '<a title="Twitter" rel="nofollow" target="_blank" href="https://twitter.com/' . $ei[2] . '"><img src="/img/twitter.ico" width="20" alt=""></a>';
                                 }
 
                                 $eiSId = array();
                                 if (!empty($movie['kp_id'])) {
-                                    $eiSId['kp'] = '<a title="Kinopoisk" rel="nofollow" target="_blank" href="https://kinopoisk.ru/film/' . $movie['kp_id'] . '"><img src="/img/kp.ico" width="20px" alt=""></a>';
+                                    $eiSId['kp'] = '<a title="Kinopoisk" rel="nofollow" target="_blank" href="https://kinopoisk.ru/film/' . $movie['kp_id'] . '"><img src="/img/kp.ico" width="20" alt=""></a>';
                                 }
                                 if (!empty($movie['imdb_id'])) {
-                                    $eiSId['imdb'] = '<a title="IMDB" rel="nofollow" target="_blank" href="https://www.imdb.com/title/tt' . sprintf("%07d", $movie['imdb_id']) . '"><img src="/img/imdb.ico" width="20px" alt=""></a>';
+                                    $eiSId['imdb'] = '<a title="IMDB" rel="nofollow" target="_blank" href="https://www.imdb.com/title/tt' . sprintf("%07d", $movie['imdb_id']) . '"><img src="/img/imdb.ico" width="20" alt=""></a>';
                                 }
                                 if (!empty($movie['tmd_id'])) {
-                                    $eiSId['tmd'] = '<a title="TMDB" rel="nofollow" target="_blank" href="https://www.themoviedb.org/movie/' . $movie['tmd_id'] . '"><img src="/img/tmdb.ico" width="20px" alt=""></a>';
+                                    $eiSId['tmd'] = '<a title="TMDB" rel="nofollow" target="_blank" href="https://www.themoviedb.org/movie/' . $movie['tmd_id'] . '"><img src="/img/tmdb.ico" width="20" alt=""></a>';
                                 }
 
 
@@ -507,55 +507,85 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?php if (!empty($movie['images'])):?>
                         <div class="mt-4" id="screen">
-                            <h2 class="font-weight-bold">Кадры из фильма</h2>
-                            <div class="row no-gutters">
-                                <?php $imgPath = '/i/f/s/' . $folder . '/' . $movie['id'] . '-'; ?>
+                            <h2 class="font-weight-bold">Кадры из сериала</h2>
 
-                                <?php if (1 <= $movie['images']):?>
-                                    <div class="col-8">
-                                        <a data-fancybox="gallery" href="<?= $imgPath . 1 . '.jpg' ?>">
-                                            <img alt="<?=$movie['title']?>" width="100%" height="100%" src="<?= $imgPath . 1 . '.jpg' ?>">
-                                        </a>
-                                    </div>
 
-                                    <div class="col-4">
-                                        <?php if (2 <= $movie['images']):?>
+                            <?php $imgPath = '/i/f/s/' . $folder . '/' . $movie['id'] . '-'; ?>
+
+                            <?php if (1 < $movie['images']):?>
+                                <div class="row no-gutters">
+                                    <?php if (2 == $movie['images']):?>
+                                        <div class="col-6">
+                                            <a data-fancybox="gallery" href="<?= $imgPath . 1 . '.jpg' ?>">
+                                                <div>
+                                                    <img alt="<?=$movie['title']?>" style="padding: 0 0 7px 7px; width: 100%; height: 100%"
+                                                         src="<?= $imgPath . 1 . '.jpg' ?>">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-6">
                                             <a data-fancybox="gallery" href="<?= $imgPath . 2 . '.jpg' ?>">
                                                 <div>
-                                                    <img alt="<?=$movie['title']?>" width="100%" height="50%" style="padding: 0 0 7px 7px;"
+                                                    <img alt="<?=$movie['title']?>" style="padding: 0 0 7px 7px; width: 100%; height: 100%"
                                                          src="<?= $imgPath . 2 . '.jpg' ?>">
                                                 </div>
                                             </a>
-                                        <?endif;?>
-
-                                        <?php if (3 == $movie['images']):?>
-                                            <a data-fancybox="gallery" href="<?= $imgPath . 3 . '.jpg' ?>">
-                                                <div>
-                                                    <img alt="<?=$movie['title']?>" width="100%" height="50%" style="padding: 0 0 7px 7px;"
-                                                         src="<?= $imgPath . 3 . '.jpg' ?>">
-                                                </div>
-                                            </a>
-                                        <?elseif (3 < $movie['images']):?>
-                                            <a data-fancybox="gallery" href="<?= $imgPath . 3 . '.jpg' ?>">
-                                                <div class="img-figure-block-s" style="padding: 0 0 0 7px;">
-                                                    <img alt="<?=$movie['title']?>" width="100%" height="100%" class="image-figure-s" src="<?= $imgPath . 3 . '.jpg' ?>">
-                                                    <div class="img-figure-overlay-s"  style="margin: 0 0 0 7px;">
-                                                        <div class="img-figure-text-s">+<?= ($movie['images']-3) ?></div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        <?endif;?>
-                                        <?php if ($movie['images'] > 4):?>
-                                        <div style="display: none">
-                                            <?php for ($i = 4; $i <= $movie['images']; $i++): ?>
-                                                <a data-fancybox="gallery" href="<?= $imgPath . $i . '.jpg' ?>"></a>
-                                            <?endfor;?>
                                         </div>
-                                        <?php endif;?>
+                                    <?else:?>
+                                        <div class="col-8">
+                                            <a data-fancybox="gallery" href="<?= $imgPath . 1 . '.jpg' ?>">
+                                                <img alt="<?=$movie['title']?>" style="width: 100%; height: 100%" src="<?= $imgPath . 1 . '.jpg' ?>">
+                                            </a>
+                                        </div>
 
-                                    </div>
-                                <?endif;?>
-                            </div>
+                                        <div class="col-4">
+                                            <?php if (2 <= $movie['images']):?>
+                                                <a data-fancybox="gallery" href="<?= $imgPath . 2 . '.jpg' ?>">
+                                                    <div>
+                                                        <img alt="<?=$movie['title']?>" style="padding: 0 0 7px 7px; width: 100%; height: 100%"
+                                                             src="<?= $imgPath . 2 . '.jpg' ?>">
+                                                    </div>
+                                                </a>
+                                            <?endif;?>
+
+                                            <?php if (3 == $movie['images']):?>
+                                                <a data-fancybox="gallery" href="<?= $imgPath . 3 . '.jpg' ?>">
+                                                    <div>
+                                                        <img alt="<?=$movie['title']?>" style="padding: 0 0 7px 7px;width: 100%; height: 100%"
+                                                             src="<?= $imgPath . 3 . '.jpg' ?>">
+                                                    </div>
+                                                </a>
+                                            <?elseif (3 < $movie['images']):?>
+                                                <a data-fancybox="gallery" href="<?= $imgPath . 3 . '.jpg' ?>">
+                                                    <div class="img-figure-block-s" style="padding: 0 0 0 7px;">
+                                                        <img alt="<?=$movie['title']?>" style="width: 100%; height: 100%" class="image-figure-s" src="<?= $imgPath . 3 . '.jpg' ?>">
+                                                        <div class="img-figure-overlay-s"  style="margin: 0 0 0 7px;">
+                                                            <div class="img-figure-text-s">+<?= ($movie['images']-3) ?></div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            <?endif;?>
+                                            <?php if ($movie['images'] > 4):?>
+                                                <div style="display: none">
+                                                    <?php for ($i = 4; $i <= $movie['images']; $i++): ?>
+                                                        <a data-fancybox="gallery" href="<?= $imgPath . $i . '.jpg' ?>"></a>
+                                                    <?endfor;?>
+                                                </div>
+                                            <?php endif;?>
+                                        </div>
+                                    <?endif;?>
+                                </div>
+                            <?else:?>
+                                <div class="row justify-content-center">
+                                    <a data-fancybox="gallery" href="<?= $imgPath . 1 . '.jpg' ?>">
+                                        <div>
+                                            <img class="center-block" alt="<?=$movie['title']?>"
+                                                 src="<?= $imgPath . 1 . '.jpg' ?>">
+                                        </div>
+                                    </a>
+                                </div>
+                            <?endif;?>
+
 
                         </div>
                         <hr>
