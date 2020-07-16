@@ -575,7 +575,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                             $folderA = (int) ($people['id'] / 1000);
                                         ?>
                                         <div itemprop="actor" itemscope itemtype="http://schema.org/Person" class="parent">
-                                            <?= Html::a('<img itemprop="image" src="/i/a/' . $folderA . '/' . $people['id'] . '.jpg" class="" alt="" height="244;">', ['aktery/view', 'id' => $people['id'], 'title' => $people['url_name']], ['itemprop' => 'url', 'style' => 'color: #FC8638;'])?>
+                                            <?= Html::a('<img itemprop="image" src="/i/a/' . $folderA . '/' . $people['id'] . '.jpg" class="" alt="" height="244">', ['aktery/view', 'id' => $people['id'], 'title' => $people['url_name']], ['itemprop' => 'url', 'style' => 'color: #FC8638;'])?>
 <!--                                            <a href=""><img src="/i/a/$folderA/$people['id'].jpg" class="" alt="" height="244px;"></a>-->
                                             <div class="font-weight-bold">
                                                 <small><?= $people['role'] ?></small><br>
