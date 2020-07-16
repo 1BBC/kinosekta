@@ -74,12 +74,6 @@ $this->params['breadcrumbs'][] = $this->title;
     'content' => $_SERVER['HTTP_HOST'],
 ]);
 
-\Yii::$app->view->registerMetaTag([
-    'name' => 'og:description',
-    'content' => $description,
-]);
-
-
 ?>
 
 <div class="container" style="background-color: #FFFFFF; box-shadow: 0 0 1px rgba(0,0,0,0.5);;">
