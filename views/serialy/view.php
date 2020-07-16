@@ -148,7 +148,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <?php if (!empty($tv['r_kp'])):?>
                                             <?php $roundRkp = round($tv['r_kp'] / 10);?>
                                             <ul class="list-inline" style="margin-bottom: 0">
-                                                <li class="list-inline-item"><img alt="kp" width="25px" style="vertical-align: bottom" src="/img/kp.ico"></li>
+                                                <li class="list-inline-item"><img alt="kp" width="25" style="vertical-align: bottom" src="/img/kp.ico"></li>
                                                 <li class="list-inline-item"><h4 style="margin-bottom: 0"><span itemprop="ratingValue"><?= $tv['r_kp'] / 10?></span> <small>/ <span itemprop="bestRating">10</span></small></h4></li>
                                             </ul>
                                             <span itemprop="ratingCount" style="display: none">5000</span>
@@ -165,7 +165,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <?php if (!empty($tv['r_imdb'])):?>
                                             <?php $roundRimdb = round($tv['r_imdb'] / 10);?>
                                             <ul class="list-inline" style="margin-bottom: 0">
-                                                <li class="list-inline-item"><img alt="imdb" width="25px" style="vertical-align: bottom" src="/img/imdb.ico"></li>
+                                                <li class="list-inline-item"><img alt="imdb" width="25" style="vertical-align: bottom" src="/img/imdb.ico"></li>
                                                 <li class="list-inline-item"><h4 style="margin-bottom: 0"><?= $tv['r_imdb'] / 10?> <small>/ 10</small></h4></li>
                                             </ul>
 
@@ -206,26 +206,26 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $ei = explode(',', $tv['external_ids']);
 
                                 if (!empty($ei[0])) {
-                                    $ei[0]= '<a title="Facebook" rel="nofollow" target="_blank" href="https://www.facebook.com/' . $ei[0] . '"><img src="/img/fb.ico" width="20px" alt=""></a>';
+                                    $ei[0]= '<a title="Facebook" rel="nofollow" target="_blank" href="https://www.facebook.com/' . $ei[0] . '"><img src="/img/fb.ico" width="20" alt=""></a>';
                                 }
 
                                 if (!empty($ei[1])) {
-                                    $ei[1]= '<a title="Instagram" rel="nofollow" target="_blank" href="https://www.instagram.com/' . $ei[1] . '"><img src="/img/inst.ico" width="20px" alt=""></a>';
+                                    $ei[1]= '<a title="Instagram" rel="nofollow" target="_blank" href="https://www.instagram.com/' . $ei[1] . '"><img src="/img/inst.ico" width="20" alt=""></a>';
                                 }
 
                                 if (!empty($ei[2])) {
-                                    $ei[2]= '<a title="Twitter" rel="nofollow" target="_blank" href="https://twitter.com/' . $ei[2] . '"><img src="/img/twitter.ico" width="20px" alt=""></a>';
+                                    $ei[2]= '<a title="Twitter" rel="nofollow" target="_blank" href="https://twitter.com/' . $ei[2] . '"><img src="/img/twitter.ico" width="20" alt=""></a>';
                                 }
 
                                 $eiSId = array();
                                 if (!empty($tv['kp_id'])) {
-                                    $eiSId['kp'] = '<a title="Kinopoisk" rel="nofollow" target="_blank" href="https://kinopoisk.ru/film/' . $tv['kp_id'] . '"><img src="/img/kp.ico" width="20px" alt=""></a>';
+                                    $eiSId['kp'] = '<a title="Kinopoisk" rel="nofollow" target="_blank" href="https://kinopoisk.ru/film/' . $tv['kp_id'] . '"><img src="/img/kp.ico" width="20" alt=""></a>';
                                 }
                                 if (!empty($tv['imdb_id'])) {
-                                    $eiSId['imdb'] = '<a title="IMDB" rel="nofollow" target="_blank" href="https://www.imdb.com/title/tt' . sprintf("%07d", $tv['imdb_id']) . '"><img src="/img/imdb.ico" width="20px" alt=""></a>';
+                                    $eiSId['imdb'] = '<a title="IMDB" rel="nofollow" target="_blank" href="https://www.imdb.com/title/tt' . sprintf("%07d", $tv['imdb_id']) . '"><img src="/img/imdb.ico" width="20" alt=""></a>';
                                 }
                                 if (!empty($tv['tmd_id'])) {
-                                    $eiSId['tmd'] = '<a title="TMDB" rel="nofollow" target="_blank" href="https://www.themoviedb.org/tv/' . $tv['tmd_id'] . '"><img src="/img/tmdb.ico" width="20px" alt=""></a>';
+                                    $eiSId['tmd'] = '<a title="TMDB" rel="nofollow" target="_blank" href="https://www.themoviedb.org/tv/' . $tv['tmd_id'] . '"><img src="/img/tmdb.ico" width="20" alt=""></a>';
                                 }
 
                                 echo implode(' ', $eiSId) . ' ' . implode(' ', $ei);
