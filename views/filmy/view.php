@@ -132,14 +132,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
 
                         <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="col-sm-12 col-5 mb-2 action-btn">
-                            <a type="button" href="#player" class="btn btn-outline-success btn-sm btn-block" style="overflow: hidden;"><i class="fas fa-play"></i>  Смотреть онлайн</a>
+                            <a href="#player" class="btn btn-outline-success btn-sm btn-block" style="overflow: hidden;"><i class="fas fa-play"></i>  Смотреть онлайн</a>
                             <?php if (!empty($movie['video'])): ?>
-                                <a data-fancybox href="https://www.youtube.com/watch?v=<?= $movie['video'] ?>" type="button" class="btn btn-outline-danger btn-sm btn-block" style="overflow: hidden;"><i class="fab fa-youtube"></i>  Трейлер</a>
+                                <a data-fancybox href="https://www.youtube.com/watch?v=<?= $movie['video'] ?>" class="btn btn-outline-danger btn-sm btn-block" style="overflow: hidden;"><i class="fab fa-youtube"></i>  Трейлер</a>
                             <?php endif;?>
 
-
-
-                            <a type="button" href="#actors" class="btn btn-outline-dark btn-sm btn-block" style="overflow: hidden;"><i class="fa fa-user-check"></i>  Актеры</a>
+                            <a href="#actors" class="btn btn-outline-dark btn-sm btn-block" style="overflow: hidden;"><i class="fa fa-user-check"></i>  Актеры</a>
 
                             <?php if(!empty($movie['r_kp']) || !empty($movie['r_imdb'])):?>
                                 <div class="card my-2">
