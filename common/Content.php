@@ -212,7 +212,7 @@ abstract class Content extends BaseObject
 
         foreach ($names as $name)
         {
-            if ($rating[$name]) {
+            if (!empty($rating[$name])) {
                 $this->$name = $rating[$name];
             } else {
                 $this->setStdout($name . ' is empty', Console::FG_YELLOW);
