@@ -410,9 +410,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?php $peopleStr = ''; $lastPeople = end($movie['sound'])?>
                                     <?php foreach ($movie['sound'] as $people): ?>
                                         <?php
-                                        $peopleStr .= '<div itemprop="musicBy" itemscope itemtype="http://schema.org/Person">' .
+                                        $peopleStr .= '<span itemprop="musicBy" itemscope itemtype="http://schema.org/Person">' .
                                             Html::a('<span itemprop="name">' . $people['orig_name'] . '</span>', ['aktery/view', 'id' => $people['id'], 'title' => $people['url_name']],
-                                                ['title' => 'Фильмы с ' . $people['orig_name'], 'itemprop' => 'url']) . '</div>';
+                                                ['title' => 'Фильмы с ' . $people['orig_name'], 'itemprop' => 'url']) . '</span>';
                                         if ($people != $lastPeople) {
                                             $peopleStr .= ', ';
                                         }

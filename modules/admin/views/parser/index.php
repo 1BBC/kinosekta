@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $result array */
+/* @var $params array */
 
 $this->title = 'Index';
 $this->params['breadcrumbs'][] = ['label' => 'Parser', 'url' => ['index']];
@@ -22,22 +23,17 @@ $this->params['breadcrumbs'][] = $this->title;
     ?>
 </pre>
     <div class="form-group">
-        <label>Media</label>
-        <select name="media" class="form-control">
-            <option>movie</option>
-            <option>tv</option>
-        </select>
-    </div>
-    <div class="form-group">
         <label>Id`s</label>
-        <input type="text" class="form-control" name="ids" placeholder="1228547,1324432">
+        <input value="<?=$params['ids'] ?? ''?>" type="text" class="form-control" name="ids" placeholder="1209567,tt9165642">
     </div>
     <div class="form-group">
         <label for="type">Type</label>
         <select class="form-control" name="type">
-            <option>kp</option>
-            <option>imdb</option>
-            <option>tmd</option>
+            <option <?=(!empty($params['type']) && $params['type'] == 'kp') ? 'selected' : '' ?>>kp</option>
+            <option <?=(!empty($params['type']) && $params['type'] == 'imdb') ? 'selected' : '' ?>>imdb</option>
+<!--            <option -->
+<!--                --><?//=(!empty($params['type']) && $params['type'] == 'tmd') ? 'selected' : '' ?>
+<!--            >tmd</option>-->
         </select>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>

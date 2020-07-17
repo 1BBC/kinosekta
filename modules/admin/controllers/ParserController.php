@@ -16,15 +16,16 @@ class ParserController extends Controller
      */
     public function actionIndex()
     {
+        $params = array();
+
         if(Yii::$app->request->isPost) {
             $params = Yii::$app->request->post();
-            $parserName = ($params['media'] == 'movie') ? '' : 'tv-';
 
-            exec('php ../yii ' . $parserName . 'parser/index ' . $params['ids'] . ' -' . $params['type'] . '=1 -l=1', $result);
+            exec("php ../yii main-parser/{$params['type']} {$params['ids']} ", $result);
 
             Yii::$app->session->setFlash('success', "parser launched");
         }
 
-        return $this->render('index', ['result' => $result ?? array()]);
+        return $this->render('index', ['result' => $result ?? array(), 'params' => $params]);
     }
 }
