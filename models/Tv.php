@@ -210,20 +210,24 @@ class Tv extends \yii\db\ActiveRecord
     {
         $folder = (int) ($this->id / 1000);
 
-        $poster = Yii::getAlias('@webroot') . '/i/s/p/' . $folder . '/' . $this->id . '.jpg';
-        if (file_exists($poster)) {
-            unlink($poster);
-        }
-
-        $baseImgPath = Yii::getAlias('@webroot') . '/i/s/s/' . $folder . '/' . $this->id . '-';
-
-        for ($i = 1; $i <= $this->images; $i++) {
-            $fullImgPath = $baseImgPath . $i . '.jpg';
-
-            if (file_exists($fullImgPath)) {
-                unlink($fullImgPath);
+        try {
+            $poster = Yii::getAlias('@webroot') . '/i/s/p/' . $folder . '/' . $this->id . '.jpg';
+            if (file_exists($poster)) {
+                unlink($poster);
             }
-        }
+        } catch (\Exception $e) {}
+
+        try {
+            $baseImgPath = Yii::getAlias('@webroot') . '/i/s/s/' . $folder . '/' . $this->id . '-';
+
+            for ($i = 1; $i <= $this->images; $i++) {
+                $fullImgPath = $baseImgPath . $i . '.jpg';
+
+                if (file_exists($fullImgPath)) {
+                    unlink($fullImgPath);
+                }
+            }
+        } catch (\Exception $e) {}
 
         Yii::$app->cache->delete('tv' . $this->id);
 
