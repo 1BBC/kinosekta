@@ -6,6 +6,11 @@
 use yii\helpers\Html;
 use app\assets\SiteAsset;
 
+\Yii::$app->view->registerMetaTag([
+    'name' => 'author',
+    'content' => 'kinogaz',
+]);
+
 SiteAsset::register($this);
 ?>
 <?php $this->beginPage() ?>

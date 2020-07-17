@@ -9,13 +9,25 @@ use yii\helpers\Inflector;
 
 $tv['year'] = date_format(date_create($tv['first_air_date']), 'Y');
 $folder = (int) ($tv['id'] / 1000);
-$this->title = $tv['title'] . ' (' . $tv['year'] . '): смотреть онлайн';
-$description = 'Смотрите бесплатно онлайн сериал ' . $tv['title'] . ' (' . $tv['year'] . ') в кинотеатре ' . $_SERVER['SERVER_NAME'] . '. ' . stristr($tv['overview'], '.', true) . '.';
+$this->title = "{$tv['title']} сериал {$tv['year']} смотреть онлайн бесплатно в хорошем HD 1080 качестве";
+
+$description = "{$tv['title']} / {$tv['orig_title']} смотреть онлайн, все сезоны, все серии";
+//$description = 'Смотрите бесплатно онлайн сериал ' . $tv['title'] . ' (' . $tv['year'] . ') в кинотеатре ' . $_SERVER['SERVER_NAME'] . '. ' . stristr($tv['overview'], '.', true) . '.';
 $this->params['breadcrumbs'][] = $this->title;
 
 \Yii::$app->view->registerMetaTag([
     'name' => 'description',
     'content' => $description,
+]);
+
+\Yii::$app->view->registerMetaTag([
+    'name' => 'og:description',
+    'content' => $description,
+]);
+
+\Yii::$app->view->registerMetaTag([
+    'name' => 'og:title',
+    'content' => $this->title,
 ]);
 
 \Yii::$app->view->registerMetaTag([
@@ -53,15 +65,6 @@ $this->params['breadcrumbs'][] = $this->title;
     'content' => "http://$_SERVER[HTTP_HOST]" . (($tv['images'] > 1) ? '/i/s/s/' . $folder . '/' . $tv['id'] . '-' . 2 . '.jpg' : "/i/s/p/" . $folder . "/" . $tv['id'] . ".jpg"),
 ]);
 
-\Yii::$app->view->registerMetaTag([
-    'name' => 'og:title',
-    'content' => $this->title,
-]);
-
-\Yii::$app->view->registerMetaTag([
-    'name' => 'og:description',
-    'content' => $description,
-]);
 
 \Yii::$app->view->registerMetaTag([
     'name' => 'og:url',
@@ -71,11 +74,6 @@ $this->params['breadcrumbs'][] = $this->title;
 \Yii::$app->view->registerMetaTag([
     'name' => 'og:site_name',
     'content' => $_SERVER['HTTP_HOST'],
-]);
-
-\Yii::$app->view->registerMetaTag([
-    'name' => 'og:description',
-    'content' => $description,
 ]);
 
 
@@ -369,6 +367,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="mt-4" id="player">
                 <div>
                     <div class="" style="">
+                        <h2 style="font-size: 1rem" class="mb-4 text-center"><?="Смотреть онлайн {$tv['title']} в хорошем качестве бесплатно"?></h2>
                         <div class="row no-gutters">
                             <div class=" text-center text-white bg-dark" style="width: 100%; border-radius: 0;">
                                 <div class="card-body embed-responsive embed-responsive-16by9" style="padding: 0 0 0 0; font-size: 0">
@@ -414,7 +413,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?php if (!empty($tv['images'])):?>
                         <div class="mt-4" id="screen">
-                            <h2 class="font-weight-bold">Кадры из сериала</h2>
+                            <h2 class="mb-2 font-weight-bold">Кадры из сериала</h2>
 
 
                                 <?php $imgPath = '/i/s/s/' . $folder . '/' . $tv['id'] . '-'; ?>

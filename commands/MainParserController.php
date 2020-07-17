@@ -30,7 +30,7 @@ class MainParserController extends Controller {
         parent::__construct($id, $module, $config);
     }
 
-    public function actionCdn($first, $last = null, $year=2019)
+    public function actionCdn($movie, $first, $last = null, $year=2019)
     {
         if (empty($last)) $last=$first;
 
@@ -43,9 +43,13 @@ class MainParserController extends Controller {
 
 
             try {
-                $vcData = $this->videoCdn->getMovies(['page' => $page, 'year' => $year]);
+                if ($movie == 1) {
+                    $vcData = $this->videoCdn->getMovies(['page' => $page, 'year' => $year]);
+                } else {
+                    $vcData = $this->videoCdn->getTvs(['page' => $page, 'year' => $year]);
+                }
             } catch (Exception $e) {
-                $this->stdout("Don`t find (videoCdn->getMovies). P:{$page} Y:{$year} ERR: " . $e->getMessage()  ."\n", Console::FG_RED);
+                $this->stdout("ERR: " . $e->getMessage()  ."\n", Console::FG_RED);
                 break;
             }
             $this->stdout("========================= Total:  {$vcData->last_page} =================================\n", Console::FG_PURPLE);

@@ -11,6 +11,7 @@ class Videocdn extends BaseObject
 {
     private $api_token;
     private $method_movies;
+    private $method_tv_series;
     private $method_short;
     private $client;
 
@@ -20,6 +21,7 @@ class Videocdn extends BaseObject
     {
         $this->api_token     = $params['api_token'] ?? Yii::$app->params['videocdn']['api_token'];
         $this->method_movies = $params['method_movies'] ?? Yii::$app->params['videocdn']['method_movies'];
+        $this->method_tv_series    = $params['method_tvs'] ?? Yii::$app->params['videocdn']['method_tv_series'];
         $this->method_short  = $params['method_short'] ?? Yii::$app->params['videocdn']['method_short'];
 
         $this->client = new Client();
@@ -51,6 +53,21 @@ class Videocdn extends BaseObject
         $response = $this->client->createRequest()
             ->setMethod('GET')
             ->setUrl($this->method_movies)
+            ->setData($params)
+            ->send();
+        if ($response->isOk) {
+            return json_decode($response->getContent());
+        }
+        throw new Exception('VideoCDN (getMovies) dont find page by params:' .  $params);
+    }
+
+    public function getTvs($params = [])
+    {
+        $params['api_token'] = $this->api_token;
+
+        $response = $this->client->createRequest()
+            ->setMethod('GET')
+            ->setUrl($this->method_tv_series)
             ->setData($params)
             ->send();
         if ($response->isOk) {

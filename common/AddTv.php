@@ -14,10 +14,10 @@ use yii\helpers\Console;
 
 class AddTv extends Content
 {
-    static $IMG_LIMIT = 2;
+    static $IMG_LIMIT = 0;
     static $POSTER_QUALITY = 300;
     static $PEOPLE_POSTER_QUALITY = 200;
-    static $ACTORS_LIMIT = 5;
+    static $ACTORS_LIMIT = 10;
     static $FIRST_IMG_QUALITY = 500;
     static $IMG_QUALITY = 300;
     static $FOLDER = 's';

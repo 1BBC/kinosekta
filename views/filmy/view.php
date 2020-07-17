@@ -10,13 +10,26 @@ use yii\helpers\Inflector;
 
 $movie['year'] = date_format(date_create($movie['release_date']), 'Y');
 $folder = (int) ($movie['id'] / 1000);
-$this->title = $movie['title'] . ' (' . $movie['year'] . '): смотреть онлайн';
-$description = 'Смотрите бесплатно онлайн фильм ' . $movie['title'] . ' (' . $movie['year'] . ') в кинотеатре ' . $_SERVER['SERVER_NAME'] . '. ' . stristr($movie['overview'], '.', true) . '.';
+$this->title = "{$movie['title']} фильм {$movie['year']}";
+$description = "{$movie['title']} / {$movie['orig_title']} смотреть онлайн в хорошем HD 720 качестве.";
+//$description = 'Смотрите бесплатно онлайн фильм ' . $movie['title'] . ' (' . $movie['year'] . ') в кинотеатре ' . $_SERVER['SERVER_NAME'] . '. ' . stristr($movie['overview'], '.', true) . '.';
 $this->params['breadcrumbs'][] = $this->title;
+
 
 \Yii::$app->view->registerMetaTag([
     'name' => 'description',
     'content' => $description,
+]);
+
+\Yii::$app->view->registerMetaTag([
+    'name' => 'og:description',
+    'content' => $movie['overview'],
+]);
+
+
+\Yii::$app->view->registerMetaTag([
+    'name' => 'og:title',
+    'content' => $this->title,
 ]);
 
 \Yii::$app->view->registerMetaTag([
@@ -52,16 +65,6 @@ $this->params['breadcrumbs'][] = $this->title;
 \Yii::$app->view->registerMetaTag([
     'name' => 'og:image',
     'content' => "http://$_SERVER[HTTP_HOST]" . (($movie['images'] > 1) ? '/i/f/s/' . $folder . '/' . $movie['id'] . '-' . 2 . '.jpg' : "/i/f/p/" . $folder . "/" . $movie['id'] . ".jpg"),
-]);
-
-\Yii::$app->view->registerMetaTag([
-    'name' => 'og:title',
-    'content' => $this->title,
-]);
-
-\Yii::$app->view->registerMetaTag([
-    'name' => 'og:description',
-    'content' => $description,
 ]);
 
 \Yii::$app->view->registerMetaTag([
@@ -451,6 +454,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <hr>
             <div class="mt-4" id="player">
+                <h2 style="font-size: 1rem" class="mb-4 text-center"><?="Смотреть онлайн {$movie['title']} в хорошем HD 720 качестве бесплатно"?></h2>
                 <div>
                     <div class="" style="">
                         <div class="row no-gutters">
@@ -498,7 +502,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?php if (!empty($movie['images'])):?>
                         <div class="mt-4" id="screen">
-                            <h2 class="font-weight-bold">Кадры из сериала</h2>
+                            <h2 class="font-weight-bold">Кадры из фильма</h2>
 
 
                             <?php $imgPath = '/i/f/s/' . $folder . '/' . $movie['id'] . '-'; ?>

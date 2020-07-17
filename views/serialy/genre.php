@@ -19,7 +19,7 @@ use yii\helpers\Inflector;
     'content' => $genre['name'],
 ]);
 
-$this->title = 'Сериалы жанра ' . $genre['title'].' смотреть бесплатно онлайн в хорошем качестве';
+$this->title = 'Сериалы жанра ' . $genre['title'].' смотреть онлайн';
 
 $description = 'Лучшие сериалы в жанре ' . $genre['title'] . '. Смотреть список. ' . stristr(($genre['text'] ?? ''), '.', true);
 

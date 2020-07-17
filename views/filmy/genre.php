@@ -18,7 +18,7 @@ use yii\helpers\Inflector;
     'content' => $genre['name'],
 ]);
 
-$this->title = 'Фильмы жанра ' . $genre['title'].' смотреть бесплатно онлайн в хорошем качестве';
+$this->title = 'Фильмы жанра ' . $genre['title'].' смотреть онлайн';
 
 $description = 'Лучшие фильмы в жанре ' . $genre['title'] . '. Смотреть список. ' . stristr(($genre['text'] ?? ''), '.', true);
 \Yii::$app->view->registerMetaTag([

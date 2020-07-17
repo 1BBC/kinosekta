@@ -6,7 +6,7 @@
 use yii\helpers\Html;
 use yii\helpers\Inflector;
 
-$this->title = 'Каналы. Смотрите сериалы на любой вкус от любимых каналов, смотрите бесплатно онлайн в хорошем качестве';
+$this->title = 'Каналы. Смотрите бесплатно онлайн сериалы от любимых каналов';
 
 \Yii::$app->view->registerMetaTag([
     'name' => 'description',

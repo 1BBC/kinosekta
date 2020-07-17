@@ -18,16 +18,16 @@ use yii\helpers\Inflector;
     'content' => $year,
 ]);
 
-$this->title = 'Сериалы ' . $year .' года смотреть бесплатно онлайн в хорошем качестве';
+$this->title = 'Сериалы ' . $year .' года';
 
 \Yii::$app->view->registerMetaTag([
     'name' => 'description',
-    'content' => 'Лучшие сериалы ' . $year . 'года.',
+    'content' => 'Лучшие сериалы ' . $year . ' года смотреть бесплатно онлайн в хорошем качестве.',
 ]);
 
 \Yii::$app->view->registerMetaTag([
     'name' => 'og:description',
-    'content' => 'Лучшие сериалы ' . $year . 'года.',
+    'content' => 'Лучшие сериалы ' . $year . ' года смотреть бесплатно онлайн в хорошем качестве.',
 ]);
 
 //\Yii::$app->view->registerMetaTag([
