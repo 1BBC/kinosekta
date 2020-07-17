@@ -45,8 +45,10 @@ class MainParserController extends Controller {
             try {
                 if ($movie == 1) {
                     $vcData = $this->videoCdn->getMovies(['page' => $page, 'year' => $year]);
+                    $this->stdout("DADAD\n", Console::FG_PURPLE);
                 } else {
                     $vcData = $this->videoCdn->getTvs(['page' => $page, 'year' => $year]);
+                    $this->stdout("NETNET\n", Console::FG_PURPLE);
                 }
             } catch (Exception $e) {
                 $this->stdout("ERR: " . $e->getMessage()  ."\n", Console::FG_RED);
@@ -56,13 +58,13 @@ class MainParserController extends Controller {
 
             foreach ($vcData->data as $content) {
                 $count++;
-
+                $this->stdout("{$content->content_type}}\n", Console::FG_PURPLE);
                 $params['kp_id']   = $content->kinopoisk_id ?? null;
                 $params['imdb_id'] = $content->imdb_id      ?? null;
                 $params['title']   = $content->ru_title     ?? null;
                 $params['type']    = $content->content_type ?? 'movie';
 
-                $this->tryWrap($count, $params);
+//                $this->tryWrap($count, $params);
             }
         }
     }
