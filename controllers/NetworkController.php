@@ -63,7 +63,7 @@ class NetworkController extends \yii\web\Controller
         $network = $request->post('s_network');
 //        print_r($page);die();
 
-        $tvs = Yii::$app->db->createCommand('SELECT tv.id, tv.title, tv.r_kp, tv.r_imdb, tv.first_air_date FROM tv join tv_network as tn ON tv.id=tn.tv_id WHERE network_id=:id ORDER BY tv.id LIMIT :limit,30')
+        $tvs = Yii::$app->db->createCommand('SELECT tv.id, tv.title, tv.r_kp, tv.r_imdb, tv.first_air_date FROM tv join tv_network as tn ON tv.id=tn.tv_id WHERE network_id=:id ORDER BY tv.id DESC LIMIT :limit,30')
             ->bindValue(':id', (int) $network)
             ->bindValue(':limit', (int) ($page-1)*30)
             ->queryAll();
