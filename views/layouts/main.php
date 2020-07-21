@@ -30,6 +30,7 @@ SiteAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/img/logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:wght@300&display=swap" rel="stylesheet">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
@@ -48,7 +49,8 @@ SiteAsset::register($this);
     <div class="container">
         <a class="navbar-brand" href="/">
 <!--            <img src="http://porno365.blog/settings/l8.png" width="90%" alt="">-->
-<!--            <img src="/img/logo.png" alt="logo">-->
+<!--            <img height="30" src="https://img.icons8.com/pastel-glyph/2x/movie-beginning.png" alt="logo">-->
+            <i class="fa fa-gas-pump"></i>
             <b>KinoGaz.online</b>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
