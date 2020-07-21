@@ -2,8 +2,10 @@
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
+/* @var $cartoons object */
 /* @var $movies object */
 /* @var $tvs object */
+/* @var $tv_cartoons object */
 /* @var $peoples object */
 
 use yii\helpers\Html;
@@ -122,6 +124,86 @@ $this->title = 'Фильмы, сериалы, мультфильмы смотр�
 
     </div>
     <a role="button" href="/serialy/" class="btn btn-sm btn-block btn-outline-dark">смотреть все сериалы</a>
+
+    <hr>
+
+    <h2>Мультфильмы</h2>
+
+    <div class="row row-figure">
+
+        <?php foreach ($cartoons as $cartoon):?>
+
+            <div class="card-film figure col-lg-2 col-md-3 col-sm-4 col-6 my-2">
+
+                <div class="img-figure-block">
+                    <a href="<?= '/filmy/' . $cartoon['id'] . '-' . Inflector::slug($cartoon['title']) ?>">
+                        <?php $poster = "/i/f/p/" . (int) ($cartoon['id'] / 1000) . "/" . $cartoon['id'] . ".jpg"; ?>
+                        <img src="<?= $poster ?>" style="width: 100%; box-shadow: 0 0 8px rgba(0,0,0,0.5);" class="image-figure figure-img img-fluid rounded" alt="<?=$cartoon['title']?>">
+                        <div class="img-figure-overlay">
+                            <div class="img-figure-text"><i class="far fa-play-circle"></i></div>
+                        </div>
+                    </a>
+
+
+                </div>
+
+                <?php
+                $rating =  ($cartoon['r_kp']) ? ($cartoon['r_kp'] / 10) : ($cartoon['r_imdb']) ?  ($cartoon['r_kp'] / 10) : null;
+                $rating = (!empty($rating)) ? ', ★ ' . $rating : null;
+                ?>
+
+                <div class="figure-caption">
+                    <?= Html::a($cartoon['title'], ['filmy/view', 'id' => $cartoon['id'], 'title' => Inflector::slug($cartoon['title'])], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?>
+                    <!--                    <a href="movie.html" style="margin-bottom: 0px; font-size: 1.3em" class="font-weight-bold">--><?//= $movie['title']?><!--</a>-->
+                    <p class="font-weight-light" style="margin-bottom: 0; font-size: 0.9em"><a style="color: #6C757D;" href="/serialy/<?= date_format(date_create($cartoon['release_date']), 'Y')?>-goda/"><?= date_format(date_create($cartoon['release_date']), 'Y')?></a><?= $rating ?></p>
+                </div>
+
+            </div>
+
+        <?php endforeach;?>
+
+    </div>
+    <a role="button" href="/filmy/multfilmi/" class="btn btn-sm btn-block btn-outline-dark">смотреть все мультфильмы</a>
+
+    <hr>
+
+    <h2>Мультсериалы</h2>
+
+    <div class="row row-figure">
+
+        <?php foreach ($tv_cartoons as $tc):?>
+
+            <div class="card-film figure col-lg-2 col-md-3 col-sm-4 col-6 my-2">
+
+                <div class="img-figure-block">
+                    <a href="<?= '/serialy/' . $tc['id'] . '-' . Inflector::slug($tc['title']) ?>">
+                        <?php $poster = "/i/s/p/" . (int) ($tc['id'] / 1000) . "/" . $tc['id'] . ".jpg"; ?>
+                        <img src="<?= $poster ?>" style="width: 100%; box-shadow: 0 0 8px rgba(0,0,0,0.5);" class="image-figure figure-img img-fluid rounded" alt="<?=$tc['title']?>">
+                        <div class="img-figure-overlay">
+                            <div class="img-figure-text"><i class="far fa-play-circle"></i></div>
+                        </div>
+                    </a>
+
+
+                </div>
+
+                <?php
+                $rating =  ($tc['r_kp']) ? ($tc['r_kp'] / 10) : ($tc['r_imdb']) ?  ($tc['r_kp'] / 10) : null;
+                $rating = (!empty($rating)) ? ', ★ ' . $rating : null;
+                ?>
+
+                <div class="figure-caption">
+                    <?= Html::a($tc['title'], ['serialy/view', 'id' => $tc['id'], 'title' => Inflector::slug($tc['title'])], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?>
+                    <!--                    <a href="movie.html" style="margin-bottom: 0px; font-size: 1.3em" class="font-weight-bold">--><?//= $movie['title']?><!--</a>-->
+                    <p class="font-weight-light" style="margin-bottom: 0; font-size: 0.9em"><a style="color: #6C757D;" href="/serialy/<?= date_format(date_create($tc['first_air_date']), 'Y')?>-goda/"><?= date_format(date_create($tc['first_air_date']), 'Y')?></a><?= $rating ?></p>
+                </div>
+
+            </div>
+
+        <?php endforeach;?>
+
+    </div>
+    <a role="button" href="/serialy/multfilmi/" class="btn btn-sm btn-block btn-outline-dark">смотреть все мультсериалы</a>
 
     <hr>
 

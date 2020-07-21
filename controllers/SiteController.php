@@ -73,13 +73,19 @@ class SiteController extends Controller
             $arr['tvs'] = Yii::$app->db->createCommand('SELECT  id, title, r_kp, r_imdb, first_air_date FROM (SELECT id, title, r_kp, r_imdb, first_air_date, popularity FROM tv ORDER BY id DESC LIMIT 100) AS s ORDER BY s.popularity DESC LIMIT 6')
                 ->queryAll();
 
+            $arr['cartoons'] = Yii::$app->db->createCommand('SELECT  id, title, r_kp, r_imdb, release_date FROM (SELECT id, title, r_kp, r_imdb, release_date, popularity FROM movie WHERE is_animation=1 ORDER BY id DESC LIMIT 100) AS s ORDER BY s.popularity DESC LIMIT 6')
+                ->queryAll();
+
+            $arr['tv_cartoons'] = Yii::$app->db->createCommand('SELECT  id, title, r_kp, r_imdb, first_air_date FROM (SELECT id, title, r_kp, r_imdb, first_air_date, popularity FROM tv WHERE is_animation=1 ORDER BY id DESC LIMIT 100) AS s ORDER BY s.popularity DESC LIMIT 6')
+                ->queryAll();
+
             $arr['peoples'] = Yii::$app->db->createCommand('SELECT id, name, orig_name FROM people ORDER BY popularity DESC LIMIT 6')
                 ->queryAll();
 
             return $arr;
         },60*60*24);
 
-        return $this->render('index', ['movies' => $cacheMain['movies'], 'tvs' => $cacheMain['tvs'], 'peoples' => $cacheMain['peoples']]);
+        return $this->render('index', ['movies' => $cacheMain['movies'], 'tvs' => $cacheMain['tvs'], 'peoples' => $cacheMain['peoples'], 'cartoons' => $cacheMain['cartoons'], 'tv_cartoons' => $cacheMain['tv_cartoons']]);
     }
 
     /**
