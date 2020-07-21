@@ -89,7 +89,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php shuffle($similar_movies); $sm = 4?>
                 <?php foreach (array_slice($similar_movies, 0, 4) as $sm):?>
                     <?php
-                    $imgPath = '/i/f/s/' . $folder . '/' . $sm['id'] . '-2.jpg';
+                    $sFolder = (int) ($sm['id'] / 1000);
+                    $imgPath = '/i/f/s/' . $sFolder . '/' . $sm['id'] . '-2.jpg';
                     $smTitle = Inflector::slug($sm['title']);
                     ?>
                 <div class="center">
