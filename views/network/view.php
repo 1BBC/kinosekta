@@ -90,7 +90,7 @@ $this->registerJsFile(
                 <div class="figure-caption">
                     <?= Html::a($tv['title'], ['serialy/view', 'id' => $tv['id'], 'title' => Inflector::slug($tv['title'])], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?>
                     <!--                    <a href="movie.html" style="margin-bottom: 0px; font-size: 1.3em" class="font-weight-bold">--><?//= $tv['title']?><!--</a>-->
-                    <p class="font-weight-light" style="margin-bottom: 0; font-size: 0.9em"><a style="color: #6C757D;" href="/filmy/<?= $date?>-goda/"><?= $date?></a><?= $rating ?></p>
+                    <p class="font-weight-light" style="margin-bottom: 0; font-size: 0.9em"><a style="color: #6C757D;" href="/serialy/<?= $date?>-goda/"><?= $date?></a><?= $rating ?></p>
                 </div>
 
             </div>
