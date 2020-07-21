@@ -145,7 +145,7 @@ class SitemapController extends \yii\web\Controller
 
             foreach ($networks as $network){
                 $urls[] = array(
-                    'loc' => Url::to(['network/view', 'id' => $network['id'], 'title' => Inflector::slug($network['name'])]),
+                    'loc' => Url::to(['network/view', 'id' => $network['id'], 'name' => Inflector::slug($network['name'])]),
                     'priority' => 0.6
                 );
             }
