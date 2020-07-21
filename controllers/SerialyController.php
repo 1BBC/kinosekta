@@ -338,7 +338,7 @@ class SerialyController extends Controller
             $page = 0;
         }
 
-        $tv = Yii::$app->db->createCommand('SELECT id, title, r_kp, r_imdb, first_air_date FROM tv WHERE ' . $genre['db_name'] . '=1' . ' ORDER BY id DESC LIMIT ' . $page . ',30')
+        $tvs = Yii::$app->db->createCommand('SELECT id, title, r_kp, r_imdb, first_air_date FROM tv WHERE ' . $genre['db_name'] . '=1' . ' ORDER BY id DESC LIMIT ' . $page . ',30')
             ->queryAll();
 
 
