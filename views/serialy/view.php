@@ -81,29 +81,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container" style="background-color: #FFFFFF; box-shadow: 0 0 1px rgba(0,0,0,0.5);;">
     <div id="main" class="row">
-        <div class="col-lg-3" id="sidebar" style="border-right: 1px double #E8E8E8;">
-
-            <?= $this->render('/layouts/serialy-genres-list');?>
-            <hr>
-            <div class="row my-4 no-gutters justify-content-center">
-                <?php shuffle($similar_tvs); $sm = 4?>
-                <?php foreach (array_slice($similar_tvs, 0, 4) as $sm):?>
-                    <?php
-                    $sFolder = (int) ($sm['id'] / 1000);
-                    $imgPath = '/i/s/s/' . $sFolder . '/' . $sm['id'] . '-2.jpg';
-                    $smTitle = Inflector::slug($sm['title']);
-                    ?>
-                    <div class="center">
-                        <div><?= Html::a('<img src="' . $imgPath . '" style="" class="img-thumbnail" alt="'. $sm['title'] . '">', ['serialy/view', 'id' => $sm['id'], 'title' => $smTitle], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?></div>
-
-
-                        <div><?= Html::a($sm['title'], ['serialy/view', 'id' => $sm['id'], 'title' => $smTitle], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?></div>
-                        <br>
-                        <br>
-                    </div>
-                <?php endforeach;?>
-            </div>
-        </div>
         <div itemscope itemtype="http://schema.org/Movie" id="content" class="col-lg-9 col-12 ">
             <div class="">&nbsp;</div>
             <nav aria-label="breadcrumb my-2">
@@ -530,6 +507,29 @@ $this->params['breadcrumbs'][] = $this->title;
                     <br>
 
                 </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-12" id="sidebar" style="border-left: 1px double #E8E8E8;">
+
+            <?= $this->render('/layouts/serialy-genres-list');?>
+            <hr>
+            <div class="row my-4 no-gutters justify-content-center">
+                <?php shuffle($similar_tvs); $sm = 4?>
+                <?php foreach (array_slice($similar_tvs, 0, 4) as $sm):?>
+                    <?php
+                    $sFolder = (int) ($sm['id'] / 1000);
+                    $imgPath = '/i/s/s/' . $sFolder . '/' . $sm['id'] . '-2.jpg';
+                    $smTitle = Inflector::slug($sm['title']);
+                    ?>
+                    <div class="center">
+                        <div><?= Html::a('<img src="' . $imgPath . '" style="" class="img-thumbnail" alt="'. $sm['title'] . '">', ['serialy/view', 'id' => $sm['id'], 'title' => $smTitle], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?></div>
+
+
+                        <div><?= Html::a($sm['title'], ['serialy/view', 'id' => $sm['id'], 'title' => $smTitle], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?></div>
+                        <br>
+                        <br>
+                    </div>
+                <?php endforeach;?>
             </div>
         </div>
     </div>

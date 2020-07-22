@@ -31,16 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container" style="background-color: #FFFFFF; box-shadow: 0 0 1px rgba(0,0,0,0.5);;">
     <div class="row" id="main">
-        <div id="sidebar" class="col-lg-3" style="border-right: 1px double #E8E8E8;">
-            <!--            <div class="row">-->
-            <!--                <div class="bg-secondary text-white font-weight-bold" style="width: 100%; padding: 5px 15px;">-->
-            <!--                    <p style="font-size: 15px; margin: 0px;">Панель навигации</p>-->
-            <!--                </div>-->
-            <!--            </div>-->
-
-            <?= $this->render('/layouts/genres-list');?>
-            <hr>
-        </div>
         <div id="content" class="col-lg-9 col-12">
             <div class="">&nbsp;</div>
             <nav aria-label="breadcrumb my-2">
@@ -229,6 +219,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             <?php endif;?>
 
+        </div>
+        <div id="sidebar" class="col-lg-3" style="border-left: 1px double #E8E8E8;">
+            <!--            <div class="row">-->
+            <!--                <div class="bg-secondary text-white font-weight-bold" style="width: 100%; padding: 5px 15px;">-->
+            <!--                    <p style="font-size: 15px; margin: 0px;">Панель навигации</p>-->
+            <!--                </div>-->
+            <!--            </div>-->
+
+            <?= $this->render('/layouts/genres-list');?>
+            <hr>
         </div>
     </div>
 

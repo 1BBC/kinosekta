@@ -81,29 +81,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container" style="background-color: #FFFFFF; box-shadow: 0 0 1px rgba(0,0,0,0.5);;">
     <div id="main" class="row">
-        <div class="col-lg-3" id="sidebar" style="border-right: 1px double #E8E8E8;">
-
-            <?= $this->render('/layouts/genres-list');?>
-            <hr>
-            <div class="row my-4 no-gutters justify-content-center">
-                <?php shuffle($similar_movies); $sm = 4?>
-                <?php foreach (array_slice($similar_movies, 0, 4) as $sm):?>
-                    <?php
-                    $sFolder = (int) ($sm['id'] / 1000);
-                    $imgPath = '/i/f/s/' . $sFolder . '/' . $sm['id'] . '-2.jpg';
-                    $smTitle = Inflector::slug($sm['title']);
-                    ?>
-                <div class="center">
-                    <div><?= Html::a('<img src="' . $imgPath . '" style="" class="img-thumbnail" alt="'. $sm['title'] . '">', ['filmy/view', 'id' => $sm['id'], 'title' => $smTitle], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?></div>
-
-
-                    <div><?= Html::a($sm['title'], ['filmy/view', 'id' => $sm['id'], 'title' => $smTitle], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?></div>
-                    <br>
-                    <br>
-                </div>
-                <?php endforeach;?>
-            </div>
-        </div>
         <div itemscope itemtype="http://schema.org/Movie" id="content" class="col-lg-9 col-12 ">
             <div class="">&nbsp;</div>
             <nav aria-label="breadcrumb my-2">
@@ -139,43 +116,43 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             <?php if(!empty($movie['r_kp']) || !empty($movie['r_imdb'])):?>
                                 <div class="card my-2">
-                                <div class="card-body text-center" style="padding: 10px">
+                                    <div class="card-body text-center" style="padding: 10px">
 
-                                    <?php if (!empty($movie['r_kp'])):?>
-                                        <?php $roundRkp = round($movie['r_kp'] / 10);?>
-                                        <ul class="list-inline" style="margin-bottom: 0">
-                                            <li class="list-inline-item"><img alt="kp" width="25" style="vertical-align: bottom" src="/img/kp.ico"></li>
-                                            <li class="list-inline-item"><h4 style="margin-bottom: 0"><span itemprop="ratingValue"><?= $movie['r_kp'] / 10?></span> <small>/ <span itemprop="bestRating">10</span></small></h4></li>
-                                        </ul>
-                                        <span itemprop="ratingCount" style="display: none">5000</span>
-                                        <?php for($i = 1; $i <= $roundRkp; $i++):?>
-                                            <button type="button" style="padding: 3px 5px;" class="btn btn-warning btn-sm" aria-label="Left Align"></button>
-                                        <?php endfor;?>
+                                        <?php if (!empty($movie['r_kp'])):?>
+                                            <?php $roundRkp = round($movie['r_kp'] / 10);?>
+                                            <ul class="list-inline" style="margin-bottom: 0">
+                                                <li class="list-inline-item"><img alt="kp" width="25" style="vertical-align: bottom" src="/img/kp.ico"></li>
+                                                <li class="list-inline-item"><h4 style="margin-bottom: 0"><span itemprop="ratingValue"><?= $movie['r_kp'] / 10?></span> <small>/ <span itemprop="bestRating">10</span></small></h4></li>
+                                            </ul>
+                                            <span itemprop="ratingCount" style="display: none">5000</span>
+                                            <?php for($i = 1; $i <= $roundRkp; $i++):?>
+                                                <button type="button" style="padding: 3px 5px;" class="btn btn-warning btn-sm" aria-label="Left Align"></button>
+                                            <?php endfor;?>
 
-                                        <?php for($i = $roundRkp; $i < 10; $i++):?>
-                                            <button type="button" style="padding: 3px 5px;" class="btn btn-default btn-grey btn-sm" aria-label="Left Align"></button>
-                                        <?php endfor;?>
+                                            <?php for($i = $roundRkp; $i < 10; $i++):?>
+                                                <button type="button" style="padding: 3px 5px;" class="btn btn-default btn-grey btn-sm" aria-label="Left Align"></button>
+                                            <?php endfor;?>
 
-                                    <?php endif;?>
+                                        <?php endif;?>
 
-                                    <?php if (!empty($movie['r_imdb'])):?>
-                                        <?php $roundRimdb = round($movie['r_imdb'] / 10);?>
-                                        <ul class="list-inline" style="margin-bottom: 0">
-                                            <li class="list-inline-item"><img alt="imdb" width="25" style="vertical-align: bottom" src="/img/imdb.ico"></li>
-                                            <li class="list-inline-item"><h4 style="margin-bottom: 0"><?= $movie['r_imdb'] / 10?> <small>/ 10</small></h4></li>
-                                        </ul>
+                                        <?php if (!empty($movie['r_imdb'])):?>
+                                            <?php $roundRimdb = round($movie['r_imdb'] / 10);?>
+                                            <ul class="list-inline" style="margin-bottom: 0">
+                                                <li class="list-inline-item"><img alt="imdb" width="25" style="vertical-align: bottom" src="/img/imdb.ico"></li>
+                                                <li class="list-inline-item"><h4 style="margin-bottom: 0"><?= $movie['r_imdb'] / 10?> <small>/ 10</small></h4></li>
+                                            </ul>
 
-                                        <?php for($i = 1; $i <= $roundRimdb; $i++):?>
-                                            <button type="button" style="padding: 3px 5px;" class="btn btn-warning btn-sm" aria-label="Left Align"></button>
-                                        <?php endfor;?>
+                                            <?php for($i = 1; $i <= $roundRimdb; $i++):?>
+                                                <button type="button" style="padding: 3px 5px;" class="btn btn-warning btn-sm" aria-label="Left Align"></button>
+                                            <?php endfor;?>
 
-                                        <?php for($i = $roundRimdb; $i < 10; $i++):?>
-                                            <button type="button" style="padding: 3px 5px;" class="btn btn-default btn-grey btn-sm" aria-label="Left Align"></button>
-                                        <?php endfor;?>
-                                    <?php endif;?>
+                                            <?php for($i = $roundRimdb; $i < 10; $i++):?>
+                                                <button type="button" style="padding: 3px 5px;" class="btn btn-default btn-grey btn-sm" aria-label="Left Align"></button>
+                                            <?php endfor;?>
+                                        <?php endif;?>
 
+                                    </div>
                                 </div>
-                            </div>
                             <?php endif;?>
                         </div>
                     </div>
@@ -231,26 +208,26 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
 
                         </tr>
-<!--                        <tr>-->
-<!--                            <td class="text-muted"><small>Оригинальное название:</small></td>-->
-<!--                            <td>--><?//= $movie['orig_title'] ?><!--</td>-->
-<!--                        </tr>-->
+                        <!--                        <tr>-->
+                        <!--                            <td class="text-muted"><small>Оригинальное название:</small></td>-->
+                        <!--                            <td>--><?//= $movie['orig_title'] ?><!--</td>-->
+                        <!--                        </tr>-->
                         <tr>
                             <td class="text-muted"><small>Год:</small></td>
                             <?php
-                               $y =  $movie['year'];
-                               $yAgo = 2020 - $y;
+                            $y =  $movie['year'];
+                            $yAgo = 2020 - $y;
 
-                               if ($yAgo == 0) {
-                                   $yLabel = 'Новинка';
-                               } elseif ($yAgo > 4 && $yAgo < 21) {
-                                   $yLabel = $yAgo . ' лет назад';
-                               }else {
-                                   $lastDigit = ($yAgo%10);
-                                   $yLabel = $yAgo . ' '
-                                       . (($lastDigit > 1 && $lastDigit < 5) ? 'года' : (($lastDigit == 1) ? 'год' : 'лет'))
-                                       . ' ' . 'назад';
-                               }
+                            if ($yAgo == 0) {
+                                $yLabel = 'Новинка';
+                            } elseif ($yAgo > 4 && $yAgo < 21) {
+                                $yLabel = $yAgo . ' лет назад';
+                            }else {
+                                $lastDigit = ($yAgo%10);
+                                $yLabel = $yAgo . ' '
+                                    . (($lastDigit > 1 && $lastDigit < 5) ? 'года' : (($lastDigit == 1) ? 'год' : 'лет'))
+                                    . ' ' . 'назад';
+                            }
                             ?>
                             <td><a title="Смотреть фильмы <?=$y?> года" href="/filmy/<?=$y?>-goda/"><span itemprop="dateCreated"><?= $y ?></span></a><code> (<?=$yLabel?>)</code></td>
                         </tr>
@@ -259,14 +236,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <td class="text-muted"><small>Страна:</small></td>
                                 <td>
                                     <?php
-                                        $countryArr = array();
-                                        foreach ($movie['countries'] as $country) {
-                                            if (isset($country['url'])) {
-                                                array_push($countryArr, '<a href="/filmy/' . $country['iso'] . '-' . $country['url'] . '/">' . $country['name'] . '</a>');
-                                            } else {
-                                                array_push($countryArr, $country['name']);
-                                            }
+                                    $countryArr = array();
+                                    foreach ($movie['countries'] as $country) {
+                                        if (isset($country['url'])) {
+                                            array_push($countryArr, '<a href="/filmy/' . $country['iso'] . '-' . $country['url'] . '/">' . $country['name'] . '</a>');
+                                        } else {
+                                            array_push($countryArr, $country['name']);
                                         }
+                                    }
                                     ?>
                                     <?= implode(', ', $countryArr) ?>
                                 </td>
@@ -285,23 +262,23 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?php endif;?>
 
                         <?php if (!empty($movie['genres'])):?>
-                        <tr>
-                            <td class="text-muted"><small>Жанр:</small></td>
-                            <td>
-                                <?php $genresStr = ''; $lastGenre = end($movie['genres'])?>
+                            <tr>
+                                <td class="text-muted"><small>Жанр:</small></td>
+                                <td>
+                                    <?php $genresStr = ''; $lastGenre = end($movie['genres'])?>
 
-                                <?php foreach ($movie['genres'] as $genre): ?>
-                                    <?php
-                                    $genresStr .= '<a title="Фильмы в жанре ' . $genre['name'] . '" href="/filmy/' . $genre['url'] . '/"><span itemprop="genre">' . $genre['name'] . '</span></a>';
-                                    if ($genre != $lastGenre) {
-                                        $genresStr .= ', ';
-                                    }
-                                    ?>
-                                <?php endforeach;?>
-                                <?= $genresStr ?>
-                            </td>
+                                    <?php foreach ($movie['genres'] as $genre): ?>
+                                        <?php
+                                        $genresStr .= '<a title="Фильмы в жанре ' . $genre['name'] . '" href="/filmy/' . $genre['url'] . '/"><span itemprop="genre">' . $genre['name'] . '</span></a>';
+                                        if ($genre != $lastGenre) {
+                                            $genresStr .= ', ';
+                                        }
+                                        ?>
+                                    <?php endforeach;?>
+                                    <?= $genresStr ?>
+                                </td>
 
-                        </tr>
+                            </tr>
                         <?php endif;?>
 
                         <?php if (!empty($movie['runtime'])):?>
@@ -309,11 +286,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <td class="text-muted"><small>Время:</small></td>
                                 <td>
                                     <?php
-                                        $time = $movie['runtime'];
-                                        $hours = floor($time / 60);
-                                        $minutes = $time % 60;
+                                    $time = $movie['runtime'];
+                                    $hours = floor($time / 60);
+                                    $minutes = $time % 60;
 
-                                        echo '<span itemprop="duration">' . sprintf('%02d:%02d', $hours, $minutes) . '</span>  <code>(' . $time . ' мин.)</code>';
+                                    echo '<span itemprop="duration">' . sprintf('%02d:%02d', $hours, $minutes) . '</span>  <code>(' . $time . ' мин.)</code>';
                                     ?>
                                 </td>
                             </tr>
@@ -471,30 +448,30 @@ $this->params['breadcrumbs'][] = $this->title;
                                         $v = 'name_eng=' . $movie['orig_title'];
                                     }
 
-//                                    if (!empty($movie['images'])){
-//                                        $frame_poster = '&poster=https://image.tmdb.org/t/p/w500/' . explode(',', $movie['images'])[0] . '.jpg';
-//                                    }
+                                    //                                    if (!empty($movie['images'])){
+                                    //                                        $frame_poster = '&poster=https://image.tmdb.org/t/p/w500/' . explode(',', $movie['images'])[0] . '.jpg';
+                                    //                                    }
 
                                     $url = 'https://9684.videocdn.pw/7kytC46MWIdE?' . $v . ($frame_poster ?? '');
 
                                     ?>
 
-                                    <iframe src="<?= $url ?>" width="640" height="480" allowfullscreen></iframe>
+                                    <iframe src="<?= $url ?>" width="640" height="480" frameborder="0" allowfullscreen></iframe>
 
                                 </div>
-<!--                                <div class="card-footer" style="padding: 0px 0px 0px 10px; background-color: #1F1F1F !important ;">-->
-<!--                                    <ul class="nav nav-pills card-header-pills">-->
-<!--                                        <li class="nav-item">-->
-<!--                                            <a class="nav-link active" style="border-radius: 0;" href="#">Плєер #1</a>-->
-<!--                                        </li>-->
-<!--                                        <li class="nav-item">-->
-<!--                                            <a class="nav-link" href="#" style="color: white;">Плеер #2</a>-->
-<!--                                        </li>-->
-<!--                                        <li class="nav-item">-->
-<!--                                            <a class="nav-link" href="#" style="color: white;">Трейлер</a>-->
-<!--                                        </li>-->
-<!--                                    </ul>-->
-<!--                                </div>-->
+                                <!--                                <div class="card-footer" style="padding: 0px 0px 0px 10px; background-color: #1F1F1F !important ;">-->
+                                <!--                                    <ul class="nav nav-pills card-header-pills">-->
+                                <!--                                        <li class="nav-item">-->
+                                <!--                                            <a class="nav-link active" style="border-radius: 0;" href="#">Плєер #1</a>-->
+                                <!--                                        </li>-->
+                                <!--                                        <li class="nav-item">-->
+                                <!--                                            <a class="nav-link" href="#" style="color: white;">Плеер #2</a>-->
+                                <!--                                        </li>-->
+                                <!--                                        <li class="nav-item">-->
+                                <!--                                            <a class="nav-link" href="#" style="color: white;">Трейлер</a>-->
+                                <!--                                        </li>-->
+                                <!--                                    </ul>-->
+                                <!--                                </div>-->
                             </div>
                         </div>
 
@@ -598,11 +575,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?php foreach ($movie['actors'] as $people): ?>
 
                                         <?php
-                                            $folderA = (int) ($people['id'] / 1000);
+                                        $folderA = (int) ($people['id'] / 1000);
                                         ?>
                                         <div itemprop="actor" itemscope itemtype="http://schema.org/Person" class="parent">
                                             <?= Html::a('<img itemprop="image" src="/i/a/' . $folderA . '/' . $people['id'] . '.jpg" class="" alt="" height="244">', ['aktery/view', 'id' => $people['id'], 'title' => $people['url_name']], ['itemprop' => 'url', 'style' => 'color: #FC8638;'])?>
-<!--                                            <a href=""><img src="/i/a/$folderA/$people['id'].jpg" class="" alt="" height="244px;"></a>-->
+                                            <!--                                            <a href=""><img src="/i/a/$folderA/$people['id'].jpg" class="" alt="" height="244px;"></a>-->
                                             <div class="font-weight-bold">
                                                 <small><?= $people['role'] ?></small><br>
                                                 <?= Html::a('<span itemprop="name">' . $people['orig_name'] . '</span>', ['aktery/view', 'id' => $people['id'], 'title' => $people['url_name']], ['style' => 'color: #FC8638;'])?>
@@ -619,6 +596,29 @@ $this->params['breadcrumbs'][] = $this->title;
                     <br>
 
                 </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-12" id="sidebar" style="border-left: 1px double #E8E8E8;">
+
+            <?= $this->render('/layouts/genres-list');?>
+            <hr>
+            <div class="row my-4 no-gutters justify-content-center">
+                <?php shuffle($similar_movies); $sm = 4?>
+                <?php foreach (array_slice($similar_movies, 0, 4) as $sm):?>
+                    <?php
+                    $sFolder = (int) ($sm['id'] / 1000);
+                    $imgPath = '/i/f/s/' . $sFolder . '/' . $sm['id'] . '-2.jpg';
+                    $smTitle = Inflector::slug($sm['title']);
+                    ?>
+                <div class="center">
+                    <div><?= Html::a('<img src="' . $imgPath . '" style="" class="img-thumbnail" alt="'. $sm['title'] . '">', ['filmy/view', 'id' => $sm['id'], 'title' => $smTitle], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?></div>
+
+
+                    <div><?= Html::a($sm['title'], ['filmy/view', 'id' => $sm['id'], 'title' => $smTitle], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?></div>
+                    <br>
+                    <br>
+                </div>
+                <?php endforeach;?>
             </div>
         </div>
     </div>
