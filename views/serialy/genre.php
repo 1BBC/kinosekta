@@ -80,7 +80,7 @@ $this->registerJsFile(
 
                 </div>
                 <?php
-                $rating =  ($tv['r_kp']) ? ($tv['r_kp'] / 10) : ($tv['r_imdb']) ?  ($tv['r_kp'] / 10) : null;
+                $rating =  ($tv['r_kp']) ? ($tv['r_kp'] / 10) : (($tv['r_imdb']) ? ($tv['r_imdb'] / 10) : null);
                 $rating = (!empty($rating)) ? '★ ' . $rating : null;
                 ?>
                 <div class="figure-caption">
