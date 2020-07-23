@@ -18,16 +18,16 @@ use yii\helpers\Inflector;
     'content' => $network['id'],
 ]);
 
-$this->title = 'Лучшие сериалы от' . $network['name'] .' смотреть бесплатно онлайн в хорошем качестве';
+$this->title = 'Лучшие сериалы от ' . $network['name'] .' смотреть бесплатно онлайн в хорошем качестве';
 
 \Yii::$app->view->registerMetaTag([
     'name' => 'description',
-    'content' => 'Сериалы от' . $network['name'] .' абсолютно бесплатно. Список новинок и лучших сериалов от ' . $network['name'],
+    'content' => 'Сериалы от ' . $network['name'] .' абсолютно бесплатно. Список новинок и лучших сериалов от ' . $network['name'],
 ]);
 
 \Yii::$app->view->registerMetaTag([
     'name' => 'og:description',
-    'content' => 'Сериалы от' . $network['name'] .' абсолютно бесплатно. Список новинок и лучших сериалов от ' . $network['name'],
+    'content' => 'Сериалы от ' . $network['name'] .' абсолютно бесплатно. Список новинок и лучших сериалов от ' . $network['name'],
 ]);
 
 //\Yii::$app->view->registerMetaTag([
