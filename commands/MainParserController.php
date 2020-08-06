@@ -95,7 +95,7 @@ class MainParserController extends Controller {
             try {
                 $vcData = (array) $this->videoCdn->getByImdbId($ids[$i]);
             } catch (Exception $e) {
-                $this->stdout("Don`t find ($this->videoCdn->getByImdbId) by imdb " . $ids[$i] ."\n", Console::FG_RED);
+                $this->stdout("Don`t find (videoCdn->getByImdbId) by imdb " . $ids[$i] ."\n", Console::FG_RED);
                 continue;
             }
 
