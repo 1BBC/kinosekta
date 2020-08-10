@@ -422,6 +422,8 @@ class FilmyController extends Controller
             $arr = array();
             $arr['iso'] = mb_strtolower($country);
 
+            if (empty($countrysList[$country])) continue;
+
             if (is_array($countrysList[$country])) {
                 $arr['name'] = $countrysList[$country]['name'];
                 $arr['url'] = $countrysList[$country]['url'];
