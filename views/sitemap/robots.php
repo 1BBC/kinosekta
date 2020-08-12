@@ -1,6 +1,6 @@
 User-agent: *
 Disallow: /site/
-Disallow: /najti/
+Disallow: /najti
 Disallow: /filmy/nayti
 Disallow: /aktery/najti
 Disallow: /serialy/najti
