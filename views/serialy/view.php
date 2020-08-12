@@ -336,7 +336,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <div class="mt-2">
                         <h2>Сюжет</h2>
-                        <div id="article" itemprop="description"><?= $tv['overview'] ?? '' ?></div>
+                        <div id="article" itemprop="description"><?= nl2br(($tv['overview'] ?? '')) ?></div>
                     </div>
 
                 </div>

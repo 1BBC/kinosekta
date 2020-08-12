@@ -30,7 +30,7 @@ class NajtiController extends Controller
 
     public function beforeAction($action)
     {
-        $this->q = Yii::$app->request->get('q');
+        $this->q = htmlspecialchars(Yii::$app->request->get('q'));
 
         return parent::beforeAction($action);
     }
