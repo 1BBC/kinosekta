@@ -524,9 +524,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="center">
                         <div><?= Html::a('<img src="' . $imgPath . '" style="" class="img-thumbnail" alt="'. $sm['title'] . '">', ['serialy/view', 'id' => $sm['id'], 'title' => $smTitle], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?></div>
 
-
                         <div><?= Html::a($sm['title'], ['serialy/view', 'id' => $sm['id'], 'title' => $smTitle], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?></div>
-                        <br>
                         <br>
                     </div>
                 <?php endforeach;?>

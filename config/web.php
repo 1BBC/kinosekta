@@ -58,7 +58,10 @@ $config = [
             'rules' => [
                 '<action:|about|login>' => 'site/<action>',
                 'admin/<controller>/<action>' => 'admin/<controller>/<action>',
-                '<action>/najti' => 'najti/<action>',
+
+                'najti' => 'najti/index',
+                'najti/<action>' => 'najti/<action>',
+                //'<action>/najti' => 'najti/<action>',
                 'filmy/<action:|page|page-count|country|page-country|genre|page-genre|year|page-year>' => 'filmy/<action>',
                 'serialy/<action:|page|page-count|genre|page-genre|year|page-year>' => 'serialy/<action>',
                 'aktery/<action:|page|page-count>' => 'aktery/<action>',

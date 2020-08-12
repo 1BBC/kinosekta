@@ -52,23 +52,6 @@ $(function () {
             }
         ]
     });
-});
+})
 
-// if ( $(window).width() < 992 ) {
-//     $('#sidebar').appendTo( $('#main') );
-//
-// }
-//
-// if ( $(window).width() > 992 ) {
-//     $('#content').appendTo( $('#main') );
-// }
-
-// $(window).resize(function() {
-//     if ( $(window).width() < 992 ) {
-//         // $('#sidebar').appendTo( $('#main') );
-//     }
-//
-//     if ( $(window).width() > 992 ) {
-//         // $('#content').appendTo( $('#main') );
-//     }
-// });
+$('.basicAutoComplete').autoComplete();

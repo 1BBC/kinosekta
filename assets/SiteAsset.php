@@ -37,6 +37,7 @@ class SiteAsset extends AssetBundle
         'js/jquery.fancybox.min.js',
         'js/readmore.min.js',
         'slick/slick.min.js',
+        'js//bootstrap-autocomplete.min.js',
         'js/main.js',
     ];
 

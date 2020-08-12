@@ -76,21 +76,15 @@ SiteAsset::register($this);
                 </li>
 
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" id="inputSearch" type="search" placeholder="Название" aria-label="Search">
-<!--                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>-->
-                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                    <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-success my-2 my-sm-0 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Поиск
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" id="findFilmy" href="#">по фильмам</a>
-                            <a class="dropdown-item" id="findSerialy" href="#">по сериалам</a>
-                            <a class="dropdown-item" id="findAktery" href="#">по актерам</a>
-                        </div>
+            <form action="/najti" class="form-inline my-2 my-lg-0">
+                <div class="input-group">
+                    <input class="form-control m r-sm-2 basicAutoComplete" data-url="/najti/autocomplete" autocomplete="off" value="<?= $_GET['q'] ?? ''?>" id="inputSearch" type="search" name="q" placeholder="Название" aria-label="Search">
+
+                    <div class="input-group-append">
+                        <button class="form-control btn btn-outline-success m r-sm-2" type="submit">Поиск</button>
                     </div>
                 </div>
+
             </form>
         </div>
     </div>
@@ -100,29 +94,9 @@ SiteAsset::register($this);
 
 
 <?php $this->endBody() ?>
-<script>
-    findFilmy.addEventListener("click", handler1);
-    findSerialy.addEventListener("click", handler2);
-    findAktery.addEventListener("click", handler3);
-
-    function handler1() {
-        if (document.getElementById('inputSearch').value != "") {
-            window.location.href = "/filmy/najti?q=" + document.getElementById('inputSearch').value;
-        }
-    }
-
-    function handler2() {
-        if (document.getElementById('inputSearch').value != "") {
-            window.location.href = "/serialy/najti?q=" + document.getElementById('inputSearch').value;
-        }
-    }
-
-    function handler3() {
-        if (document.getElementById('inputSearch').value != "") {
-            window.location.href = "/aktery/najti?q=" + document.getElementById('inputSearch').value;
-        }
-    }
-</script>
+<!--<script>-->
+<!--    $('.basicAutoComplete').autoComplete();-->
+<!--</script>-->
 </body>
 </html>
 <?php $this->endPage() ?>

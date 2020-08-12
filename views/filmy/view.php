@@ -616,7 +616,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <div><?= Html::a($sm['title'], ['filmy/view', 'id' => $sm['id'], 'title' => $smTitle], ['style' => "margin-bottom: 0px; font-size: 1em", 'class' => 'font-weight-bold'])?></div>
                     <br>
-                    <br>
                 </div>
                 <?php endforeach;?>
             </div>
