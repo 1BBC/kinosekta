@@ -514,7 +514,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $this->render('/layouts/serialy-genres-list');?>
             <hr>
             <div class="row my-4 no-gutters justify-content-center">
-                <?php shuffle($similar_tvs); $sm = 4?>
+                <?php shuffle($similar_tvs);?>
                 <?php foreach (array_slice($similar_tvs, 0, 4) as $sm):?>
                     <?php
                     $sFolder = (int) ($sm['id'] / 1000);

@@ -15,6 +15,8 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+    static $LIMIT_CONTENT = 50;
+    static $LIMIT_PAGE_CONTENT = 6;
     /**
      * {@inheritdoc}
      */
@@ -66,26 +68,36 @@ class SiteController extends Controller
     {
         $cache = Yii::$app->cache;
 
-        $cacheMain = $cache->getOrSet('main', function () {
-            $arr['movies'] = Yii::$app->db->createCommand('SELECT  id, title, r_kp, r_imdb, release_date FROM (SELECT id, title, r_kp, r_imdb, release_date, popularity FROM movie ORDER BY id DESC LIMIT 100) AS s ORDER BY s.popularity DESC LIMIT 6')
+        $arr = $cache->getOrSet('main', function () {
+            $arr['movies'] = Yii::$app->db->createCommand('SELECT  id, title, r_kp, r_imdb, release_date FROM (SELECT id, title, r_kp, r_imdb, release_date, popularity FROM movie ORDER BY id DESC LIMIT 100) AS s ORDER BY s.popularity DESC LIMIT ' . self::$LIMIT_CONTENT)
                 ->queryAll();
 
-            $arr['tvs'] = Yii::$app->db->createCommand('SELECT  id, title, r_kp, r_imdb, first_air_date FROM (SELECT id, title, r_kp, r_imdb, first_air_date, popularity FROM tv ORDER BY id DESC LIMIT 100) AS s ORDER BY s.popularity DESC LIMIT 6')
+            $arr['tvs'] = Yii::$app->db->createCommand('SELECT  id, title, r_kp, r_imdb, first_air_date FROM (SELECT id, title, r_kp, r_imdb, first_air_date, popularity FROM tv ORDER BY id DESC LIMIT 100) AS s ORDER BY s.popularity DESC LIMIT ' . self::$LIMIT_CONTENT)
                 ->queryAll();
 
-            $arr['cartoons'] = Yii::$app->db->createCommand('SELECT  id, title, r_kp, r_imdb, release_date FROM (SELECT id, title, r_kp, r_imdb, release_date, popularity FROM movie WHERE is_animation=1 ORDER BY id DESC LIMIT 100) AS s ORDER BY s.popularity DESC LIMIT 6')
+            $arr['cartoons'] = Yii::$app->db->createCommand('SELECT  id, title, r_kp, r_imdb, release_date FROM (SELECT id, title, r_kp, r_imdb, release_date, popularity FROM movie WHERE is_animation=1 ORDER BY id DESC LIMIT 100) AS s ORDER BY s.popularity DESC LIMIT ' . self::$LIMIT_CONTENT)
                 ->queryAll();
 
-            $arr['tv_cartoons'] = Yii::$app->db->createCommand('SELECT  id, title, r_kp, r_imdb, first_air_date FROM (SELECT id, title, r_kp, r_imdb, first_air_date, popularity FROM tv WHERE is_animation=1 ORDER BY id DESC LIMIT 100) AS s ORDER BY s.popularity DESC LIMIT 6')
+            $arr['tv_cartoons'] = Yii::$app->db->createCommand('SELECT  id, title, r_kp, r_imdb, first_air_date FROM (SELECT id, title, r_kp, r_imdb, first_air_date, popularity FROM tv WHERE is_animation=1 ORDER BY id DESC LIMIT 100) AS s ORDER BY s.popularity DESC LIMIT ' . self::$LIMIT_CONTENT)
                 ->queryAll();
 
-            $arr['peoples'] = Yii::$app->db->createCommand('SELECT id, name, orig_name FROM people ORDER BY popularity DESC LIMIT 6')
+            $arr['peoples'] = Yii::$app->db->createCommand('SELECT id, name, orig_name FROM people ORDER BY popularity DESC LIMIT ' . self::$LIMIT_CONTENT)
                 ->queryAll();
 
             return $arr;
         },60*60*24);
 
-        return $this->render('index', ['movies' => $cacheMain['movies'], 'tvs' => $cacheMain['tvs'], 'peoples' => $cacheMain['peoples'], 'cartoons' => $cacheMain['cartoons'], 'tv_cartoons' => $cacheMain['tv_cartoons']]);
+        foreach ($arr as $type => $content) {
+            $params[$type] = $this->sliceContent($content);
+        }
+
+        return $this->render('index', $params);
+    }
+
+    public function sliceContent($content)
+    {
+        shuffle($content);
+        return array_slice($content, 0, self::$LIMIT_PAGE_CONTENT);
     }
 
     /**

@@ -2,11 +2,11 @@
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $cartoons object */
-/* @var $movies object */
-/* @var $tvs object */
-/* @var $tv_cartoons object */
-/* @var $peoples object */
+/* @var $cartoons array */
+/* @var $movies array */
+/* @var $tvs array */
+/* @var $tv_cartoons array */
+/* @var $peoples array */
 
 use yii\helpers\Html;
 use yii\helpers\Inflector;
@@ -49,7 +49,6 @@ $this->title = 'Фильмы, сериалы, мультфильмы смотр�
 
 
     <div class="row row-figure">
-
         <?php foreach ($movies as $movie):?>
 
             <div class="card-film figure col-lg-2 col-md-3 col-sm-4 col-6 my-2">

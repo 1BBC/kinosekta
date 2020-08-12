@@ -603,7 +603,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $this->render('/layouts/genres-list');?>
             <hr>
             <div class="row my-4 no-gutters justify-content-center">
-                <?php shuffle($similar_movies); $sm = 4?>
+                <?php shuffle($similar_movies);?>
                 <?php foreach (array_slice($similar_movies, 0, 4) as $sm):?>
                     <?php
                     $sFolder = (int) ($sm['id'] / 1000);
