@@ -363,7 +363,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //                                        $frame_poster = '&poster=https://image.tmdb.org/t/p/w500/' . explode(',', $tv['images'])[0] . '.jpg';
 //                                    }
 
-                                    $url = 'https://9684.videocdn.pw/7kytC46MWIdE?' . $v . ($frame_poster ?? '');
+                                    $url = 'https://9684.svetacdn.in/7kytC46MWIdE?' . $v . ($frame_poster ?? '');
 
                                     ?>
 
