@@ -13,6 +13,7 @@ use app\common\Csv;
 use app\common\GoogleTranslate;
 use app\common\Themoviedb;
 use app\common\Videocdn;
+use app\models\Movie;
 use Exception;
 use Yii;
 use yii\console\Controller;
@@ -30,7 +31,7 @@ class MainParserController extends Controller {
         parent::__construct($id, $module, $config);
     }
 
-    public function actionCdn($movie, $first, $last = null, $year=2019)
+    public function actionCdn($movie, $first, $last = null, $year=2019, $total = false)
     {
         if (empty($last)) $last=$first;
 
@@ -52,6 +53,11 @@ class MainParserController extends Controller {
                 $this->stdout("ERR: " . $e->getMessage()  ."\n", Console::FG_RED);
                 break;
             }
+
+            if ($total) {
+                $last = $vcData->last_page;
+            }
+
             $this->stdout("========================= Total:  {$vcData->last_page} =================================\n", Console::FG_PURPLE);
 
             foreach ($vcData->data as $content) {
@@ -62,7 +68,7 @@ class MainParserController extends Controller {
                 $params['title']   = $content->ru_title     ?? null;
                 $params['type']    = ($movie == 1) ? 'movie' : 'tv_series';
 
-                $this->tryWrap($count, $params);
+                $this->tryWrap($count, 'one', $params);
             }
         }
     }
@@ -80,7 +86,7 @@ class MainParserController extends Controller {
                 continue;
             }
 
-            $this->tryWrap($i+1, $vcData);
+            $this->tryWrap($i+1, 'one', $vcData);
         }
 
         return ExitCode::OK;
@@ -100,19 +106,19 @@ class MainParserController extends Controller {
             }
 
 
-            $this->tryWrap($i+1, $vcData);
+            $this->tryWrap($i+1, 'one', $vcData);
         }
 
         return ExitCode::OK;
     }
 
-    public function tryWrap($count, $params)
+    public function tryWrap($count, $functionName, $params)
     {
         $startStr = $this->startStr($params);
 
         $this->stdout("\n\n\n======= #" . $count . ' '. $startStr . " =======\n", Console::FG_CYAN);
         try {
-            $this->one($params);
+            $this->$functionName($params);
             $this->stdout("======= ADDED =======", Console::FG_GREEN);
 
         } catch (Exception $e) {
