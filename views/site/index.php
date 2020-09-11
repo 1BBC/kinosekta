@@ -107,7 +107,7 @@ $this->title = 'Фильмы, сериалы, мультфильмы смотр�
                 </div>
 
                 <?php
-                $rating =  ($movie['r_kp']) ? ($movie['r_kp'] / 10) : (($movie['r_imdb']) ? ($movie['r_imdb'] / 10) : null);
+                $rating =  ($tv['r_kp']) ? ($tv['r_kp'] / 10) : (($tv['r_imdb']) ? ($tv['r_imdb'] / 10) : null);
                 $rating = (!empty($rating)) ? ', ★ ' . $rating : null;
                 ?>
 
@@ -147,7 +147,7 @@ $this->title = 'Фильмы, сериалы, мультфильмы смотр�
                 </div>
 
                 <?php
-                $rating =  ($movie['r_kp']) ? ($movie['r_kp'] / 10) : (($movie['r_imdb']) ? ($movie['r_imdb'] / 10) : null);
+                $rating =  ($cartoon['r_kp']) ? ($cartoon['r_kp'] / 10) : (($cartoon['r_imdb']) ? ($cartoon['r_imdb'] / 10) : null);
                 $rating = (!empty($rating)) ? ', ★ ' . $rating : null;
                 ?>
 
@@ -187,7 +187,7 @@ $this->title = 'Фильмы, сериалы, мультфильмы смотр�
                 </div>
 
                 <?php
-                $rating =  ($movie['r_kp']) ? ($movie['r_kp'] / 10) : (($movie['r_imdb']) ? ($movie['r_imdb'] / 10) : null);
+                $rating =  ($tc['r_kp']) ? ($tc['r_kp'] / 10) : (($tc['r_imdb']) ? ($tc['r_imdb'] / 10) : null);
                 $rating = (!empty($rating)) ? ', ★ ' . $rating : null;
                 ?>
 
