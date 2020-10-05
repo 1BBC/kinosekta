@@ -7,6 +7,7 @@
 
 namespace app\commands;
 
+use Yii;
 use yii\console\Controller;
 use yii\console\ExitCode;
 
@@ -27,7 +28,13 @@ class HelloController extends Controller
      */
     public function actionIndex($message = 'hello world')
     {
-        echo $message . "\n";
+        $path = Yii::getAlias('@runtime') . '/log.txt';
+        echo 'path: ' . $path . "\n";
+
+        $file = fopen($path, 'a');
+        $text = date("Y-d-m H:i:s")."\r\n";
+        fwrite($file,$text);
+        fclose($file);
 
         return ExitCode::OK;
     }
