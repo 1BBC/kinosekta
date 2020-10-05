@@ -40,6 +40,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Home', 'url' => ['/admin/default/index']],
             ['label' => 'Parser', 'url' => ['/admin/parser/index']],
+            ['label' => 'Blocked', 'url' => ['/admin/blocked/index']],
             ['label' => 'Cache', 'url' => ['/admin/cache/index']],
             ['label' => 'Genre', 'url' => ['/admin/genre/index']],
             ['label' => 'Movie', 'url' => ['/admin/movie/index']],
