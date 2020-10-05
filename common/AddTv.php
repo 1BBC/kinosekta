@@ -44,13 +44,18 @@ class AddTv extends Content
 
     public function isDuplicate()
     {
-        return Tv::find()->where(['or', ['tmd_id' => $this->tmdb_id], ['imdb_id' => $this->imdb_id], ['kp_id' => $this->kp_id]])->exists();
+        return Tv::find()->where(['or', ['tmd_id' => $this->tmdb_id], ['imdb_id' => substr($this->imdb_id, 2)], ['kp_id' => $this->kp_id]])->exists();
     }
 
     public function add()
     {
         if ($this->isDuplicate()) {
             $this->setStdout("Tv exist\n", Console::FG_GREEN);
+            return true;
+        }
+
+        if ($this->isBlocked()) {
+            $this->setStdout("Tv blocked\n", Console::FG_GREEN);
             return true;
         }
 

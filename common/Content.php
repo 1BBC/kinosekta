@@ -2,6 +2,7 @@
 
 namespace app\common;
 
+use app\models\Blocked;
 use Exception;
 use Yii;
 use yii\base\BaseObject;
@@ -99,6 +100,18 @@ abstract class Content extends BaseObject
         }
 
         return $count;
+    }
+
+    public function isBlocked()
+    {
+        $exist = Blocked::find()->andWhere(
+            ['or',
+                ['imdb_id' => substr($this->imdb_id, 2)],
+                ['kp_id' => $this->kp_id],
+            ]
+        )->exists();
+
+        return ($exist) ? true : false;
     }
 
     public function setImagesCount()

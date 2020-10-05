@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\Blocked;
 use Yii;
 use app\models\Tv;
 use app\models\search\TvSearch;
@@ -105,6 +106,23 @@ class TvController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * Blocked movie
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionBlocked($id)
+    {
+        $tv = $this->findModel($id);
+
+        if (Blocked::blocked($tv->kp_id, $tv->imdb_id)) {
+            $tv->delete();
+        }
 
         return $this->redirect(['index']);
     }

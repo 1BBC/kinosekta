@@ -31,7 +31,7 @@ class AddMovie extends Content
 
     public function isDuplicate()
     {
-        return Movie::find()->where(['or', ['tmd_id' => $this->tmdb_id], ['imdb_id' => $this->imdb_id], ['kp_id' => $this->kp_id]])->exists();
+        return Movie::find()->where(['or', ['tmd_id' => $this->tmdb_id], ['imdb_id' => substr($this->imdb_id, 2)], ['kp_id' => $this->kp_id]])->exists();
     }
 
     public function __construct($params = [], $config = [])
@@ -51,6 +51,11 @@ class AddMovie extends Content
     {
         if ($this->isDuplicate()) {
             $this->setStdout("Movie exist\n", Console::FG_GREEN);
+            return true;
+        }
+
+        if ($this->isBlocked()) {
+            $this->setStdout("Movie blocked\n", Console::FG_GREEN);
             return true;
         }
 

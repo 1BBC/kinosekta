@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\Blocked;
 use app\models\People;
 use Faker\Provider\DateTime;
 use Yii;
@@ -135,6 +136,23 @@ class MovieController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * Blocked movie
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionBlocked($id)
+    {
+        $movie = $this->findModel($id);
+
+        if (Blocked::blocked($movie->kp_id, $movie->imdb_id)) {
+            $movie->delete();
+        }
 
         return $this->redirect(['index']);
     }
