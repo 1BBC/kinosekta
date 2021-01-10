@@ -35,6 +35,7 @@ class TestController extends \yii\web\Controller
             exit("Помилка загрузки: {$retval}\n");
         }
 
-        header('Location: /' . $finalFile);
+        $this->redirect("/{$finalFile}");
+//        header('Location: /' . $finalFile);
     }
 }
