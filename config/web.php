@@ -58,6 +58,7 @@ $config = [
             'rules' => [
                 '<action:|about|login>' => 'site/<action>',
                 'admin/<controller>/<action>' => 'admin/<controller>/<action>',
+                'test/<action>' => 'test/<action>',
 
                 'najti' => 'najti/index',
                 'najti/<action>' => 'najti/<action>',
