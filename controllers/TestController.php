@@ -2,10 +2,6 @@
 
 namespace app\controllers;
 
-use FFMpeg\Coordinate\TimeCode;
-use FFMpeg\FFMpeg;
-use FFMpeg\FFProbe;
-
 class TestController extends \yii\web\Controller
 {
     public function actionLab1()
