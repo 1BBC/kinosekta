@@ -22,7 +22,8 @@
         "ext-json": "*",
         "dejurin/php-google-translate-for-free": "^1.0",
         "ext-simplexml": "*",
-        "ext-dom": "*"
+        "ext-dom": "*",
+        "php-ffmpeg/php-ffmpeg": "^0.17.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

@@ -235,7 +235,7 @@ class SerialyController extends Controller
 
     public function actionYear($year)
     {
-        if ($year > 2020 || $year < 1920) {
+        if ($year > 2021 || $year < 1920) {
             throw new NotFoundHttpException('Tv not found',404);
         }
 

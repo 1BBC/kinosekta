@@ -300,7 +300,7 @@ class FilmyController extends Controller
 
     public function actionYear($year)
     {
-        if ($year > 2020 || $year < 1920) {
+        if ($year > 2021 || $year < 1920) {
             throw new NotFoundHttpException('Movie not found',404);
         }
 

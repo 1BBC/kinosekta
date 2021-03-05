@@ -63,7 +63,7 @@ $this->registerJsFile(
                 <div class="form-group">
                     <select id="s-year" class="selectpicker form-control" title="год" data-live-search="true" >
                         <!--                        <option value="0">год</option>-->
-                        <?php for ($i = 2020; $i >= 2015; $i--):?>
+                        <?php for ($i = 2021; $i >= 2015; $i--):?>
                             <option value="<?=$i?>"><?=$i?></option>
                         <?php endfor;?>
                     </select>

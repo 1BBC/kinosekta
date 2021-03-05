@@ -218,7 +218,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <td class="text-muted"><small>Год:</small></td>
                             <?php
                             $y =  $tv['year'];
-                            $yAgo = 2020 - $y;
+                            $yAgo = 2021 - $y;
 
                             if ($yAgo == 0) {
                                 $yLabel = 'Новинка';

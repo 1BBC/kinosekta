@@ -29,6 +29,7 @@
         <span class="badge badge-dark">ПО ГОДУ</span>
         <!--                    <i style="font-size:14px;">По году</i>-->
         <hr>
+        <a href="/serialy/2021-goda/">2021 года</a><br>
         <a href="/serialy/2020-goda/">2020 года</a><br>
         <a href="/serialy/2019-goda/">2019 года</a><br>
         <a href="/serialy/2018-goda/">2018 года</a><br>
