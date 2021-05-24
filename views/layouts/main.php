@@ -8,7 +8,7 @@ use app\assets\SiteAsset;
 
 \Yii::$app->view->registerMetaTag([
     'name' => 'author',
-    'content' => 'kinogaz',
+    'content' => 'kinogas',
 ]);
 
 SiteAsset::register($this);
@@ -52,7 +52,7 @@ SiteAsset::register($this);
 <!--            <img src="http://porno365.blog/settings/l8.png" width="90%" alt="">-->
 <!--            <img height="30" src="https://img.icons8.com/pastel-glyph/2x/movie-beginning.png" alt="logo">-->
             <i class="fa fa-gas-pump"></i>
-            <b>KinoGaz.online</b>
+            <b>KinoGas.online</b>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
