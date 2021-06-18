@@ -97,6 +97,7 @@ SiteAsset::register($this);
 <!--<script>-->
 <!--    $('.basicAutoComplete').autoComplete();-->
 <!--</script>-->
+<!--тут скрипт-->
 <script type="text/javascript" src="https://video.onetouch8.info/d-video.js?b=12"></script>
 <script>function dviInit(){
         window.daoVideoSlider  = new DaoVideo({"sourceId":36159,"tagUrl":"https:\/\/video.onetouch8.info\/api\/video\/tag?sourceId=36159&tmax=500&video-skipafter=5","debug":true});
