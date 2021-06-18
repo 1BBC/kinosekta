@@ -97,6 +97,12 @@ SiteAsset::register($this);
 <!--<script>-->
 <!--    $('.basicAutoComplete').autoComplete();-->
 <!--</script>-->
+<script type="text/javascript" src="https://video.onetouch8.info/d-video.js?b=12"></script>
+<script>function dviInit(){
+        window.daoVideoSlider  = new DaoVideo({"sourceId":36159,"tagUrl":"https:\/\/video.onetouch8.info\/api\/video\/tag?sourceId=36159&tmax=500&video-skipafter=5","debug":true});
+        daoVideoSlider.loadAd(function(){
+            daoVideoSlider.slider({"containerId":"vi-d-ad-container","positionY":"bottom","positionX":"right","volume":0,"muteButton":true,"size":240,"maxAdCount":3,"pauseOnEnd":10,"renewAdInterval":20,"animation":{"create":"bounceInRight","remove":"bounceOutRight","pulse":"tada","pulseInterval":5}});
+        });} if(document.readyState === "complete" || document.readyState !== "loading") dviInit(); else document.addEventListener('DOMContentLoaded', dviInit);</script>
 </body>
 </html>
 <?php $this->endPage() ?>
